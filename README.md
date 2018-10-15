@@ -10,10 +10,15 @@
  The directory tree is given below:
 
  Eagle_Board Folder
+ 
      Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC & 3.2. 
+     
  Blank_Key_Lists Folder
+ 
      Keyboard_with_number_pad.txt     Lists all keys on a keyboard with a number pad. 
+     
      Keyboard_without_number_pad.txt  Lists all keys on a keyboard without a number pad. 
+     
  Teensy_Continuity_Tester Folder
      Matrix_Decoder_LC.ino        Teensyduino file for Teensy LC continuity tester. 
      Matrix_Decoder_3p2.ino       Teensyduino file for Teensy 3.2 continuity tester.  
