@@ -1,0 +1,112 @@
+Cntrl-L			19	20	
+Cntrl-R			20	22	
+Shift-L			21	23	
+Shift-R			23	25	
+Alt-L			7	24	
+Alt-R			7	15	
+GUI				9	26	
+Fn				12	18	
+A				16	22	
+B				13	15	
+C				14	21	
+D				14	22	
+E				14	25	
+F				13	22	
+G				13	26	
+H				11	26	
+I				10	25	
+J				11	22	
+K				10	22	
+L				5	22	
+M				11	21	
+N				11	15	
+O				5	25	
+P				4	25	
+Q				16	25	
+R				13	25	
+S				17	22	
+T				13	19	
+U				11	25	
+V				13	21	
+W				17	25	
+X				17	21	
+Y				11	19	
+Z				16	21	
+`				16	18	
+1				16	24	
+2				17	24	
+3				14	24	
+4				13	24	
+5				13	18	
+6				11	18	
+7				11	24	
+8				10	24	
+9				5	24	
+0				4	24	
+-				4	18	
+=				4	15	
+Back Space		6	26	
+Esc				16	26	
+F1				14	15	
+F2				14	18	
+F3				14	19	
+F4				14	26	
+F5				17	18	
+F6				17	19	
+F7				17	26	
+F8				15	17	
+F9				5	18	
+F10				5	19	
+F11				5	26	
+F12				5	15	
+Insert			3	26	
+Delete			3	15	
+Arrow-Right		3	24	
+Arrow-Left		3	25	
+Arrow-Up		6	25	
+Arrow-Down		6	24	
+Menu			8	18	
+/				4	21	
+.				5	21	
+,				10	21	
+;				4	22	
+'				4	26	
+Enter			6	22	
+[				4	19	
+]				10	19	
+\				6	18	
+Caps-Lock		15	16	
+Tab				16	19	
+Space			6	21	
+Home			3	19	
+End				3	21	
+Pg-Up			3	18	
+Pg-Dn			3	22	
+Num-Lock		6	19	
+Pad /			2	15	
+Pad *			2	26	
+Pad -			2	19	
+Pad 7			1	15	
+Pad 8			1	26	
+Pad 9			1	19	
+Pad +			1	18	
+Pad 4			2	24	
+Pad 5			2	21	
+Pad 6			2	18	
+Pad 1			1	24	
+Pad 2			1	21	
+Pad 3			1	22	
+Pad 0			2	25	
+Pad .			2	22	
+Pad Enter		1	25	
+
+
+
+
+
+
+
+
+
+
+
