@@ -10,16 +10,16 @@
 * The directory tree is given below:
 
 * Eagle_Board Folder
-*     Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC & 3.2. Can be fab'ed by OSHPark or DirtyPCBs (among others).
+*     Keyboard_Scanner  EagleCad circuit board file for Teensy LC & 3.2. Can be fab'ed by OSHPark or DirtyPCBs (among others).
 * Blank_Key_Lists Folder
-*     Keyboard_with_number_pad.txt     Lists all keys on a keyboard with a number pad. Used when running the Matrix_Decoder code.
-*     Keyboard_without_number_pad.txt  Lists all keys on a keyboard without a number pad. Used when running the Matrix_Decoder code.
+*     Keyboard_with_number_pad     Lists all keys on a keyboard with a number pad. Used when running the Matrix_Decoder code.
+*     Keyboard_without_number_pad  Lists all keys on a keyboard without a number pad. Used when running the Matrix_Decoder code.
 * Teensy_Continuity_Tester Folder
-*     Matrix_Decoder_LC.ino        Teensyduino file for Teensy LC continuity tester. Code sends 2 pins numbers when key is pressed. 
-*     Matrix_Decoder_3p2.ino       Teensyduino file for Teensy 3.2 continuity tester. Code sends 2 pins numbers when key is pressed. 
+*     Matrix_Decoder_LC        Teensyduino file for Teensy LC continuity tester. Code sends 2 pins numbers when key is pressed. 
+*     Matrix_Decoder_3p2       Teensyduino file for Teensy 3.2 continuity tester. Code sends 2 pins numbers when key is pressed. 
 * Example_Keyboards Folder
-*     Instructions for Modifying the Teensyduino LC code.doc     Word file with LC instructions and translation table.
-*     Instructions for Modifying the Teensyduino 3p2 code.doc    Word file with 3.2 instructions and translation table.
+*     Instructions for Modifying the Teensyduino LC code     Word file with LC instructions and translation table.
+*     Instructions for Modifying the Teensyduino 3p2 code    Word file with 3.2 instructions and translation table.
 *     Laptop_Keyboard      A separate Folder for each laptop keyboard, containing the following:
 *          Text file with FPC pin connections. The results from running the Matrix_decoder code.
 *          Word file with key matrix table and any additional information. Use this table if using the TMK routine.
