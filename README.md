@@ -20,14 +20,23 @@
      Keyboard_without_number_pad.txt  Lists all keys on a keyboard without a number pad. 
      
  Teensy_Continuity_Tester Folder
+ 
      Matrix_Decoder_LC.ino        Teensyduino file for Teensy LC continuity tester. 
+     
      Matrix_Decoder_3p2.ino       Teensyduino file for Teensy 3.2 continuity tester.  
+     
  Example_Keyboards Folder
-     Instructions for Modifying the Teensyduino LC code.doc     Word file with LC instructions      
+ 
+     Instructions for Modifying the Teensyduino LC code.doc     Word file with LC instructions   
+     
      Instructions for Modifying the Teensyduino 3p2 code.doc    Word file with 3.2 instructions 
+     
      Laptop_Keyboard      A separate Folder for each laptop keyboard, containing the following:
+     
           Text file with FPC pin connections. The results from running the Matrix_decoder code.
+          
           Word file with key matrix table and any additional information. 
+          
           Teensyduino code that makes a simple homebrew USB keyboard routine.
           
  Each of the Laptop Keyboards listed below have been tested and documented in their own folder:
