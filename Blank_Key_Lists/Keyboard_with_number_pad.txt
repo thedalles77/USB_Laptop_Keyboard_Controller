@@ -1,0 +1,101 @@
+Cntrl-L			
+Cntrl-R			
+Shift-L			
+Shift-R			
+Alt-L			
+Alt-R			
+GUI				
+Fn				
+A				
+B				
+C				
+D				
+E				
+F				
+G				
+H				
+I				
+J				
+K				
+L				
+M				
+N				
+O				
+P				
+Q				
+R				
+S				
+T				
+U				
+V				
+W				
+X				
+Y				
+Z				
+`				
+1				
+2				
+3				
+4				
+5				
+6				
+7				
+8				
+9				
+0				
+-				
+=				
+Back Space		
+Esc				
+F1				
+F2				
+F3				
+F4				
+F5				
+F6				
+F7				
+F8				
+F9				
+F10				
+F11				
+F12				
+Insert			
+Delete			
+Arrow-Right		
+Arrow-Left		
+Arrow-Up		
+Arrow-Down		
+Menu			
+/				
+.				
+,				
+;				
+'				
+Enter			
+[				
+]				
+\				
+Caps-Lock		
+Tab				
+Space			
+Home			
+End				
+Pg-Up			
+Pg-Dn			
+Num-Lock		
+Pad /			
+Pad *			
+Pad -			
+Pad 7			
+Pad 8			
+Pad 9			
+Pad +			
+Pad 4			
+Pad 5			
+Pad 6			
+Pad 1			
+Pad 2			
+Pad 3			
+Pad 0			
+Pad .			
+Pad Enter		
