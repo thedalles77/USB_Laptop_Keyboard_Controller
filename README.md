@@ -5,13 +5,9 @@
 
  See the YouTube video at this address
 
- A PDF version of the Instructable with additional informatuion is in the directory with this README file.
+ A PDF version of the Instructable with additional information is in the directory with this README file.
 
- The directory tree is given below:
-
- Eagle_Board Folder
- 
-     Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC & 3.2. 
+ Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
      
  Blank_Key_Lists Folder
  
