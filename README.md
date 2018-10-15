@@ -1,12 +1,14 @@
 # USB_Laptop_Keyboard_Controller
  This repo contains all the files that are needed to make a USB keyboard from an old laptop keyboard.
 
- See the "Instructable" at this address
+ See the YouTube video at this address.
+ 
+ See the "Instructable" at this address.
 
- See the YouTube video at this address
-
- A PDF version of the Instructable with additional information is in the directory with this README file.
-
+ All files and folders are listed below:
+ 
+ Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the Instructable.
+ 
  Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
      
  Blank_Key_Lists Folder
