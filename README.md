@@ -23,11 +23,17 @@
      
      Matrix_Decoder_3p2.ino       Teensyduino file for Teensy 3.2 continuity tester.  
      
+ Example_Touchpads Folder
+ 
+     Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller
+     
+     Touchpad_Info.docx           Word file describing touchpad code
+ 
  Example_Keyboards Folder
  
-     Instructions for Modifying the Teensyduino LC code.doc     Word file with LC instructions   
+     Instructions for Modifying the Teensyduino LC code.docx     Word file with LC instructions   
      
-     Instructions for Modifying the Teensyduino 3p2 code.doc    Word file with 3.2 instructions 
+     Instructions for Modifying the Teensyduino 3p2 code.docx    Word file with 3.2 instructions 
      
      Laptop_Keyboard      A separate Folder for each laptop keyboard, containing the following:
      
