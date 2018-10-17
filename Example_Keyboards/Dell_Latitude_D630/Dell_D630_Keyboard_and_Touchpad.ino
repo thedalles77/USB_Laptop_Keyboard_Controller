@@ -7,7 +7,8 @@
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // The PS/2 code was originally from https://playground.arduino.cc/uploads/ComponentLib/mouse.txt
 // but the interface to the PC was changed from RS232 serial to USB using the PJRC Mouse functions. 
-// A watchdog timer was also added to the "while loops" so the code doesn't hang if the touchpad hiccups.
+// A watchdog timer was also added to the "while loops" so the code doesn't hang if the Teensy is 
+// interrupted by I2C or USB traffic.
 //
 // The test points on the touchpad were wired to a Teensy 3.2 as follows:
 // T22 = 5V wired to the Teensy Vin pin
