@@ -1,6 +1,6 @@
 // This software is in the public domain
 // It implements a Dell Latitude D630 Laptop Keyboard Controller and PS/2 Touchpad Controller
-// using a Teensy 3.2 on a daughterboard with a 32 pin FPC connector. The keyboard part number 
+// using a Teensy 3.2 on a daughterboard with a 34 pin FPC connector. The keyboard part number 
 // is DP/N 0DR160. The Touchpad from an HP DV9000 is part number 920-000702-04 Rev A.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
 // keys over USB. Multi-media keys are not supported by this routine.
