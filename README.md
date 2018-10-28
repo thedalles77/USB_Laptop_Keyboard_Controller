@@ -27,19 +27,19 @@
  
      Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller
      
-     Touchpad_Info.docx           Word file describing touchpad code
+     Touchpad_Info.pdf            PDF file describing the touchpad code
  
  Example_Keyboards Folder
  
-     Instructions for Modifying the Teensyduino LC code.docx     Word file with LC instructions   
+     Instructions for Modifying the Teensyduino LC code.pdf     PDF file with LC instructions   
      
-     Instructions for Modifying the Teensyduino 3p2 code.docx    Word file with 3.2 instructions 
+     Instructions for Modifying the Teensyduino 3p2 code.pdf    PDF file with 3.2 instructions 
      
      Laptop_Keyboard      A separate Folder for each laptop keyboard, containing the following:
      
           Text file with FPC pin connections. The results from running the Matrix_decoder code.
           
-          Word file with key matrix table and any additional information. 
+          PDF file with key matrix table and any additional information. 
           
           Teensyduino code that makes a simple homebrew USB keyboard routine.
           
