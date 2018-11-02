@@ -286,7 +286,7 @@ void touchpad_write(char data)
   delayMicroseconds(10);
   // start bit 
   go_z(MCLK);
-  // wait for touchpad to take control of clock)
+  // wait for touchpad to take control of clock
   while (digitalRead(MCLK) == HIGH) {
     if (watchdog >= 200) { //check for infinite loop
       touchpad_error = HIGH; // set error flag
