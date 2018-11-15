@@ -9,7 +9,7 @@
 // A watchdog timer was also added to the "while loops" so the code can't hang if a clock edge is missed.
 // 
 // Revision History
-// Initial Release Oct 27, 2018
+// Initial Release Nov 15, 2018
 //
 // Trackpoint signals
 #define MDATA 18   // ps/2 data to trackpoint
