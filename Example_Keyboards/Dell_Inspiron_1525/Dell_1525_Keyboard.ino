@@ -9,7 +9,7 @@
 // Initial Release Nov 15, 2018
 //
 //
-#define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
+#define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 //
 const byte rows_max = 17; // sets the number of rows in the matrix
