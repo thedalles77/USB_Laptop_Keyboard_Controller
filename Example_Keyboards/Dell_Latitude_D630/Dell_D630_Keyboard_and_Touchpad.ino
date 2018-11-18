@@ -3,7 +3,7 @@
 // using a Teensy 3.2 on a daughterboard with a 34 pin FPC connector. The keyboard part number 
 // is DP/N 0DR160. The Touchpad from an HP DV9000 is part number 920-000702-04 Rev A.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
-// keys over USB. Multi-media keys are are sent with keyboard press and release functions.
+// keys over USB. Multi-media keys are sent with keyboard press and release functions.
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // The PS/2 code was originally from https://playground.arduino.cc/uploads/ComponentLib/mouse.txt
 // but the interface to the PC was changed from RS232 serial to USB using the PJRC Mouse functions. 
@@ -20,7 +20,7 @@
 // Initial Release Nov 15, 2018
 //
 //
-#define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
+#define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 //
 #define MDATA 15 // Touchpad ps/2 data connected to Teensy I/O pin 15
