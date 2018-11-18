@@ -19,13 +19,13 @@
 // account when programming the TMK or Teensyduino keyboard routine.   
 //
 // Revision History
-// Rev 1.00 - Sep 27, 2018 - Original Release
+// Rev 1.00 - Nov 18, 2018 - Original Release
 //
 //
 // Load an array with the Teensy 3.2 I/O numbers that correspond to FPC pins 1 thru 34.
  int con_pin[] = {23, 0, 22, 1, 21, 2, 20, 3, 19, 4, 18, 5, 17, 6, 24, 7, 25, 8, 33, 9, 26, 10, 27, 11, 28, 12, 32, 31, 30, 29, 16, 15, 14, 13};
 //
-// Define maximum and minimum pin numbers that will be tested.
+// Define maximum and minimum pin numbers that will be tested. If pin 34 is used by the keyboard, you must unsolder the Teensy LED.
 // max_pin is usually set to the FPC connector size. min_pin is usually set to 1. The routine will start testing at pin 1 and go up to the max pin size.
 // The max and min pin values can be adjusted to exclude testing the FPC traces at the edges if they are reported as shorted. An example would be if pin 1
 // and pin 34 are both grounds. They will be reported as tied together but they are not needed by the key matrix. In this case, set the 
