@@ -2,14 +2,14 @@
 // It implements an Sony Vaio VPCCW Laptop Keyboard Controller using a Teensy LC on 
 // a daughterboard with a 24 pin FPC connector. The keyboard part number is 148754321.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
-// keys over USB. Multi-media keys are are sent with keyboard press and release functions.
+// keys over USB. Multi-media keys are sent with keyboard press and release functions.
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // 
 // Revision History
 // Initial Release Nov 15, 2018
 //
 //
-#define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
+#define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 //
 const byte rows_max = 16; // sets the number of rows in the matrix
