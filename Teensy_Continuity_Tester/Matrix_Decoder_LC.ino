@@ -19,7 +19,7 @@
 // account when programming the TMK or Teensyduino keyboard routine.
 //
 // Revision History
-// Rev 1.00 - Oct 8, 2018 - Original Release
+// Rev 1.00 - Nov 18, 2018 - Original Release
 //  
 //
 // Load an array with the Teensy LC I/O numbers that correspond to FPC pins 1 thru 26.
