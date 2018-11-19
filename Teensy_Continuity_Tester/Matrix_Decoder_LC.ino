@@ -310,7 +310,7 @@ void setup() {
   for (int k = 0; k < max_pin; k++) {  // loop thru all connector pins 
     go_z(con_pin[k]); // set each pin as an input with a pullup
   }
-  delay(15000);  // Wait for the host to connect to the Teensy as a keyboard. If 2 pibs are shorted
+  delay(15000);  // Wait for the host to connect to the Teensy as a keyboard. If 2 pins are shorted
               // you want the host to be ready to receive the pin numbers.
 }
 //
