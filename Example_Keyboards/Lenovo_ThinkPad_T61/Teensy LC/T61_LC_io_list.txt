@@ -1,93 +1,93 @@
-cntrl-l			
-cntrl-r			
-shift-l			
-shift-r			
-alt-l			
-alt-r			
-gui				
-Fn				
-a				
-b				
-c				
-d				
-e				
-f				
-g				
-h				
-i				
-j				
-k				
-l				
-m				
-n				
-o				
-p				
-q				
-r				
-s				
-t				
-u				
-v				
-w				
-x				
-y				
-z				
-`				
-1				
-2				
-3				
-4				
-5				
-6				
-7				
-8				
-9				
-0				
--				
-=				
-bckspace		
-esc				
-f1				
-f2				
-f3				
-f4				
-f5				
-f6				
-f7				
-f8				
-f9				
-f10				
-f11				
-f12				
-insert			
-delete			
-home			
-pg-up			
-pg-dn			
-end				
-arrow-r			
-arrow-l			
-arrow-u			
-arrow-d			
-menu			
-/				
-period			
-comma			
-;				
-'				
-enter			
-[				
-]				
-\				
-caps-lck		
-tab				
-space			
-prt-sc			
-scr-lk			
-pause			
-page left		
-page right		
-mute			
-volume down		
-volume up		
-ThinkVantage	
+cntrl-l			21	26
+cntrl-r			3	26	
+shift-l			25	14	
+shift-r			3	14	
+alt-l			4	12	
+alt-r			2	12	
+gui				22	10	
+fn				9	24
+a				24	15	
+b				18	2	
+c				19	3	
+d				24	19	
+e				22	19	
+f				18	24	
+g				4	18	
+h				16	4	
+i				8	22	
+j				16	24	
+k				8	24	
+l				7	24	
+m				16	3	
+n				16	2	
+o				7	22	
+p				22	6	
+q				22	15	
+r				22	18	
+s				24	20	
+t				25	18	
+u				16	22	
+v				18	3	
+w				22	20	
+x				3	20	
+y				16	25	
+z				3	15	
+`				21	15	
+1				23	15	
+2				23	20	
+3				23	19	
+4				18	23	
+5				21	18	
+6				16	21	
+7				16	23	
+8				8	23	
+9				7	23	
+0				6	23	
+-				21	6	
+=				8	21	
+bckspace		17	25	
+esc				4	15	
+f1				21	20	
+f2				21	19	
+f3				25	19	
+f4				4	19	
+f5				4	17	
+f6				4	8	
+f7				25	7	
+f8				21	7	
+f9				21	17	
+f10				17	23	
+f11				23	5	
+f12				23	9	
+insert			21	9	
+delete			21	5	
+home			21	11	
+pg-up			21	10	
+pg-dn			23	10	
+end				23	11	
+arrow-r			2	9	
+arrow-l			2	11	
+arrow-u			4	11	
+arrow-d			5	2	
+menu			24	10	
+/				6	2	
+period			7	3	
+comma			8	3	
+;				24	6	
+'				4	6	
+enter			17	3	
+[				25	6	
+]				8	25	
+\				17	24	
+caps-lck		25	20	
+tab				25	15	
+space			17	2	
+prt-sc			23	12	
+scr-lk			22	12	
+pause			3	11	
+page left		3	10	
+page right		2	10	
+mute			24	5	
+volume down		25	5	
+volume up		22	5	
+ThinkVantage	4	5	
