@@ -9,7 +9,7 @@
 // A watchdog timer was also added to the "while loops" so the code can't hang if a clock edge is missed.
 // 
 // Revision History
-// Initial Release Nov 7, 2018
+// Initial Release Nov 20, 2018
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code
 // Trackpoint signals
