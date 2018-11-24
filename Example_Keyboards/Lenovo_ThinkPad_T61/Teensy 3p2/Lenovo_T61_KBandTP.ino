@@ -7,7 +7,7 @@
 // The PS/2 code for the Trackpoint was originally from https://playground.arduino.cc/uploads/ComponentLib/mouse.txt
 // but the interface to the host was changed from RS232 serial to USB using the PJRC Mouse functions. 
 // A watchdog timer was also added to the "while loops" so the code can't hang if a clock edge is missed.
-// 
+// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 // Revision History
 // Initial Release Nov 15, 2018
 //
