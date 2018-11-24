@@ -18,9 +18,9 @@
 // the touchpad blob top chip.
 // The ps/2 signals are at 5 volts from the touchpad to the Teensy which is 5 volt tolerant.
 // The ps/2 signals are at 3.3 volts from the Teensy to the touchpad which is enough to be a logic high.
-//
+// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 // Revision History
-// Initial Release Oct 29, 2018
+// Initial Release Nov 23, 2018
 //
 // The touchpad ps/2 data and clock lines are connected to the following Teensy I/O pins
 #define MDATA 15
