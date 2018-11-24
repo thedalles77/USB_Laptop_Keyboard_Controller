@@ -15,7 +15,7 @@
 // T23 = Gnd wired to the Teensy Ground pin   It's hard to solder to T23 so I soldered to a bypass cap gnd pad.
 // T10 = Clock wired to the Teensy I/O 14 pin  Pull up to 5 volts is in the touchpad
 // T11 = Data wired to the Teensy I/O 15 pin   Pull up to 5 volts is in the touchpad
-// 
+// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 // Revision History
 // Initial Release Nov 15, 2018
 //
