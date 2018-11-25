@@ -1,9 +1,9 @@
 # USB_Laptop_Keyboard_Controller
  This repo contains all the files that are needed to make a USB keyboard from an old laptop keyboard.
 
- See the YouTube video at this address.
+ See the YouTube video at https://www.youtube.com/watch?v=Z1PheqSNNP8
  
- See the "Instructable" at this address.
+ See the "Instructable" at https://www.instructables.com/id/How-to-Make-a-USB-Laptop-Keyboard-Controller/
 
  All files and folders are listed below:
  
