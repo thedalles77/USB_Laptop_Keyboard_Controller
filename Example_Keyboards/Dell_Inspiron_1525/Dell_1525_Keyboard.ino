@@ -1,5 +1,15 @@
-// This software is in the public domain
-// It implements a Dell Inspiron 1525 Laptop Keyboard Controller using a Teensy LC on 
+/* Copyright 2018 Frank Adams
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+// This software implements a Dell Inspiron 1525 Laptop Keyboard Controller using a Teensy LC on 
 // a daughterboard with a 25 pin FPC connector. The keyboard part number is D9K01.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
 // keys over USB. Multi-media keys are sent with keyboard press and release functions.
@@ -9,7 +19,7 @@
 // Initial Release Nov 15, 2018
 //
 //
-#define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
+#define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 //
 const byte rows_max = 17; // sets the number of rows in the matrix
