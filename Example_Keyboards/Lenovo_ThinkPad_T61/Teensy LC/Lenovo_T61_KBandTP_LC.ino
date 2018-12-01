@@ -1,4 +1,14 @@
-// This software is in the public domain
+/* Copyright 2018 Frank Adams
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
 // It controls a Lenovo ThinkPad T61 Laptop Keyboard and PS/2 Trackpoint using a Teensy LC on 
 // a daughterboard with a 44 pin FPC connector. The keyboard part number is 42T3177.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
@@ -8,6 +18,7 @@
 // but the interface to the host was changed from RS232 serial to USB using the PJRC Mouse functions. 
 // A watchdog timer was also added to the "while loops" so the code can't hang if a clock edge is missed.
 // In the Arduino IDE, select Tools, Teensy LC. Also under Tools, select Keyboard+Mouse+Joystick
+//
 // Revision History
 // Initial Release Nov 20, 2018
 //
