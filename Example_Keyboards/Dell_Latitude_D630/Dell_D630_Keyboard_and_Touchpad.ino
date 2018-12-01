@@ -1,9 +1,19 @@
-// This software is in the public domain
-// It implements a Dell Latitude D630 Laptop Keyboard Controller and PS/2 Touchpad Controller
+/* Copyright 2018 Frank Adams
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+// This software implements a Dell Latitude D630 Laptop Keyboard Controller and PS/2 Touchpad Controller
 // using a Teensy 3.2 on a daughterboard with a 34 pin FPC connector. The keyboard part number 
 // is DP/N 0DR160. The Touchpad from an HP DV9000 is part number 920-000702-04 Rev A.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
-// keys over USB. Multi-media keys are sent with keyboard press and release functions.
+// keys over USB. Multi-media keys are are sent with keyboard press and release functions.
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // The PS/2 code was originally from https://playground.arduino.cc/uploads/ComponentLib/mouse.txt
 // but the interface to the PC was changed from RS232 serial to USB using the PJRC Mouse functions. 
@@ -16,11 +26,12 @@
 // T10 = Clock wired to the Teensy I/O 14 pin  Pull up to 5 volts is in the touchpad
 // T11 = Data wired to the Teensy I/O 15 pin   Pull up to 5 volts is in the touchpad
 // In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
+//
 // Revision History
 // Initial Release Nov 15, 2018
 //
 //
-#define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
+#define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 //
 #define MDATA 15 // Touchpad ps/2 data connected to Teensy I/O pin 15
