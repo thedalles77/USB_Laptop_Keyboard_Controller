@@ -133,7 +133,7 @@ int Row_IO[rows_max] = {20,33,24,25,31,32,7,6,26,4,5,3,2,1,21,22}; // Teensy 3.2
 int Col_IO[cols_max] = {16,10,12,17,11,15,9,8};  // Teensy 3.2 I/O numbers for columns
 //
 // Declare variables that will be used by functions
-boolean trackpoint_error = LOW; // sent high when touch pad routine times out
+boolean trackpoint_error = LOW; // sent high when track point routine times out
 boolean slots_full = LOW; // Goes high when slots 1 thru 6 contain normal keys
 // slot 1 thru slot 6 hold the normal key values to be sent over USB. 
 int slot1 = 0; //value of 0 means the slot is empty and can be used.  
@@ -663,7 +663,9 @@ void loop() {
   over_flow = 0; // assume no overflow until status is received 
   trackpoint_error = LOW; // start with no error
   tp_write(0xeb);  // request data
-  tp_read();      // ignore ack
+  if (tp_read() != 0xfa) { // verify correct ack byte
+    trackpoint_error = HIGH;
+  }
   mstat = tp_read(); // save into status variable
   mx = tp_read(); // save into x variable
   my = tp_read(); // save into y variable
