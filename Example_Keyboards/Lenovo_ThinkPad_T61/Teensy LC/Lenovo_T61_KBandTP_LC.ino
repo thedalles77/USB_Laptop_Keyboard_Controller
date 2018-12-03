@@ -644,7 +644,9 @@ void loop() {
   over_flow = 0; // assume no overflow until status is received 
   trackpoint_error = LOW; // start with no error
   tp_write(0xeb);  // request data
-  tp_read();      // ignore ack
+  if (tp_read() != 0xfa) { // verify correct ack byte
+    trackpoint_error = HIGH;
+  }
   mstat = tp_read(); // save into status variable
   mx = tp_read(); // save into x variable
   my = tp_read(); // save into y variable
