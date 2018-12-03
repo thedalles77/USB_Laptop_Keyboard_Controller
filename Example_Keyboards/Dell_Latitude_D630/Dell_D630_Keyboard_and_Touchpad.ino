@@ -27,7 +27,7 @@
 //
 // Revision History
 // Rev 1.0 - Nov 15, 2018 - Original Release
-// Rev 1.1 - Dec 2, 2018 - Replaced ps/2 trackpoint code from playground arduino with my own code 
+// Rev 1.1 - Dec 2, 2018 - Replaced ps/2 touchpad code from playground arduino with my own code 
 //
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
