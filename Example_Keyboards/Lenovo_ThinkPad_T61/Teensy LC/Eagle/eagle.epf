@@ -1,5 +1,5 @@
 [Eagle]
-Version="08 02 02"
+Version="09 02 02"
 Platform="Windows"
 Globals="Globals"
 Desktop="Desktop"
@@ -351,10 +351,7 @@ UsedLibrary="C:/EAGLE 8.2.2/lbr/FPC CONN.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/FPC CONN26.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/FPC_Dual_back.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/FPC_Dual_front.lbr"
-UsedLibrary="C:/EAGLE 8.2.2/lbr/TLV810SDBZT.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy.lbr"
-UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy_3p2.lbr"
-UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy_3p2_min.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy_Combo.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy_LC.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/lbr/WM6787CT-ND.lbr"
@@ -363,15 +360,17 @@ UsedLibrary="C:/EAGLE 8.2.2/Teensy/Teensypp2.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/Sparkfun_lib/SparkFun-Eagle-Libraries-master/SparkFun-PowerSymbols.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/Sparkfun_lib/SparkFun-Eagle-Libraries-master/SparkFun-Connectors.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/Sparkfun_lib/SparkFun-Eagle-Libraries-master/SparkFun-Capacitors.lbr"
+UsedLibrary="C:/EAGLE 8.2.2/lbr/TLV810SDBZT.lbr"
+UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy_3p2.lbr"
+UsedLibrary="C:/EAGLE 8.2.2/lbr/Teensy_3p2_min.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/Sparkfun_lib/SparkFun-Eagle-Libraries-master/SparkFun-DiscreteSemi.lbr"
 UsedLibrary="C:/EAGLE 8.2.2/Sparkfun_lib/SparkFun-Eagle-Libraries-master/SparkFun-Resistors.lbr"
+UsedLibrary="C:/EAGLE 8.2.2/lbr/oshw.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="0 0 1919 1002"
-State=3
 Number=0
 
 [Desktop]
-Screen="3360 1080"
+Screen="1920 1080"
 Window="Win_1"
