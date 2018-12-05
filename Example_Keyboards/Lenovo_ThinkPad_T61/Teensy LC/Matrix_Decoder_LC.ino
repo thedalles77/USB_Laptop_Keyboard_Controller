@@ -9,7 +9,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// It will determine how a laptop keyboard matrix is wired using a Teensy LC on an FPC daughterboard.
+// This software will determine how a laptop keyboard matrix is wired using a Teensy LC on an FPC daughterboard.
 // Open an editor on a computer and load or create a file that lists every key
 // on the laptop keyboard that will be tested. Connect the FPC cable of the test keyboard 
 // to the Teensy/FPC board. Connect a USB cable from the Teensy to the computer.
