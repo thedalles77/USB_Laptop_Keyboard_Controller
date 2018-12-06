@@ -114,7 +114,7 @@ boolean old_key[rows_max][cols_max] = {
   {1,1,1,1,1,1,1,1}
 };
 //
-// Define the Teensy 3.2 I/O numbers 
+// Define the Teensy LC I/O numbers 
 //
 // Row FPC pin # 22,18,14,10,02,04,08,12,06,20,16,24,28,32,26,30
 // Teensy I/O  # 15,20,19,18,16,08,07,06,17,09,05,10,11,12,14,26
@@ -178,7 +178,7 @@ void go_1(int pin)
 //
 void tp_write(char send_data)  
 {
-  unsigned int timeout = 200; // breakout of loop if over this value in msec
+  unsigned int timeout = 200; // break out of loop if over this value in msec
   elapsedMillis watchdog; // zero the watchdog timer clock
   char odd_parity = 0; // clear parity bit count
 // Enable the bus by floating the clock and data
