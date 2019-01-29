@@ -10,6 +10,7 @@
  Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the Instructable.
  
  Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
+ Keyboard_Scanner_LT.brd EagleCad file same as above with 2 bit Level Translator for touchpad Clock and Data
      
  Blank_Key_Lists Folder
  
