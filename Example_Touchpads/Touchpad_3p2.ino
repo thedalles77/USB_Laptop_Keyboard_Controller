@@ -12,7 +12,7 @@
 // This software interfaces the Teensy 3.2 with a PS/2 touchpad found in an HP DV9000 laptop.
 // The ps/2 code uses the USB PJRC Mouse functions at www.pjrc.com/teensy/td_mouse.html 
 // The ps/2 code has a watchdog timer so the code can't hang if a clock edge is missed.
-// In the Arduino IDE, select Tools, Teensy LC. Also under Tools, select Keyboard+Mouse+Joystick
+// In the Arduino IDE, select Tools, Teensy 3.2/3.1. Also under Tools, select Keyboard+Mouse+Joystick
 //
 // Revision History
 // Rev 1.0 - Nov 23, 2018 - Original Release
