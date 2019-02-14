@@ -9,32 +9,42 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software interfaces the Teensy 3.2 with a PS/2 touchpad found in an HP DV9000 laptop.
+// This software interfaces the Teensy 3.2 with a PS/2 touchpad from a laptop.
 // The ps/2 code uses the USB PJRC Mouse functions at www.pjrc.com/teensy/td_mouse.html 
 // The ps/2 code has a watchdog timer so the code can't hang if a clock edge is missed.
-// In the Arduino IDE, select Tools, Teensy 3.2/3.1. Also under Tools, select Keyboard+Mouse+Joystick
+// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 //
 // Revision History
 // Rev 1.0 - Nov 23, 2018 - Original Release
 // Rev 1.1 - Dec 2, 2018 - Replaced ps/2 trackpoint code from playground arduino with my own code 
 // Rev 1.2 - Feb 2, 2019 - Changed the error routine and added an error LED
+// Rev 1.3 - Feb 14, 2019 - Added pinouts for different touchpads
 //
-// This code has been tested on the touchpad from an HP Pavilion DV9000
-// Touchpad part number 920-000702-04 Rev A
-// The test points on the touchpad were wired to a Teensy 3.2 as follows:
-// T22 = 5V wired to the Teensy Vin pin
-// T23 = Gnd wired to the Teensy Ground pin   It's hard to solder to the T23 ground plane so I soldered to a bypass cap gnd pad.
-// T10 = Clock wired to the Teensy I/O 30 pin
-// T11 = Data wired to the Teensy I/O 27 pin
+// This code has been tested on the following touchpads:
 //
-// Clock and Data measure open to the 5 volt pin, indicating no pull up resistors but,
-// Clock and Data both measure 5 volts when the touchpad is powered, indicating active pullups are in 
-// the touchpad blob top chip.
-// The ps/2 signals are at 5 volts from the touchpad to the Teensy which is 5 volt tolerant.
-// The ps/2 signals are at 3.3 volts from the Teensy to the touchpad which is enough to be a logic high.
-// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
+// Dell D630 Touchpad. I used the wires from the touchpad connector as follows:
+// Pin 2 = 5V
+// Pin 1 = Gnd
+// Pin 7 = Clock
+// Pin 6 = Data
+// This touchpad has resistive pullups so no additional pullups were required. 
 //
-// The touchpad ps/2 data and clock lines are connected to the following Teensy I/O pins
+// HP Pavilion DV9000 Touchpad part number 920-000702-04 Rev A
+// The test points on the touchpad were wired as follows:
+// T22 = 3.3V  (The touchpad also works with 5V)
+// T23 = Gnd   (I soldered to the ground plane)
+// T10 = Clock 
+// T11 = Data 
+// This touchpad has active pullups so no additional pullups were required.
+// 
+// Dell 1545 touchpad. I soldered wires to the 4 pin connector as follows:
+// Pin 1 = 5V
+// Pin 4 = Gnd
+// Pin 3 = Clock
+// Pin 2 = Data
+// This touchpad has active pullups so no additional pullups were required. 
+//
+// The touchpad ps/2 data and clock lines are connected to the following Teensy I/O pins (modify to match your jumper wires)
 #define TP_DATA 14
 #define TP_CLK 23
 // Teensy LED will be lit if the touchpad fails to respond properly during initialization
