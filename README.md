@@ -29,7 +29,7 @@
  
      Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller
      
-     Touchpad_Info.pdf            PDF file describing the touchpad code
+     Touchpad_LC.ino              Teensyduino file for Teensy LC touchpad controller
  
  Example_Keyboards Folder
  
