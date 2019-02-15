@@ -30,6 +30,8 @@
      Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller
      
      Touchpad_LC.ino              Teensyduino file for Teensy LC touchpad controller
+     
+     Touchpad_pinout_testing.pdf    Describes how to find the clock, data, power, and ground
  
  Example_Keyboards Folder
  
