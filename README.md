@@ -7,7 +7,9 @@
 
  All files and folders are listed below:
  
- Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the Instructable.
+ Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the keyboard Instructable.
+ 
+ KVM Instructable.pdf contains the text and pictures from the KVM Instuctable
  
  Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
  
@@ -51,7 +53,7 @@
 *  Dell Inspiron 1525 - Keyboard Part Number D9K01
 *  Dell Latitude 131L - Keyboard Part Number V-0511BIAS1-US
 *  Dell Latitude X1 - Keyboard Part Number 0M6607
-*  Dell Latitude D630 - Keyboard Part Number DP/N 0DR160
+*  Dell Latitude D630 - Keyboard Part Number DP/N 0DR160 - this also contains the basic and Pi KVM
 *  HP Compaq Presario 2100 - Keyboard Part Number AEKT1TPU011
 *  HP Compaq Presario V4000 - Keyboard Part Number NSK-H3L01
 *  HP Pavilion DV9000 - Keyboard Part number AEAT5U00110
