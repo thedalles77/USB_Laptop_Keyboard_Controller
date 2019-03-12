@@ -1,10 +1,14 @@
 # USB_Laptop_Keyboard_Controller
- This repo contains all the files that are needed to make a USB keyboard from an old laptop keyboard.
+ This repo contains all the files that are needed to make a USB keyboard and a KVM from an old laptop.
 
- See the YouTube video at https://www.youtube.com/watch?v=Z1PheqSNNP8
+ See the YouTube keyboard video at https://www.youtube.com/watch?v=Z1PheqSNNP8
  
- See the "Instructable" at https://www.instructables.com/id/How-to-Make-a-USB-Laptop-Keyboard-Controller/
+ See the YouTube KVM video at https://www.youtube.com/watch?v=M5-dYo2jt14
+ 
+ See the keyboard "Instructable" at https://www.instructables.com/id/How-to-Make-a-USB-Laptop-Keyboard-Controller/
 
+ See the KVM "Instructable" at https://www.instructables.com/id/DIY-Portable-KVM-Crashcart-From-Recycled-Laptop-Pr/
+ 
  All files and folders are listed below:
  
  Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the keyboard Instructable.
@@ -53,7 +57,7 @@
 *  Dell Inspiron 1525 - Keyboard Part Number D9K01
 *  Dell Latitude 131L - Keyboard Part Number V-0511BIAS1-US
 *  Dell Latitude X1 - Keyboard Part Number 0M6607
-*  Dell Latitude D630 - Keyboard Part Number DP/N 0DR160 - this also contains the basic and Pi KVM
+*  Dell Latitude D630 - Keyboard Part Number DP/N 0DR160 - this includes the basic and Pi KVM
 *  HP Compaq Presario 2100 - Keyboard Part Number AEKT1TPU011
 *  HP Compaq Presario V4000 - Keyboard Part Number NSK-H3L01
 *  HP Pavilion DV9000 - Keyboard Part number AEAT5U00110
