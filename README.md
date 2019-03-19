@@ -9,6 +9,10 @@
 
  See the KVM "Instructable" at https://www.instructables.com/id/DIY-Portable-KVM-Crashcart-From-Recycled-Laptop-Pr/
  
+ Mercel's Python matrix generator program is at:
+ 
+ https://github.com/marcelhillesheim/USB_Laptop_Keyboard_Controller
+ 
  All files and folders are listed below:
  
  Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the keyboard Instructable.
