@@ -58,13 +58,13 @@
           Teensyduino code that makes a simple homebrew USB keyboard routine.
           
  Each of the Laptop Keyboards listed below have been tested and documented in their own folder:
-*  Dell Inspiron 1525 - Keyboard Part Number D9K01
+*  Dell Inspiron 1525 - Keyboard Part Number D9K01 - This includes Mercel's Python results
 *  Dell Latitude 131L - Keyboard Part Number V-0511BIAS1-US
 *  Dell Latitude X1 - Keyboard Part Number 0M6607
 *  Dell Latitude D630 - Keyboard Part Number DP/N 0DR160 - this includes the basic and Pi KVM
-*  HP Compaq Presario 2100 - Keyboard Part Number AEKT1TPU011
+*  HP Compaq Presario 2100 - Keyboard Part Number AEKT1TPU011 - This includes Mercel's Python results
 *  HP Compaq Presario V4000 - Keyboard Part Number NSK-H3L01
-*  HP Pavilion DV9000 - Keyboard Part number AEAT5U00110
+*  HP Pavilion DV9000 - Keyboard Part number AEAT5U00110 - This includes Mercel's Python results
 *  Sony Vaio PCG-K25 - Keyboard Part Number KFRMBA151B
 *  Sony Vaio VPCCW - Keyboard Part Number 148754321
 *  Sony Vaio VPCEA - Keyboard part number A-1765-621-A
