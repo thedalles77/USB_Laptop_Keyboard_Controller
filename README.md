@@ -29,6 +29,10 @@
      
      Keyboard_without_number_pad.txt  Lists all keys on a keyboard without a number pad. 
      
+ Commodore_64 Folder
+ 
+     Teensy LC code and key list files developed by Olga for a Commodore 64, documented in Readme file.  
+ 
  Teensy_Continuity_Tester Folder
  
      Matrix_Decoder_LC.ino        Teensyduino file for Teensy LC continuity tester. 
