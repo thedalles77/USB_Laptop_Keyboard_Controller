@@ -31,7 +31,7 @@
      
  Commodore_64 Folder
  
-     Teensy LC code and key list files developed by Olga for a Commodore 64, documented in Readme file.  
+     Teensy LC code and key list files developed by Olga for a Commodore 64, see Readme file.  
  
  Teensy_Continuity_Tester Folder
  
