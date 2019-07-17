@@ -21,6 +21,7 @@
 // Revision History
 // Rev 1.0 - Nov 20, 2018 - Original Release
 // Rev 1.1 - Dec 2, 2018 - Replaced ps/2 trackpoint code from playground arduino with my own code 
+// Rev 1.2 - July 16, 2019 - Check if slots are full when detecting a key press
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code
 // Trackpoint signals
@@ -446,7 +447,12 @@ void clear_slot(int key) {
   else if (slot6 == key) {
     slot6 = 0;
   }
-  slots_full = LOW;
+  if (!slot1 || !slot2 || !slot3 || !slot4 || !slot5 || !slot6)  {
+    slots_full = LOW; // slots are not full
+  }
+  else {
+    slots_full = HIGH; // slots are full
+  } 
 }
 //
 // Function to load the modifier key name into the appropriate mod variable
@@ -595,7 +601,7 @@ void loop() {
 //
 // ***********Normal keys section
       else if (normal[x][y] != 0) {  // check if normal key exists at this location in the array (a non-zero value)
-        if (!digitalRead(Col_IO[y]) && (old_key[x][y])) { // check if key is pressed and was not previously pressed
+        if (!digitalRead(Col_IO[y]) && (old_key[x][y]) && (!slots_full)) { // check if key pressed and not previously pressed and slots not full
           old_key[x][y] = LOW; // Save state of key as "pressed"
           if ((normal[x][y] == KEY_SCROLL_LOCK) && (!Fn_pressed)) { // check for special case of Num Lock Key
             load_slot(KEY_NUM_LOCK); // update first available slot with Num Lock instead of Scroll Lock
@@ -654,14 +660,14 @@ void loop() {
     over_flow = 1; // set the overflow flag
   }   
 // change the x data from 9 bit to 8 bit 2's complement
-  mx = mx >> 1; // convert to 7 bits of data by dividing by 2
+  mx = mx >> 1; // convert to 7 bits by dividing by 2 (comment this line out if you want more responsive TP)
   mx = mx & 0x7f; // don't allow sign extension
   if ((0x10 & mstat) == 0x10) {   // move the sign into 
     mx = 0x80 | mx;              // the 8th bit position
   } 
 // change the y data from 9 bit to 8 bit 2's complement and then take the 2's complement 
 // because y movement on ps/2 format is opposite of touchpad.move function
-  my = my >> 1; // convert to 7 bits of data by dividing by 2
+  my = my >> 1; // convert to 7 bits by dividing by 2 (comment this line out if you want more responsive TP)
   my = my & 0x7f; // don't allow sign extension
   if ((0x20 & mstat) == 0x20) {   // move the sign into 
     my = 0x80 | my;              // the 8th bit position
