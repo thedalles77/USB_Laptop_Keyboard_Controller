@@ -17,7 +17,7 @@
 // 
 // Revision History
 // Initial Release Nov 15, 2018
-//
+// Rev 1 July 16, 2019 - check if slots are full when detecting a key press
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
@@ -186,7 +186,12 @@ void clear_slot(int key) {
   else if (slot6 == key) {
     slot6 = 0;
   }
-  slots_full = LOW;
+  if (!slot1 || !slot2 || !slot3 || !slot4 || !slot5 || !slot6)  {
+    slots_full = LOW; // slots are not full
+  }
+  else {
+    slots_full = HIGH; // slots are full
+  } 
 }
 //
 // Function to load the modifier key name into the appropriate mod variable
@@ -340,7 +345,7 @@ void loop() {
 //
 // ***********Normal keys and media keys in this section
       else if ((normal[x][y] != 0) || (media[x][y] != 0)) {  // check if normal or media key exists at this location in the array
-        if (!digitalRead(Col_IO[y]) && (old_key[x][y])) { // check if key is pressed and was not previously pressed
+        if (!digitalRead(Col_IO[y]) && (old_key[x][y]) && (!slots_full)) { // check if key is pressed and was not previously pressed and slots not full
           old_key[x][y] = LOW; // Save state of key as "pressed"
           if (Fn_pressed) {  // Fn_pressed is active low so it is not pressed and normal key needs to be sent
             load_slot(normal[x][y]); //update first available slot with normal key name
