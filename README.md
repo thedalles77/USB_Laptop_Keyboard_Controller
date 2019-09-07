@@ -33,6 +33,10 @@
  
      Teensy LC code and key list files developed by Olga for a Commodore 64, see Readme file.  
  
+ T Caschy Folder
+ 
+     HP Jornada and Atari Portfolio keyboard files developed by T Caschera
+     
  Teensy_Continuity_Tester Folder
  
      Matrix_Decoder_LC.ino        Teensyduino file for Teensy LC continuity tester. 
