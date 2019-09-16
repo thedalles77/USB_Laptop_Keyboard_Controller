@@ -33,6 +33,10 @@
  
      Teensy LC code and key list files developed by Olga for a Commodore 64, see Readme file.  
  
+ GRID 1550 Folder
+ 
+     Teensy LC code and PDF with key matrix for a GRID 1550 with a UK keyboard layout.
+     
  T Caschy Folder
  
      HP Jornada and Atari Portfolio keyboard files developed by T Caschera
