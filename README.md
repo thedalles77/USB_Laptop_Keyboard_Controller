@@ -15,10 +15,6 @@
  
  All files and folders are listed below:
  
- Instructable Laptop Keyboard Conversion to USB.pdf contains the text and pictures from the keyboard Instructable.
- 
- KVM Instructable.pdf contains the text and pictures from the KVM Instuctable
- 
  Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
  
  Keyboard_Scanner_LT.brd EagleCad file same as above with 2 bit Level Translator for touchpad Clock and Data
