@@ -35,7 +35,7 @@
  
  GRID 1550 Folder
  
-     Teensy LC code and PDF with key matrix for a GRID 1550 with a UK keyboard layout.
+     Teensy LC code for a GRID 1550 UK keyboard and roller-shaft mouse. PDF describes project.
      
  T Caschy Folder
  
