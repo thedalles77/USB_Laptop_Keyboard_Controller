@@ -9,7 +9,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-//
+// The PCB is documented in reply#20 of this post:
+// https://www.eevblog.com/forum/beginners/how-to-connect-to-a-very-very-challanging-blackberry-q10-keyboard-connector/
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 
