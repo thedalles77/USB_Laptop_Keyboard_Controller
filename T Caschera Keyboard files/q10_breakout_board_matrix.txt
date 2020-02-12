@@ -1,4 +1,6 @@
 Connector for Q10 keyboard is a Hirose BM14B(0.8)-24DS-0.4V(53) Digikey PN H122178CT-ND
+The custom breakout board is from reply #20 of this forum post:
+https://www.eevblog.com/forum/beginners/how-to-connect-to-a-very-very-challanging-blackberry-q10-keyboard-connector/
 Columns and rows associated with their pin on custom breakout board in the keyboard matrix of the Q10 keyboard:
 
            COL1  COL2  COL3  COL4  COL5
