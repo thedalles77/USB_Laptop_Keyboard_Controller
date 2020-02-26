@@ -87,4 +87,5 @@
 *  Sony Vaio VPCCW - Keyboard Part Number 148754321
 *  Sony Vaio VPCEA - Keyboard part number A-1765-621-A
 *  Sony Vaio VPCEB4 – Keyboard part number A-1766-425-A
+*  Sony Vaio P - Keyboard part number N860-7885-T001
 *  Lenovo ThinkPad T61 - Keyboard part number 42T3177 (Teensy 3p2 and Teensy LC folders)
