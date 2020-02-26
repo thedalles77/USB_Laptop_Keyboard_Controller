@@ -51,6 +51,8 @@
      
      Matrix_Decoder_3p2.ino       Teensyduino file for Teensy 3.2 continuity tester.  
      
+     Matrix_Decoder_4p0.ino       Teensyduino file for Teensy 4.0 continuity tester.
+     
  Example_Touchpads Folder
  
      Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller
