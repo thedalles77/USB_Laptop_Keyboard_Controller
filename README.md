@@ -24,6 +24,8 @@
  Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
  
  Keyboard_Scanner_4p0.brd  EagleCad file for Teensy LC or 4.0
+ 
+ Keyboard_Scanner_.....zip  These are zipped gerber files for PJRC fabrication
      
  Blank_Key_Lists Folder
  
