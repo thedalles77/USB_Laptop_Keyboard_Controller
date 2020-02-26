@@ -21,7 +21,9 @@
  
  Keyboard_Scanner_LT_0p5.brd EagleCad file same as above except made for a 0.5mm pitch FPC connector
  
- keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
+ Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
+ 
+ Keyboard_Scanner_4p0.brd  EagleCad file for Teensy LC or 4.0
      
  Blank_Key_Lists Folder
  
