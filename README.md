@@ -65,7 +65,9 @@
  
      Instructions for Modifying the Teensyduino LC code.pdf     PDF file with LC instructions   
      
-     Instructions for Modifying the Teensyduino 3p2 code.pdf    PDF file with 3.2 instructions 
+     Instructions for Modifying the Teensyduino 3p2 code.pdf    PDF file with 3.2 instructions
+     
+     Instructions for Modifying the Teensyduino 4p0 code.pdf    PDF file with 4.0 instructions
      
      Laptop_Keyboard      A separate Folder for each laptop keyboard, containing the following:
      
