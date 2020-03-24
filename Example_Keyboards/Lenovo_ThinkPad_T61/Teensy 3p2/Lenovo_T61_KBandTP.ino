@@ -9,14 +9,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software controls a Lenovo ThinkPad T61 Laptop Keyboard and PS/2 Trackpoint using a Teensy LC on 
+// This software controls a Lenovo ThinkPad T61 Laptop Keyboard and PS/2 Trackpoint using a Teensy 3.2 on 
 // a daughterboard with a 44 pin FPC connector. The keyboard part number is 42T3177.
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
 // keys over USB. Only the volume control multi-media keys are supported by this routine.
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // The ps/2 code uses the USB PJRC Mouse functions at www.pjrc.com/teensy/td_mouse.html 
 // The ps/2 code has a watchdog timer so the code can't hang if a clock edge is missed.
-// In the Arduino IDE, select Tools, Teensy LC. Also under Tools, select Keyboard+Mouse+Joystick
+// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 //
 // Revision History
 // Rev 1.0 - Nov 23, 2018 - Original Release
