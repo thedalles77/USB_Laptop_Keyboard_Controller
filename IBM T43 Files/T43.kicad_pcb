@@ -111,9 +111,6 @@
     (fp_text value "" (at 139.85 97.15) (layer F.SilkS)
       (effects (font (size 1.27 1.27) (thickness 0.15)))
     )
-    (fp_text user KX14-40K5DE (at 139.75 94.95 -180) (layer F.SilkS)
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
   )
 
   (module "" (layer Top) (tedit 0) (tstamp 0)
@@ -123,9 +120,6 @@
     )
     (fp_text value "" (at 135.3 87.7) (layer F.SilkS)
       (effects (font (size 1.27 1.27) (thickness 0.15)))
-    )
-    (fp_text user KX14-40K5DE (at 135.175 85.65 -180) (layer F.SilkS)
-      (effects (font (size 1 1) (thickness 0.15)))
     )
   )
 
