@@ -74,5 +74,5 @@ void loop() {
 //
 // **************************************End of trackpoint routine***********************************
 // 
-  delay(30);  // wait 30ms before repeating next polling cycle
+  delay(30);  // wait 30ms before repeating main loop
 }
