@@ -29,7 +29,7 @@
 //
 // Revision History
 // Rev 1.00 - Nov 18, 2018 - Original Release
-//  
+// Rev 1.1 - March 31, 2020 - French keyboard version sends shifted numbers 
 //
 // Load an array with the Teensy LC I/O numbers that correspond to FPC pins 1 thru 26.
 int con_pin[] = {23, 0, 22, 1, 24, 2, 21, 3, 25, 4, 20, 5, 19, 6, 18, 7, 17, 8, 16, 9, 15, 10, 14, 11, 26, 12}; // I/O 13 is for the LED
