@@ -40,6 +40,10 @@
  GRID 1550 Folder
  
      Teensy LC code for a GRID 1550 UK keyboard and roller-shaft mouse. PDF describes project.
+
+IBM T43 Folder
+
+     Teensy 3.2 code and layout for an IBM Thinkpad keyboard developed by Nat. PDF describes project.
      
  T Caschy Folder
  
