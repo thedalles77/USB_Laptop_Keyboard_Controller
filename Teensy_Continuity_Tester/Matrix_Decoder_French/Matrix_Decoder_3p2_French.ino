@@ -29,7 +29,7 @@
 //
 // Revision History
 // Rev 1.00 - Nov 18, 2018 - Original Release
-//
+// Rev 1.1 - March 31, 2020 - French keyboard version sends shifted numbers
 //
 // Load an array with the Teensy 3.2 I/O numbers that correspond to FPC pins 1 thru 34.
  int con_pin[] = {23, 0, 22, 1, 21, 2, 20, 3, 19, 4, 18, 5, 17, 6, 24, 7, 25, 8, 33, 9, 26, 10, 27, 11, 28, 12, 32, 31, 30, 29, 16, 15, 14, 13};
