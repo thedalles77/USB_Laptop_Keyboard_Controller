@@ -43,7 +43,7 @@
 
 IBM T43 Folder
 
-     Teensy 3.2 code and layout for an IBM Thinkpad keyboard developed by Nat. PDF describes project.
+     Teensy 3.2 code and layout for an IBM Thinkpad T43 keyboard developed by Nat. PDF describes project.
      
  T Caschy Folder
  
