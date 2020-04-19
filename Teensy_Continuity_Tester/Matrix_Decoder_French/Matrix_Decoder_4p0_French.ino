@@ -32,6 +32,7 @@
 // Revision History
 // Rev 1.00 - Feb 25, 2020 - Original Release
 // Rev 1.1 - March 31, 2020 - French Version sends shifted numbers
+// Rev 1.2 - April 19, 2020 - Use min_pin in botto up loop
 //
 // Load an array with the Teensy 4.0 I/O numbers that correspond to FPC pins 1 thru 34.
  int con_pin[] = {23, 0, 22, 1, 21, 2, 20, 3, 19, 4, 18, 5, 17, 6, 29, 7, 31, 8, 33, 9, 32, 10, 30, 11, 28, 12, 27, 26, 25, 24, 16, 15, 14, 13};
@@ -337,7 +338,7 @@ void loop() {
 //
 // ***********Bottom up Test************ 
 //
-  for (int i=0; i<max_pin-1; i++) {   // outer loop pin
+  for (int i=min_pin-1; i<max_pin-1; i++) {   // outer loop pin
     go_0(con_pin[i]); // make the outer loop pin an output and send this pin low
     for (int j=i+1; j<max_pin; j++) {   // inner loop pin
       delayMicroseconds(10); // give time to let the signals settle out

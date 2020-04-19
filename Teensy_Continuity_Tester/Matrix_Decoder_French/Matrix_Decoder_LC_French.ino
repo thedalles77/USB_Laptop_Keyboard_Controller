@@ -29,7 +29,8 @@
 //
 // Revision History
 // Rev 1.00 - Nov 18, 2018 - Original Release
-// Rev 1.1 - March 31, 2020 - French keyboard version sends shifted numbers 
+// Rev 1.1 - March 31, 2020 - French Version sends shifted numbers
+// Rev 1.2 - April 19, 2020 - Use min_pin in botto up loop
 //
 // Load an array with the Teensy LC I/O numbers that correspond to FPC pins 1 thru 26.
 int con_pin[] = {23, 0, 22, 1, 24, 2, 21, 3, 25, 4, 20, 5, 19, 6, 18, 7, 17, 8, 16, 9, 15, 10, 14, 11, 26, 12}; // I/O 13 is for the LED
@@ -333,7 +334,7 @@ void loop() {
 //
 // ***********Bottom up Test************ 
 //
-  for (int i=0; i<max_pin-1; i++) {   // outer loop pin
+  for (int i=min_pin-1; i<max_pin-1; i++) {   // outer loop pin
     go_0(con_pin[i]); // make the outer loop pin an output and send this pin low
     for (int j=i+1; j<max_pin; j++) {   // inner loop pin
       delayMicroseconds(10); // give time to let the signals settle out

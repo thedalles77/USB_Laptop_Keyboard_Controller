@@ -9,6 +9,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+// This program is only for French keyboards that will be connected to a French computer via USB.
+// A French keyboard requires the shift key when typing numbers. 
 // It will determine how a laptop keyboard matrix is wired using a Teensy 3.2 on an FPC daughterboard.
 // Open an editor on a computer and load or create a file that lists every key
 // on the laptop keyboard that will be tested. Connect the FPC cable of the test keyboard 
@@ -17,7 +19,7 @@
 // before any keys are pressed, these pin numbers are shorted together and must be fixed. 
 // Press each key one by one on the test keyboard as listed on the editor screen. When a key 
 // is pressed on the test keyboard, the program detects which two pins on the FPC connector 
-// were connected. Those two pin numbers are sent over USB (separated by a TAB) and displayed 
+// were connected. Those two pin numbers are sent over USB (shifted for French computers) and separated by a TAB for display 
 // on the editor. After sending the numbers, a DOWN ARROW is sent over USB to prepare for
 // the next key. Once all keys on the test keyboard have been pressed, the file in
 // the editor can be saved to create a row-column matrix.
@@ -29,7 +31,8 @@
 //
 // Revision History
 // Rev 1.00 - Nov 18, 2018 - Original Release
-// Rev 1.1 - March 31, 2020 - French keyboard version sends shifted numbers
+// Rev 1.1 - March 31, 2020 - French Version sends shifted numbers
+// Rev 1.2 - April 19, 2020 - Use min_pin in botto up loop
 //
 // Load an array with the Teensy 3.2 I/O numbers that correspond to FPC pins 1 thru 34.
  int con_pin[] = {23, 0, 22, 1, 21, 2, 20, 3, 19, 4, 18, 5, 17, 6, 24, 7, 25, 8, 33, 9, 26, 10, 27, 11, 28, 12, 32, 31, 30, 29, 16, 15, 14, 13};
@@ -74,6 +77,7 @@ void go_0(int pin)
 // Function to send numbers over USB for display on an editor
 void usb_num(int num)  // the numbers 0 thru 33 are sent over usb as 1 thru 34 
 {
+Keyboard.set_modifier(MODIFIERKEY_SHIFT); // ***********Numbers are shifted for French keyboard*************
   switch (num) {
     case 0:    
       Keyboard.set_key1(key_1);
@@ -299,6 +303,7 @@ void usb_num(int num)  // the numbers 0 thru 33 are sent over usb as 1 thru 34
   delay(20); 
   Keyboard.set_key1(0); // clear out the key slots
   Keyboard.set_key2(0);
+Keyboard.set_modifier(0); //  *****shift must be releaseed for French keyboard*********************
   Keyboard.send_now();
   delay(20);
   Keyboard.set_key1(key_tab); // Tab over to position for next number
@@ -333,7 +338,7 @@ void loop() {
 //
 // ***********Bottom up Test************ 
 //
-  for (int i=0; i<max_pin-1; i++) {   // outer loop pin
+  for (int i=min_pin-1; i<max_pin-1; i++) {   // outer loop pin
     go_0(con_pin[i]); // make the outer loop pin an output and send this pin low
     for (int j=i+1; j<max_pin; j++) {   // inner loop pin
       delayMicroseconds(10); // give time to let the signals settle out
