@@ -1,0 +1,2 @@
+Use the alternate Matrix_Decoder routine if your keyboard reports two pins as shorted when no keys are pressed. 
+The alternate routine allows pins in the middle of the FPC cable to be excluded from the scan.
