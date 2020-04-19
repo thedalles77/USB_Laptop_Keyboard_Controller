@@ -15,17 +15,21 @@
  
  All files and folders are listed below:
  
- Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
+ Keyboard_Scanner_Eagle_Layouts Folder
  
- Keyboard_Scanner_LT.brd EagleCad file same as above with 2 bit Level Translator for touchpad Clock and Data
+     Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
  
- Keyboard_Scanner_LT_0p5.brd EagleCad file same as above except made for a 0.5mm pitch FPC connector
+     Keyboard_Scanner_LT.brd EagleCad file same as above with 2 bit Level Translator for touchpad Clock and Data
  
- Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
+     Keyboard_Scanner_LT_0p5.brd EagleCad file same as above except made for a 0.5mm pitch FPC connector
  
- Keyboard_Scanner_4p0.brd  EagleCad file for Teensy LC or 4.0
+     Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
  
- Keyboard_Scanner_.....2020-02-26.zip  Zipped gerber files for PJRC fabrication
+     Keyboard_Scanner_4p0.brd  EagleCad file for Teensy LC or 4.0
+ 
+     Keyboard_Scanner_.....2020-02-26.zip  Zipped gerber files for PJRC fabrication
+     
+     Note that the Lenovo Thinkpad T61 Eagle files are in the Example_Keyboards Folder
      
  Blank_Key_Lists Folder
  
@@ -43,7 +47,7 @@
 
 IBM T43 Folder
 
-     Teensy 3.2 code and layout for an IBM Thinkpad T43 keyboard developed by Nat. PDF describes project.
+     Teensy 3.2 code and KiCad layout for an IBM Thinkpad T43 keyboard developed by Nat. PDF describes project.
      
  T Caschy Folder
  
@@ -57,21 +61,29 @@ IBM T43 Folder
      
      Matrix_Decoder_4p0.ino       Teensyduino file for Teensy 4.0 continuity tester.
      
+     Matrix_Decoder_LC_alternate.ino   Alternate code allows exclusion of grounded pins. 
+     
+     Matrix_Decoder_3p2_alternate.ino   Alternate code allows exclusion of grounded pins.  
+     
+     Matrix_Decoder_4p0_alternate.ino   Alternate code allows exclusion of grounded pins.
+     
+     Matrix_Decoder_French Folder has above files but sends a shift key along with the number key.
+     
  Example_Touchpads Folder
  
-     Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller
+     Touchpad_3p2.ino             Teensyduino file for Teensy 3.2 touchpad controller.
      
-     Touchpad_LC.ino              Teensyduino file for Teensy LC touchpad controller
+     Touchpad_LC.ino              Teensyduino file for Teensy LC touchpad controller.
      
-     Touchpad_pinout_testing.pdf    Describes how to find the clock, data, power, and ground
+     Touchpad_pinout_testing.pdf    Describes how to find the clock, data, power, and ground.
  
  Example_Keyboards Folder
  
-     Instructions for Modifying the Teensyduino LC code.pdf     PDF file with LC instructions   
+     Instructions for Modifying the Teensyduino LC code.pdf     PDF file with LC instructions.   
      
-     Instructions for Modifying the Teensyduino 3p2 code.pdf    PDF file with 3.2 instructions
+     Instructions for Modifying the Teensyduino 3p2 code.pdf    PDF file with 3.2 instructions.
      
-     Instructions for Modifying the Teensyduino 4p0 code.pdf    PDF file with 4.0 instructions
+     Instructions for Modifying the Teensyduino 4p0 code.pdf    PDF file with 4.0 instructions.
      
      Laptop_Keyboard      A separate Folder for each laptop keyboard, containing the following:
      
