@@ -10,4 +10,6 @@ Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
 
 Keyboard_Scanner_4p0.brd EagleCad file for Teensy LC or 4.0
 
+Keyboard_Scanner_LC_thruhole.brd EagleCad file for thru-hole 1mm pitch FPC cables
+
 Keyboard_Scanner_.....2020-02-26.zip Zipped gerber files can be sent directly to PJRC for fabrication
