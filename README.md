@@ -107,3 +107,4 @@ IBM T43 Folder
 *  Sony Vaio VPCEB4 – Keyboard part number A-1766-425-A
 *  Sony Vaio P - Keyboard part number N860-7885-T001
 *  Lenovo ThinkPad T61 - Keyboard part number 42T3177 (Teensy 3p2 and Teensy LC folders)
+*  Toshiba T1200
