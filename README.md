@@ -9,11 +9,11 @@
 
  See the KVM "Instructable" at https://www.instructables.com/id/DIY-Portable-KVM-Crashcart-From-Recycled-Laptop-Pr/
  
- Marcel's Python matrix generator program is at:
+ Marcel's Python matrix generator program has been modified for the Teensy 3.2 and 4.0. His repo is forked here:
  
- https://github.com/marcelhillesheim/USB_Laptop_Keyboard_Controller
+ https://github.com/thedalles77/USB_Laptop_Keyboard_Controller-1
  
- All files and folders are listed below:
+ All files and folders in my repo are listed below:
  
  Keyboard_Scanner_Eagle_Layouts Folder
  
