@@ -10,7 +10,7 @@
    limitations under the License.
 */
 // This software interfaces the Teensy 3.2 with a Thinkpad 380ED laptop trackpoint.
-// The trackpoint Wheatstone bridge is fed to an instrumentation amplifier which drives the
+// The trackpoint strain gauge resistors are fed to an instrumentation amplifier which drives the
 // Teensy ADC inputs.   
 // In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 //
