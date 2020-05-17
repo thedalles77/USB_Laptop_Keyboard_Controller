@@ -15,18 +15,19 @@
 //
 // Revision History
 // Initial Release May 16, 2020
+// Rev A May 17, 2020 - Added Fn-F9,F10,F11,F12 adjustments for trackpoint
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
-#define CAPS_LED 14
+#define CAPS_LED 14 // Teensy I/O's connected to thru hole pads with resistors for LEDs
 #define NUM_LED 15
 #define SCRL_LED 16
-#define HEARTBEAT_LED 13
-#define TP_LEFT 20 // Trackpoint mouse buttons connected to Teensy 3.2 I/O's
+#define HEARTBEAT_LED 13 // onboard LED set to blink
+#define TP_LEFT 20 // Trackpoint mouse buttons connected to Teensy I/O's with pullups
 #define TP_RIGHT 5
-#define TP_RETURN 30
+#define TP_RETURN 30 // will be driven low
 //
-const byte rows_max = 17; // sets the number of rows in the matrix
-const byte cols_max = 9; // sets the number of columns in the matrix
+const byte rows_max = 17; // sets the number of rows in the keyboard matrix
+const byte cols_max = 9; // sets the number of columns in the keyboard matrix
 //
 // Load the normal key matrix with the Teensyduino key names 
 // described at www.pjrc.com/teensy/td_keyboard.html 
@@ -114,7 +115,7 @@ int media[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0,0}  
 };
-// Initialize the old_key matrix with one's. 
+// Initialize the old_key matrix with one's (nothing pressed). 
 // 1 = key not pressed, 0 = key is pressed
 boolean old_key[rows_max][cols_max] = {
   {1,1,1,1,1,1,1,1,1},
@@ -139,25 +140,25 @@ boolean old_key[rows_max][cols_max] = {
 // Assign the Teensy I/O row numbers
 int Row_IO[rows_max] = {7,8,9,10,11,12,18,19,24,25,26,27,28,29,31,32,33}; 
 //
-// Assignb the column I/O numbers
+// Assign the column I/O numbers
 int Col_IO[cols_max] = {0,1,2,3,4,6,21,22,23}; 
 
 // declare and initialize trackpoint variables
-  int x_read; // stores the reading from the X ADC
-  int y_read; // same for the Y ADC
-  char mx; // signed byte used by the Mouse.move function for x value. Positive value moves to the right
-  char my; // positive y value moves down 
-  int x_delta; // signed 16 bit value gives x movement amount
-  int y_delta; // y version. 
-  int x_center; //resting position of x sensor
-  int y_center; //resting position of y sensor
-  int noise_zone = 50; // dead zone around the center. Can be as low as 3 but cursor may start to drift so add some safety margin. 
+int x_read; // stores the reading from the X ADC
+int y_read; // same for the Y ADC
+char mx; // signed byte used by the Mouse.move function for x value. Positive value moves to the right
+char my; // positive y value moves down 
+int x_delta; // signed 16 bit value gives x movement amount
+int y_delta; // y version. 
+int x_center; //resting position of x sensor
+int y_center; //resting position of y sensor
+int noise_zone = 50; // dead zone around the center. Can be as low as 3 but cursor may start to drift so add some safety margin. 
                         // Increase this number if the cursor moves without touching the TP. Decrease if too much force is needed.
-  boolean left_button = 0; // on/off variable for left button, 1 = pushed
-  boolean right_button = 0; // on/off variable for right button, 1 = pushed
-  boolean old_left_button = 0; // on/off variable for left button from the previous cycle
-  boolean old_right_button = 0; // on/off variable for right button from the previous cycle
-  boolean button_change = 0; // Shows when the left or right buttons have changed, 1 = change
+boolean left_button = 0; // on/off variable for left button, 1 = pushed
+boolean right_button = 0; // on/off variable for right button, 1 = pushed
+boolean old_left_button = 0; // on/off variable for left button from the previous cycle
+boolean old_right_button = 0; // on/off variable for right button from the previous cycle
+boolean button_change = 0; // Shows when the left or right buttons have changed, 1 = change
 // declare keyboard variables
 boolean slots_full = LOW; // Goes high when slots 1 thru 6 contain normal keys
 // slot 1 thru slot 6 hold the normal key values to be sent over USB. 
@@ -347,11 +348,12 @@ void setup() {
   for (int b = 0; b < rows_max; b++) {  // loop thru all row pins 
     go_z(Row_IO[b]); // set each row pin as a floating output
   }  
+//
   pinMode(HEARTBEAT_LED, OUTPUT); // drive the LED on the Teensy
 }
 //
 boolean Fn_pressed = HIGH; // Initialize Fn key to HIGH = "not pressed"
-extern volatile uint8_t keyboard_leds; // 8 bits sent from Pi to Teensy that give keyboard LED status.
+extern volatile uint8_t keyboard_leds; // 8 bits sent from host to Teensy that give keyboard LED status.
 char blink_count = 0; // heartbeat loop counter
 boolean blinky = LOW; // heartbeat LED state
 //
@@ -404,7 +406,7 @@ void loop() {
               load_slot(numlock[x][y]); //update first available slot with key name from numlock matrix
               send_normals(); // send all slots over USB including the key that just got pressed
             }
-            else {
+            else { // Num Lock is not turned on
               load_slot(normal[x][y]); //update first available slot with key name from normal matrix
               send_normals(); // send all slots over USB including the key that just got pressed
             }
@@ -413,6 +415,21 @@ void loop() {
             Keyboard.press(media[x][y]); // media key is sent using keyboard press function per PJRC    
             delay(5); // delay 5 milliseconds before releasing to make sure it gets sent over USB
             Keyboard.release(media[x][y]); // send media key release
+          }
+          else if (normal[x][y] == KEY_F12) { // Fn is active and F12 is pressed - recapture TP center
+            x_center = analogRead(A11); // store the center (no movement) position for x
+            y_center = analogRead(A10); // same for y
+          }
+          else if (normal[x][y] == KEY_F10) { // Fn is active and F10 is pressed - increase noise zone value by 5
+            noise_zone = noise_zone + 5;
+          }
+          else if (normal[x][y] == KEY_F9) { // Fn is active and F9 is pressed - decrease noise zone value by 5
+            if (noise_zone >= 5) { // don't allow noise zone to be reduced below zero because it will cause cursor drift
+              noise_zone = noise_zone - 5;
+            }
+          }
+          else if (normal[x][y] == KEY_F11) { // Fn is active and F11 is pressed - Set noise zone to default value of 50
+            noise_zone = 50;
           }
         }          
         else if (digitalRead(Col_IO[y]) && (!old_key[x][y])) { //check if key is not pressed, but was previously pressed 
@@ -435,7 +452,7 @@ void loop() {
     go_z(Row_IO[x]); // De-activate Row (send it to hi-z)
   }
 //
-// **********keyboard scan complete
+// **********keyboard scan complete*******************************
 //
 // Control the 3 keyboard LEDs
 //
