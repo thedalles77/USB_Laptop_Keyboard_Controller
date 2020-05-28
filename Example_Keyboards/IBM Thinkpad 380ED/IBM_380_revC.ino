@@ -545,5 +545,5 @@ void loop() {
     blink_count = blink_count + 1;
   }
 //
-  delay(8); // The overall keyboard/trackpoint scanning rate is about 30ms
+  delay(8); // The overall keyboard/trackpoint scanning rate is about 13ms
 }
