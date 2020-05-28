@@ -17,7 +17,7 @@
 // Initial Release May 16, 2020
 // Rev A May 17, 2020 - Added Fn-F9,F10,F11,F12 adjustments for trackpoint
 // Rev B May 27, 2020 - Changed Dead Zone methodology 
-// Rev C May 27, 2020 - Reduced noise_zone from 50 to 10; Reduced delay from 25ms to 8ms
+// Rev C May 27, 2020 - Reduced noise_zone from 50 to 15; Reduced delay from 25ms to 8ms
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
 #define CAPS_LED 14 // Teensy I/O's connected to thru hole pads with resistors for LEDs
