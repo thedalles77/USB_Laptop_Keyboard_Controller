@@ -10,7 +10,7 @@
    limitations under the License.
 */
 // This software interfaces the Teensy 3.2 with a laptop pointing stick (aka trackpoint) that is not PS/2.
-// Raw trackpoints use 4 resistive strain gauges for up, down, left, and right movement detection.  
+// Raw trackpoints use 4 resistive strain gauges for the left, right, up, and down detection.  
 // The connections from the Teensy are 3.3 volts, ground, x voltage to A0, and y voltage to A1.
 // In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
 //
@@ -74,5 +74,5 @@ void loop() {
 //
 // **************************************End of trackpoint routine***********************************
 // 
-  delay(30);  // wait 30ms before repeating main loop
+  delay(30);  // wait 30ms before repeating next polling cycle
 }
