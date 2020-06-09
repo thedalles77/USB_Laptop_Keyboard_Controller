@@ -20,8 +20,10 @@
      Keyboard_Scanner.brd  EagleCad circuit board file for Teensy LC or 3.2. 
  
      Keyboard_Scanner_LT.brd EagleCad file same as above with 2 bit Level Translator for touchpad Clock and Data
+     
+     Keyboard_Scanner_LT2.brd  EagleCad file same as above with improved hole spacing for right angle header on 3.2 backside signals
  
-     Keyboard_Scanner_LT_0p5.brd EagleCad file same as above except made for a 0.5mm pitch FPC connector
+     Keyboard_Scanner_LT_0p5.brd EagleCad file same as Keyboard_Scanner except made for a 0.5mm pitch FPC connector
  
      Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
  
