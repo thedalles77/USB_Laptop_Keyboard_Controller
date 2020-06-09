@@ -28,6 +28,8 @@
      Keyboard_Scanner_4p0.brd  EagleCad file for Teensy LC or 4.0
      
      Keyboard_Scanner_LC_thruhole.brd  EagleCad file for Teensy LC with 26 pin thru hole FPC connector
+     
+     Keyboard_Scanner_2pp.brd  EagleCad file for Teensy ++2.0 and up to 36 pins at 1mm, 0.8mm, or 0.5mm pitch
  
      Keyboard_Scanner_.....2020-02-26.zip  Zipped gerber files for PJRC fabrication
      
