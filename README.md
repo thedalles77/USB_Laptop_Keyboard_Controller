@@ -65,6 +65,8 @@ IBM T43 Folder
      
      Matrix_Decoder_4p0.ino       Teensyduino file for Teensy 4.0 continuity tester.
      
+     Matrix_Decoder_2pp.ino       Teensyduino file for Teensy ++2.0 continuity tester.
+     
      Matrix_Decoder_LC_alternate.ino   Alternate code allows exclusion of grounded pins. 
      
      Matrix_Decoder_3p2_alternate.ino   Alternate code allows exclusion of grounded pins.  
