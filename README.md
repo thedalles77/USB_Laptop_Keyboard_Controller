@@ -117,3 +117,4 @@ IBM T43 Folder
 *  Lenovo ThinkPad T61 - Keyboard part number 42T3177 (Teensy 3p2 and Teensy LC folders)
 *  Toshiba T1200
 *  MSI GE63 Raider RGB 8RE 
+*  Heathkit H89
