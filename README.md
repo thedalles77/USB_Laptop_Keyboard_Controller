@@ -118,3 +118,4 @@ IBM T43 Folder
 *  Toshiba T1200
 *  MSI GE63 Raider RGB 8RE 
 *  Heathkit H89
+*  Zenith Supersport SX
