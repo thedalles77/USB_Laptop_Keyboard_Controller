@@ -9,6 +9,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+//
+// ***************************************IMPORTANT*****************************************************************************
+// ****************You must remove the LED on the Teensy ++2.0 in order to use this program***********************************
+// ***************If you leave the LED installed, it will cause 1  15 to be displayed and then the program will hang**********
+// *************************************The LED is controlled by PIN_D6 which is connected to FPC pin 15********************** 
+// 
 // It will determine how a laptop keyboard matrix is wired using a Teensy ++2.0 on an FPC daughterboard.
 // Open an editor on a computer and load or create a file that lists every key
 // on the laptop keyboard that will be tested. Connect the FPC cable of the test keyboard 
@@ -30,7 +36,7 @@
 // Revision History
 // Rev 1.00 - June 6, 2020 - Original Release
 //
-// Load an array with the Teensy ++2.0 I/O numbers that correspond to FPC pins 1 thru 36.
+// Load an array with the Teensy ++2.0 I/O numbers that correspond to FPC pins 1 thru 36.                                        LED HERE
  int con_pin[] = {PIN_B7, PIN_B6, PIN_D0, PIN_B5, PIN_D1, PIN_B4, PIN_D2, PIN_B3, PIN_D3, PIN_B2, PIN_D4, PIN_B1, PIN_D5, PIN_B0, PIN_D6, PIN_E7, PIN_D7, PIN_E6, 
                   PIN_E0, PIN_E1, PIN_F0, PIN_C0, PIN_F1, PIN_C1, PIN_F2, PIN_C2, PIN_F3, PIN_C3, PIN_F4, PIN_C4, PIN_F5, PIN_C5, PIN_F6, PIN_C6, PIN_F7, PIN_C7};
 //
