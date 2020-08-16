@@ -5,9 +5,13 @@
  
  See the YouTube KVM video at https://www.youtube.com/watch?v=M5-dYo2jt14
  
+ See the IBM Thinkpad 380ED Keyboard and Trackpoint Conversion to USB video at https://www.youtube.com/watch?v=WGSg1ky4UUs
+ 
  See the keyboard "Instructable" at https://www.instructables.com/id/How-to-Make-a-USB-Laptop-Keyboard-Controller/
 
  See the KVM "Instructable" at https://www.instructables.com/id/DIY-Portable-KVM-Crashcart-From-Recycled-Laptop-Pr/
+ 
+ See the IBM Thinkpad 380ED to USB project description at https://hackaday.io/project/171439-ibm-thinkpad-380ed-keyboardtrackpoint-to-usb
  
  Marcel's Python matrix generator program has been modified for the Teensy 3.2 and 4.0. His repo is forked here:
  
