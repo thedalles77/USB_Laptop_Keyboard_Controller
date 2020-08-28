@@ -1,9 +1,9 @@
-				used#1	new
-cntrl-l			8	9	9	8	
-shift-l			11	10	11	10	
-shift-r			23	11	11	23	
-alt-l			14	22	14	22	
-alt-r			17	22	17	22	
+				Keyboard #1	Keyboard #2
+cntrl-l				8	9	9	8	
+shift-l				11	10	11	10	
+shift-r				23	11	11	23	
+alt-l				14	22	14	22	
+alt-r				17	22	17	22	
 gui				12	19	12	19	
 fn				12	13	12	13	
 a				7	10	7	10	
@@ -45,7 +45,7 @@ z				7	13	7	13
 0				18	24	18	24	
 -				17	24	17	24	
 =				18	29	18	29	
-bckspace		19	29	19	29	
+bckspace			19	29	19	29	
 esc				7	23	7	23	
 f1				7	18	7	18	
 f2				15	23	15	23	
@@ -59,31 +59,31 @@ f9				17	25	17	25
 f10				23	28	23	28	
 f11				23	27	23	27	
 f12				20	23	23	20	
-insert			9	27	9	27	
-delete			9	20	20	9	
-home			17	30	17	30	
-pg-up			19	30	19	30	
-pg-dn			14	30	14	30	
+insert				9	27	9	27	
+delete				9	20	20	9	
+home				17	30	17	30	
+pg-up				19	30	19	30	
+pg-dn				14	30	14	30	
 end				9	30	9	30	
-arrow-r			13	20	13	20	
-arrow-l			13	25	13	25	
-arrow-u			13	28	13	28	
-arrow-d			13	27	13	27	
-menu			30	13	13	30	
+arrow-r				13	20	13	20	
+arrow-l				13	25	13	25	
+arrow-u				13	28	13	28	
+arrow-d				13	27	13	27	
+menu				30	13	13	30	
 /				13	24	13	24	
-period			14	20	14	20	
-comma			14	27	14	27	
+period				14	20	14	20	
+comma				14	27	14	27	
 ;				9	24	9	24	
 '				9	29	9	29	
-enter			10	29	10	29	
+enter				10	29	10	29	
 [				14	24	14	24	
 ]				14	29	14	29	
 \				10	30	10	30	
-caps-lck		7	9	9	7	
+caps-lck			7	9	9	7	
 tab				7	19	7	19	
-space			23	24	23	24	
-prt-sc			13	16	13	16	
-pause			21	13	21	13	
+space				23	24	23	24	
+prt-sc				13	16	13	16	
+pause				21	13	21	13	
 
 
 
