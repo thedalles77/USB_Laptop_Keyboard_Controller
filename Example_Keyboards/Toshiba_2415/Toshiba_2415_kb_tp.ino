@@ -9,7 +9,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software creates a USB keyboard and Trackpoint (TP) from a 
+// This software creates a USB keyboard and Touchpad (TP) from a 
 // Toshiba 2415 replacement keyboard and a TP from an HP DV9000 laptop.
 // TP part number is 920-000702-04 Rev A
 // The test points on the touchpad are used to solder jumpers as follows:
