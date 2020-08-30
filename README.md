@@ -105,21 +105,3 @@ IBM T43 Folder
           
           Teensyduino code that makes a simple homebrew USB keyboard routine.
           
- Each of the Laptop Keyboards listed below have been tested and documented in their own folder:
-*  Dell Inspiron 1525 - Keyboard Part Number D9K01 - This includes Marcel's Python results
-*  Dell Latitude 131L - Keyboard Part Number V-0511BIAS1-US
-*  Dell Latitude X1 - Keyboard Part Number 0M6607
-*  Dell Latitude D630 - Keyboard Part Number DP/N 0DR160 - this includes the basic and Pi KVM
-*  HP Compaq Presario 2100 - Keyboard Part Number AEKT1TPU011 - This includes Marcel's Python results
-*  HP Compaq Presario V4000 - Keyboard Part Number NSK-H3L01
-*  HP Pavilion DV9000 - Keyboard Part number AEAT5U00110 - This includes Marcel's Python results
-*  Sony Vaio PCG-K25 - Keyboard Part Number KFRMBA151B
-*  Sony Vaio VPCCW - Keyboard Part Number 148754321
-*  Sony Vaio VPCEA - Keyboard part number A-1765-621-A
-*  Sony Vaio VPCEB4 – Keyboard part number A-1766-425-A
-*  Sony Vaio P - Keyboard part number N860-7885-T001
-*  Lenovo ThinkPad T61 - Keyboard part number 42T3177 (Teensy 3p2 and Teensy LC folders)
-*  Toshiba T1200
-*  MSI GE63 Raider RGB 8RE 
-*  Heathkit H89
-*  Zenith Supersport SX
