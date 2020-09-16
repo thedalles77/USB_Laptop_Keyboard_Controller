@@ -5,7 +5,7 @@
  
  See the Pi KVM video at https://vimeo.com/458616562
  
- See the IBM Thinkpad 380ED Keyboard and Trackpoint Conversion to USB video at https://www.youtube.com/watch?v=WGSg1ky4UUs
+ See the IBM Thinkpad 380ED Keyboard and Trackpoint Conversion to USB video at https://vimeo.com/458669376
  
  See the keyboard "Instructable" at https://www.instructables.com/id/How-to-Make-a-USB-Laptop-Keyboard-Controller/
 
