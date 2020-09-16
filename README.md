@@ -1,9 +1,9 @@
 # USB_Laptop_Keyboard_Controller
  This repo contains all the files that are needed to make a USB keyboard and a KVM from an old laptop.
 
- See the YouTube keyboard video at https://www.youtube.com/watch?v=Z1PheqSNNP8
+ See the USB keyboard video at https://vimeo.com/458595950
  
- See the YouTube KVM video at https://www.youtube.com/watch?v=M5-dYo2jt14
+ See the Pi KVM video at https://vimeo.com/458616562
  
  See the IBM Thinkpad 380ED Keyboard and Trackpoint Conversion to USB video at https://www.youtube.com/watch?v=WGSg1ky4UUs
  
