@@ -1,4 +1,4 @@
-/* Copyright 2019 Frank Adams
+/* Copyright 2020 Frank Adams
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
@@ -19,6 +19,7 @@
 // Rev 1.1 - Dec 2, 2018 - Replaced ps/2 trackpoint code from playground arduino with my own code 
 // Rev 1.2 - Feb 2, 2019 - Changed the error routine and added an error LED
 // Rev 1.3 - Feb 14, 2019 - Added pinouts for different touchpads
+// Rev 1.4 - July 31, 2020 - Added enable command for Elantech touchpads and increased the delay after reset
 //
 // This code has been tested on the following touchpads:
 //
@@ -46,7 +47,7 @@
 //
 // The touchpad ps/2 data and clock lines are connected to the following Teensy I/O pins (modify to match your jumper wires)
 #define TP_DATA 14
-#define TP_CLK 23
+#define TP_CLK 15
 // Teensy LED will be lit if the touchpad fails to respond properly during initialization
 #define ERROR_LED 13
 //
@@ -262,7 +263,7 @@ void touchpad_init()
   if (tp_read() != 0xfa) { // verify correct ack byte
     touchpad_error = HIGH;
   }
-  delay(350); // wait 350ms so tp can run its self diagnostic
+  delay(1000); // wait 1000ms so tp can run its self diagnostic
   //  verify proper response from tp
   if (tp_read() != 0xaa) { // verify basic assurance test passed
     touchpad_error = HIGH;
@@ -270,20 +271,86 @@ void touchpad_init()
   if (tp_read() != 0x00) { // verify basic assurance test passed
     touchpad_error = HIGH;
   }
-  // increase resolution from 4 counts/mm to 8 counts/mm
+  //  Send touchpad disable code 
+  tp_write(0xf5);  // tp disable 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }
+  // Load Mode Byte with 00 using the following special sequence from page 38.
+  // Send set resolution to 0 four times followed by a set sample rate to 0x14
+// #1 set resolution
+  tp_write(0xe8);  // set resolution 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }  
+  tp_write(0x01);  // to zero 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }
+// #2 set resolution
+  tp_write(0xe8);  // set resolution 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }  
+  tp_write(0x00);  // to zero 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }
+// #3 set resolution
+  tp_write(0xe8);  // set resolution 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }  
+  tp_write(0x00);  // to zero 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }
+// #4 set resolution
+  tp_write(0xe8);  // set resolution 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }  
+  tp_write(0x00);  // to zero 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }
+// Set sample rate
+  tp_write(0xf3);  // set sample rate 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }  
+  tp_write(0x14);  // to 14 hex 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  } 
+  // set the resolution 
   tp_write(0xe8); //  Sending resolution command
   if (tp_read() != 0xfa) { // verify correct ack byte
-    touchpad_error = HIGH;
+//    init_error = HIGH;
   } 
-  tp_write(0x03); // value of 03 = 8 counts/mm resolution (default is 4 counts/mm)
+  tp_write(0x03); // value of 0x03 = 8 counts/mm resolution (default is 4 counts/mm)
   if (tp_read() != 0xfa) { // verify correct ack byte
-    touchpad_error = HIGH;
-  }
+//    init_error = HIGH;
+  } 
+  // set the sample rate 
+  tp_write(0xf3); //  Sending sample rate command
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  } 
+  tp_write(0x28); // 0x28 = 40 samples per second, the default value used for Synaptics TP
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    init_error = HIGH;
+  }  
   //  Sending remote mode code so the touchpad will send data only when polled
   tp_write(0xf0);  // remote mode 
   if (tp_read() != 0xfa) { // verify correct ack byte
-    touchpad_error = HIGH;
+//    touchpad_error = HIGH;
   } 
+  //  Sending touchpad enable code (needed for Elan touchpads)
+  tp_write(0xf4);  // tp enable 
+  if (tp_read() != 0xfa) { // verify correct ack byte
+//    touchpad_error = HIGH;
+  }
 }
 // ************************************Begin Routine*********************************************************
 void setup()
