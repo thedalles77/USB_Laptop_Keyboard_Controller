@@ -36,10 +36,14 @@
      Keyboard_Scanner_LC_thruhole.brd  EagleCad file for Teensy LC with 26 pin thru hole FPC connector
      
      Keyboard_Scanner_2pp.brd  EagleCad file for Teensy ++2.0 and up to 36 pins at 1mm, 0.8mm, or 0.5mm pitch
- 
-     Keyboard_Scanner_.....2020-02-26.zip  Zipped gerber files for PJRC fabrication
      
-     Note that the Lenovo Thinkpad T61 Eagle files are in the Example_Keyboards Folder
+     FPC_10pin0p5mm.brd   EagleCad file for 10 pin (or less) FPC connector with 0.5mm pitch
+     
+     FPC_8pin1mm.brd   EagleCad file for 8 pin (or less) FPC connector with 1mm pitch
+
+     Keyboard_Scanner_....zip and FPC_....zip   Zipped gerber files for PJRC fabrication
+     
+     Note that some keyboards require unique Eagle board files that are found in the Example_Keyboards Folder
      
  Blank_Key_Lists Folder
  
