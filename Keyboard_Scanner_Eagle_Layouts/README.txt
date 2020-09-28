@@ -20,4 +20,6 @@ FPC_8pin1mm.brd EagleCad file for 8 pin 1mm breakout board
 
 FPC_10pin0p5mm.brd  EagleCad file for 10 pin 0.5mm breakout board
 
+FPC_18pin1mm.brd  EagleCad file for 18 pin 1mm, 0.8mm, or 0.5mm breakout board
+
 The Zipped gerber files for the above boards can be sent directly to PJRC for fabrication
