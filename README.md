@@ -13,9 +13,9 @@
  
  See the IBM Thinkpad 380ED to USB project description at https://hackaday.io/project/171439-ibm-thinkpad-380ed-keyboardtrackpoint-to-usb
  
- Marcel's Python matrix generator program has been modified for the Teensy 3.2 and 4.0. His repo is forked here:
+ Marcel's Python matrix generator program will work for the Teensy LC, 3.2, and 4.0. His repo is here:
  
- https://github.com/thedalles77/USB_Laptop_Keyboard_Controller-1
+ https://github.com/marcelhillesheim/USB_Laptop_Keyboard_Controller
  
  All files and folders in my repo are listed below:
  
