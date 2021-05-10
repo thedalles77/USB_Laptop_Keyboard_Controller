@@ -300,7 +300,6 @@ void setup() {
   for (int b = 0; b < rows_max; b++) {  // loop thru all row pins 
     go_z(Row_IO[b]); // set each row pin as a floating output
   }  
-//  Serial.begin(9600);
 }
 //
 boolean Fn_pressed = HIGH; // Initialize Fn key to HIGH = "not pressed"
@@ -350,12 +349,6 @@ void loop() {
       else if ((normal[x][y] != 0) || (media[x][y] != 0)) {  // check if normal or media key exists at this location in the array
         if (!digitalRead(Col_IO[y]) && (old_key[x][y]) && (!slots_full)) { // check if key is pressed and was not previously pressed and slots not full
           old_key[x][y] = LOW; // Save state of key as "pressed"
-//          Serial.println("====");
-//          Serial.println(x);
-//          Serial.println(y);
-//          Serial.println(normal[x][y], HEX);
-//          Serial.println("60..");
-//          Serial.println(ASCII_60, HEX);
           if (Fn_pressed) {  // Fn_pressed is active low so it is not pressed and normal key needs to be sent
             load_slot(normal[x][y]); //update first available slot with normal key name
             send_normals(); // send all slots over USB including the key that just got pressed
