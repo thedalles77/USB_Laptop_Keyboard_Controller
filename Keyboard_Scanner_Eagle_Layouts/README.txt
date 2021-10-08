@@ -12,7 +12,9 @@ Keyboard_Scanner_Dual.brd EagleCad file is for keyboards with dual FPC cables
 
 Keyboard_Scanner_4p0.brd EagleCad file for Teensy LC or 4.0
 
-Keyboard_Scanner_LC_thruhole.brd EagleCad file for thru-hole 1mm pitch FPC cables up to 26 pins.
+Keyboard_Scanner_LC_thruhole.brd EagleCad file for thru-hole 1mm pitch FPC cables with up to 26 pins.
+
+TeensyLC_1p25.brd EagleCad file for thru-hole 1.25mm pitch FPC cables with up to 26 pins.
 
 Keyboard_Scanner_2pp.brd EagleCad file for Teensy ++2.0
 
