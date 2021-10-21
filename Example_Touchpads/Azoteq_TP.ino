@@ -101,7 +101,7 @@ void loop() {
         xrel_low = 0; // zero out the registers (just in case)
         yrel_low = 0;
       }
-      if (gesture0 && 0x01) {
+      if ((gesture0 & 0x01) == 0x01) { // test bit 0
         left_button = 1;
       }
       else {
