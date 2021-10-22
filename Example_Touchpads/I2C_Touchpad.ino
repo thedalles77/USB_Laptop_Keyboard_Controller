@@ -11,7 +11,7 @@
 */
 // This software implements an I2C Touchpad Controller using a Teensy 3.2 
 // It assumes the TP is at I2C address 0x24
-// Register 0 is the pointer register used to access all other registers
+// Register 0 function unknown - not used
 // Register 1 is the button register. 0x00=no buttons, 0x03=left button, 0x04=right button
 // Register 2 function unknown - not used
 // Register 3 is the X delta movement 8 bit 2's complement value. Left to right gives positive values
