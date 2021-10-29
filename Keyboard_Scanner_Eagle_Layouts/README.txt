@@ -26,4 +26,7 @@ FPC_18pin1mm.brd  EagleCad file for 18 pin 1mm, 0.8mm, or 0.5mm breakout board
 
 Teensy3p2Cutout.brd EagleCad file has a cutout in the board so the Teensy 3.2 will sit flush instead of on top of the board. 
 
+iBookG3Cutout.brd EagleCad file is the same as above but with a 40 pin connector specifically for the iBookG3 keyboard.
+
 The Zipped gerber files for the above boards can be sent directly to PJRC for fabrication
+
