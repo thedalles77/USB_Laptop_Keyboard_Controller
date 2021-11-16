@@ -12,7 +12,7 @@
 // This software creates a composite USB keyboard from a Fujitsu Lifebook keyboard and Ergotrac pointing device.
 //
 // Revision History
-// Initial Release Nov 10, 2021
+// Initial Release Nov 15, 2021
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
 // LED I/O connections
@@ -168,7 +168,7 @@ int x_delta; // signed 16 bit value gives x movement amount
 int y_delta; // y version. 
 int x_center; //resting position of x sensor
 int y_center; //resting position of y sensor
-int noise_zone = 150; // dead zone around the center. Too small causes cursor to drift when at rest. Too large requires a lot of pressure to move. 
+int noise_zone = 50; // dead zone around the center. Too small causes cursor to drift when at rest. Too large requires a lot of pressure to move. 
 char slowdown_left = 75; // factor to slow the curser movement down. 
 char slowdown_right = 60; // The left, right, up, and down default values are different
 char slowdown_up = 70; // because testing shows one direction is naturaly faster than the other
@@ -337,8 +337,8 @@ void recenter(void)
   delay(25); // wait before sending pulse high
   digitalWrite(ErgoTrac_Ref, HIGH); // Send pulse high
   delayMicroseconds(400); // wait before reading ADC to allow for rise time
-  x_center = analogRead(ErgoTrac_X); // store the center (no movement) value for x
-  y_center = analogRead(ErgoTrac_Y); // same for y
+  x_center = analogRead(ErgoTrac_X) - 100; // store the center for x with an offset (this ergo trac wants to drift left)
+  y_center = analogRead(ErgoTrac_Y); // store the center (no movement) value for y
   delayMicroseconds(50); // wait before releasing pulse
   digitalWrite(ErgoTrac_Ref, LOW); // Send pulse back to resting state
 }
@@ -431,40 +431,40 @@ void loop() {
             delay(5); // delay 5 milliseconds before releasing to make sure it gets sent over USB
             Keyboard.release(media[x][y]); // send media key release
           }
-          else if (normal[x][y] == KEY_F11) { // Fn is active and F is pressed - recapture TP center
+          else if (normal[x][y] == KEY_F11) { // Fn is active and F11 is pressed - recapture TP center
             recenter(); // recapture the at-rest X and Y position
           }
-          else if (normal[x][y] == KEY_F10) { // Fn is active and F is pressed - increase noise zone value by 5
+          else if (normal[x][y] == KEY_F10) { // Fn is active and F10 is pressed - increase noise zone value by 5
             noise_zone = noise_zone + 5;
           }
-          else if (normal[x][y] == KEY_F9) { // Fn is active and F is pressed - decrease noise zone value by 5
+          else if (normal[x][y] == KEY_F9) { // Fn is active and F9 is pressed - decrease noise zone value by 5
             noise_zone = noise_zone - 5;
           }
-          else if (normal[x][y] == KEY_F8) { // Fn is active and F is pressed 
+          else if (normal[x][y] == KEY_F8) { // Fn is active and F8 is pressed 
             slowdown_left = slowdown_left - 5; // decrease all slowdown values by 5
             slowdown_right = slowdown_right - 5;
             slowdown_up = slowdown_up - 5;
             slowdown_down = slowdown_down - 5;
           } 
-          else if (normal[x][y] == KEY_F7) { // Fn is active and F is pressed 
+          else if (normal[x][y] == KEY_F7) { // Fn is active and F7 is pressed 
             slowdown_left = slowdown_left + 5; // increase all slowdown values by 5
             slowdown_right = slowdown_right + 5;
             slowdown_up = slowdown_up + 5;
             slowdown_down = slowdown_down + 5;
           }
-          else if (normal[x][y] == KEY_F6) { // Fn is active and F is pressed 
-            noise_zone = 150; // Set noise zone and slowdowns to default values
-            slowdown_left = 75;
+          else if (normal[x][y] == KEY_F6) { // Fn is active and F6 is pressed 
+            noise_zone = 50; // Set noise zone and slowdowns to default values
+            slowdown_left = 75; // movement left needs more slowdown for some reason
             slowdown_right = 60;
             slowdown_up = 70;
             slowdown_down = 75;
           }
-          else if (normal[x][y] == KEY_F5) { // Fn is active and F is pressed 
-            if (noise_zone >= 1000) {
-              noise_zone = 150;
+          else if (normal[x][y] == KEY_F5) { // Fn is active and F5 is pressed 
+            if (noise_zone >= 1000) { // toggle back to normal or huge (off) value
+              noise_zone = 50; // back to start up value
             }
             else {
-              noise_zone = 5000;
+              noise_zone = 5000; // huge noise zone won't allow cursor movement
             }
           }
         }          
