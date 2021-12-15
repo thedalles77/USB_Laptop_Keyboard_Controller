@@ -1,4 +1,4 @@
-The following Eagle files can be sent directly to OSHPark.
+The following Eagle .brd files can be sent to OSHPark. The Zipped gerber files can be sent directly to PJRC for fabrication
 
 Keyboard_Scanner.brd EagleCad circuit board file for Teensy LC or 3.2. Original layout shown in the video. Use the LT2 board instead.
 
@@ -26,7 +26,9 @@ FPC_18pin1mm.brd  EagleCad file for 18 pin 1mm, 0.8mm, or 0.5mm breakout board
 
 Teensy3p2Cutout.brd EagleCad file has a cutout in the board so the Teensy 3.2 will sit flush instead of on top of the board. 
 
+Teensy3p2CutoutFlip.brd EagleCad file is the same as above file but it has the cutout on the right side instead of the left side.
+
 iBookG3Cutout.brd EagleCad file is the same as above but with a 40 pin connector specifically for the iBookG3 keyboard.
 
-The Zipped gerber files for the above boards can be sent directly to PJRC for fabrication
+
 
