@@ -1,5 +1,7 @@
 # USB_Laptop_Keyboard_Controller
- This repo contains all the files that are needed to make a USB keyboard and a KVM from an old laptop.
+ This repo contains all the files that are needed to make a USB keyboard/touchpad as well as a KVM from an old laptop.
+
+![](Images/Keyboard.JPG)
 
  See the USB keyboard video at https://vimeo.com/458595950
  
