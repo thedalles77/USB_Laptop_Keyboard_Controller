@@ -1,8 +1,0 @@
-cntrl-l		6 20  (Control)
-cntrl-r		---
-shift-l		8 22  (LShift)
-shift-r		10 21 (RShift)
-alt-l		8 20  (Run Stop)
-alt-r		17 18 (Restore)
-gui			20 12 (C=)
-fn			---
