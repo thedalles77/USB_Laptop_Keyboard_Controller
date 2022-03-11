@@ -31,22 +31,6 @@
      
      Keyboard_without_number_pad.txt  Lists all keys on a keyboard without a number pad. 
      
- Commodore_64 Folder
- 
-     Teensy LC code and key list files developed by Olga for a Commodore 64, see Readme file.  
- 
- GRID 1550 Folder
- 
-     Teensy LC code for a GRID 1550 UK keyboard and roller-shaft mouse. PDF describes project.
-
-IBM T43 Folder
-
-     Teensy 3.2 code and KiCad layout for an IBM Thinkpad T43 keyboard developed by Nat. PDF describes project.
-     
- T Caschy Folder
- 
-     HP Jornada and Atari Portfolio keyboard files developed by T Caschera
-     
  Teensy_Continuity_Tester Folder
  
      Matrix_Decoder_LC.ino        Teensyduino file for Teensy LC continuity tester. 
