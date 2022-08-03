@@ -15,6 +15,8 @@
 // keys over USB. Multi-media keys are sent with keyboard press and release functions.
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // 
+// "normal" matrix is configured FOR SPANISH LAYOUT, use Marcel's Python matrix generator program to generate matrix for your layout (language)
+//
 // Revision History
 // Initial Release Aug 2, 2022
 //
@@ -29,61 +31,61 @@ const byte cols_max = 8; // sets the number of columns in the matrix
 //
 int normal[rows_max][cols_max] = {
   {0,0,0,KEY_NUM_LOCK,0,0,0,0},
-{KEY_TAB,0,KEY_Z,KEY_A,KEY_1,KEY_Q,KEY_TILDE,KEY_ESC},
-{KEY_Y,KEY_N,KEY_M,KEY_J,KEY_7,KEY_U,KEY_6,KEY_H},
-{KEY_F3,KEYPAD_PERIOD,KEY_C,KEY_D,KEY_3,KEY_E,KEY_F2,KEY_F4},
-{KEY_CAPS_LOCK,KEYPAD_MINUS,KEY_X,KEY_S,KEY_2,KEY_W,KEY_F1,KEY_BACKSLASH},
-{KEY_T,KEY_B,KEY_V,KEY_F,KEY_4,KEY_R,KEY_5,KEY_G},
-{KEY_LEFT_BRACE,KEY_SLASH,0,KEY_SEMICOLON,KEY_0,KEY_P,KEY_MINUS,KEY_QUOTE},
-{0,0,0,0,0,0,0,0},
-{KEYPAD_5,0,KEYPAD_9,KEYPAD_7,0,0,KEYPAD_4,0},
-{KEYPAD_2,KEY_RIGHT,KEYPAD_6,KEYPAD_1,KEY_F12,KEYPAD_3,KEY_INSERT,KEYPAD_PLUS},
-{0,KEY_DOWN,KEYPAD_ASTERIX,0,KEY_F11,0,KEY_DELETE,0},
-{KEYPAD_8,0,0,KEY_MENU,KEY_PAGE_DOWN,0,KEY_PAGE_UP,KEYPAD_SLASH},
-{KEY_BACKSPACE,KEY_SPACE,KEY_ENTER,0,KEY_F10,0,KEY_F9,KEY_F5},
-{KEYPAD_0,KEY_LEFT,0,0,0,KEYPAD_ENTER,0,KEY_UP},
-{KEY_RIGHT_BRACE,0,KEY_COMMA,KEY_K,KEY_8,KEY_I,KEY_EQUAL,KEY_F6},
-{KEY_F7,0,KEY_PERIOD,KEY_L,KEY_9,KEY_O,KEY_F8,0}
+  {KEY_TAB,0,KEY_Z,KEY_A,KEY_1,KEY_Q,KEY_TILDE,KEY_ESC},
+  {KEY_Y,KEY_N,KEY_M,KEY_J,KEY_7,KEY_U,KEY_6,KEY_H},
+  {KEY_F3,KEYPAD_PERIOD,KEY_C,KEY_D,KEY_3,KEY_E,KEY_F2,KEY_F4},
+  {KEY_CAPS_LOCK,KEYPAD_MINUS,KEY_X,KEY_S,KEY_2,KEY_W,KEY_F1,0},
+  {KEY_T,KEY_B,KEY_V,KEY_F,KEY_4,KEY_R,KEY_5,KEY_G},
+  {KEY_LEFT_BRACE,KEY_SLASH,KEY_BACKSLASH,KEY_SEMICOLON,KEY_0,KEY_P,KEY_MINUS,KEY_QUOTE},
+  {0,0,0,0,0,0,0,0},
+  {KEYPAD_5,0,KEYPAD_9,KEYPAD_7,0,0,KEYPAD_4,0},
+  {KEYPAD_2,KEY_RIGHT,KEYPAD_6,KEYPAD_1,KEY_F12,KEYPAD_3,KEY_INSERT,KEYPAD_PLUS},
+  {0,KEY_DOWN,KEYPAD_ASTERIX,0,KEY_F11,0,KEY_DELETE,0},
+  {KEYPAD_8,0,0,KEY_MENU,KEY_PAGE_DOWN,0,KEY_PAGE_UP,KEYPAD_SLASH},
+  {KEY_BACKSPACE,KEY_SPACE,KEY_ENTER,0,KEY_F10,0,KEY_F9,KEY_F5},
+  {KEYPAD_0,KEY_LEFT,0,0,0,KEYPAD_ENTER,0,KEY_UP},
+  {KEY_RIGHT_BRACE,0,KEY_COMMA,KEY_K,KEY_8,KEY_I,KEY_EQUAL,KEY_F6},
+  {KEY_F7,0,KEY_PERIOD,KEY_L,KEY_9,KEY_O,KEY_F8,0}
 };
 // Load the modifier key matrix with key names at the correct row-column location. 
 // A zero indicates no modifier key at that location.
 int modifier[rows_max][cols_max] = {
   {MODIFIERKEY_LEFT_SHIFT,0,MODIFIERKEY_RIGHT_SHIFT,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,MODIFIERKEY_RIGHT_CTRL,0,0,0,MODIFIERKEY_LEFT_CTRL,0},
-{0,MODIFIERKEY_RIGHT_ALT,0,0,0,0,0,MODIFIERKEY_LEFT_ALT},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,MODIFIERKEY_GUI,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,MODIFIERKEY_FN,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0}
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,MODIFIERKEY_RIGHT_CTRL,0,0,0,MODIFIERKEY_LEFT_CTRL,0},
+  {0,MODIFIERKEY_RIGHT_ALT,0,0,0,0,0,MODIFIERKEY_LEFT_ALT},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,MODIFIERKEY_GUI,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,MODIFIERKEY_FN,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0}
 };
 // Load the media key matrix with Fn key names at the correct row-column location. 
 // A zero indicates no media key at that location.
 int media[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,KEY_MEDIA_VOLUME_INC,0,0,KEY_MEDIA_FAST_FORWARD,0,0,0},
-{0,0,0,0,KEY_MEDIA_REWIND,0,0,0},
-{0,0,0,0,KEY_END,0,KEY_HOME,0},
-{0,0,0,0,KEY_MEDIA_STOP,0,KEY_MEDIA_PLAY_PAUSE,0},
-{0,KEY_MEDIA_VOLUME_DEC,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0}
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,KEY_MEDIA_VOLUME_INC,0,0,KEY_MEDIA_FAST_FORWARD,0,0,0},
+  {0,0,0,0,KEY_MEDIA_REWIND,0,0,0},
+  {0,0,0,0,KEY_END,0,KEY_HOME,0},
+  {0,0,0,0,KEY_MEDIA_STOP,0,KEY_MEDIA_PLAY_PAUSE,0},
+  {0,KEY_MEDIA_VOLUME_DEC,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0}
 };
 // Initialize the old_key matrix with one's. 
 // 1 = key not pressed, 0 = key is pressed
