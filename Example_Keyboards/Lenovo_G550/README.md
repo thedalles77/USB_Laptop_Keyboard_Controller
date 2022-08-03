@@ -9,3 +9,9 @@ This has some negative consequences:
 - The most right key between 'L' key and 'Enter' key, marked in my keyboard whith symbos 'ç', 'Ç' and '}' doesn't work, when pressed, nothing happens.
 - The key between left shift and 'Z' key is marked with '<' and '>' symbols but when pressed, it shows symbos for key described above, the key that doesn't work.
 - '<' and '>' symbols can't be entered with any key (only using ALT+60 and ALT+62, of course)
+
+[![](https://github.com/NitemareReal/USB_Laptop_Keyboard_Controller/blob/master/Example_Keyboards/Lenovo_G550/IMG_20220803_155138292_2.jpg)](https://github.com/NitemareReal/USB_Laptop_Keyboard_Controller/blob/master/Example_Keyboards/Lenovo_G550/IMG_20220803_155138292_2.jpg)
+
+[![](https://github.com/NitemareReal/USB_Laptop_Keyboard_Controller/blob/master/Example_Keyboards/Lenovo_G550/IMG_20220803_155037375_2.jpg)](https://github.com/NitemareReal/USB_Laptop_Keyboard_Controller/blob/master/Example_Keyboards/Lenovo_G550/IMG_20220803_155037375_2.jpg)
+
+[![](https://github.com/NitemareReal/USB_Laptop_Keyboard_Controller/blob/master/Example_Keyboards/Lenovo_G550/IMG_20220803_155308305_HDR_2.jpg)](https://github.com/NitemareReal/USB_Laptop_Keyboard_Controller/blob/master/Example_Keyboards/Lenovo_G550/IMG_20220803_155308305_HDR_2.jpg)
