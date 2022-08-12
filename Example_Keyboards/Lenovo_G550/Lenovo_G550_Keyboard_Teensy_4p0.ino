@@ -22,7 +22,7 @@
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
-//
+
 const byte rows_max = 16; // sets the number of rows in the matrix
 const byte cols_max = 8; // sets the number of columns in the matrix
 //
@@ -34,7 +34,7 @@ int normal[rows_max][cols_max] = {
   {KEY_TAB,0,KEY_Z,KEY_A,KEY_1,KEY_Q,KEY_TILDE,KEY_ESC},
   {KEY_Y,KEY_N,KEY_M,KEY_J,KEY_7,KEY_U,KEY_6,KEY_H},
   {KEY_F3,KEYPAD_PERIOD,KEY_C,KEY_D,KEY_3,KEY_E,KEY_F2,KEY_F4},
-  {KEY_CAPS_LOCK,KEYPAD_MINUS,KEY_X,KEY_S,KEY_2,KEY_W,KEY_F1,0},
+  {KEY_CAPS_LOCK,KEYPAD_MINUS,KEY_X,KEY_S,KEY_2,KEY_W,KEY_F1,KEY_NON_US_BS},
   {KEY_T,KEY_B,KEY_V,KEY_F,KEY_4,KEY_R,KEY_5,KEY_G},
   {KEY_LEFT_BRACE,KEY_SLASH,KEY_BACKSLASH,KEY_SEMICOLON,KEY_0,KEY_P,KEY_MINUS,KEY_QUOTE},
   {0,0,0,0,0,0,0,0},
