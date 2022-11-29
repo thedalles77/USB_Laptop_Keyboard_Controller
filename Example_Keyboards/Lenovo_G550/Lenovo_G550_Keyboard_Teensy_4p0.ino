@@ -21,10 +21,15 @@
 // Initial Release Aug 2, 2022
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
-#define CAPS_LED 13 // Teensy LED shows Caps-Lock
+#define CAPS_LED 13           // Teensy LED shows Caps-Lock
+#define NUM_LOCK_LED 14       // Teensy pin 14 for Num-Lock
+#define SCROLL_LOCK_LED 15    // Teensy pin 15 for Scroll-Lock
+#define USB_CAPS_LOCK 1
+#define USB_NUM_LOCK 0
+#define USB_SCROLL_LOCK 2
 
 const byte rows_max = 16; // sets the number of rows in the matrix
-const byte cols_max = 8; // sets the number of columns in the matrix
+const byte cols_max = 8;  // sets the number of columns in the matrix
 //
 // Load the normal key matrix with the Teensyduino key names described at www.pjrc.com/teensy/td_keyboard.html
 // A zero indicates no normal key at that location.
@@ -38,12 +43,12 @@ int normal[rows_max][cols_max] = {
   {KEY_T,KEY_B,KEY_V,KEY_F,KEY_4,KEY_R,KEY_5,KEY_G},
   {KEY_LEFT_BRACE,KEY_SLASH,KEY_BACKSLASH,KEY_SEMICOLON,KEY_0,KEY_P,KEY_MINUS,KEY_QUOTE},
   {0,0,0,0,0,0,0,0},
-  {KEYPAD_5,0,KEYPAD_9,KEYPAD_7,0,0,KEYPAD_4,0},
+  {KEYPAD_5,0,KEYPAD_9,KEYPAD_7,KEY_PRINTSCREEN,0,KEYPAD_4,0},
   {KEYPAD_2,KEY_RIGHT,KEYPAD_6,KEYPAD_1,KEY_F12,KEYPAD_3,KEY_INSERT,KEYPAD_PLUS},
   {0,KEY_DOWN,KEYPAD_ASTERIX,0,KEY_F11,0,KEY_DELETE,0},
   {KEYPAD_8,0,0,KEY_MENU,KEY_PAGE_DOWN,0,KEY_PAGE_UP,KEYPAD_SLASH},
   {KEY_BACKSPACE,KEY_SPACE,KEY_ENTER,0,KEY_F10,0,KEY_F9,KEY_F5},
-  {KEYPAD_0,KEY_LEFT,0,0,0,KEYPAD_ENTER,0,KEY_UP},
+  {KEYPAD_0,KEY_LEFT,KEY_PAUSE,0,0,KEYPAD_ENTER,0,KEY_UP},
   {KEY_RIGHT_BRACE,0,KEY_COMMA,KEY_K,KEY_8,KEY_I,KEY_EQUAL,KEY_F6},
   {KEY_F7,0,KEY_PERIOD,KEY_L,KEY_9,KEY_O,KEY_F8,0}
 };
@@ -80,7 +85,7 @@ int media[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
   {0,KEY_MEDIA_VOLUME_INC,0,0,KEY_MEDIA_FAST_FORWARD,0,0,0},
-  {0,0,0,0,KEY_MEDIA_REWIND,0,0,0},
+  {0,0,0,0,KEY_MEDIA_REWIND,0,KEY_SCROLL_LOCK,0},
   {0,0,0,0,KEY_END,0,KEY_HOME,0},
   {0,0,0,0,KEY_MEDIA_STOP,0,KEY_MEDIA_PLAY_PAUSE,0},
   {0,KEY_MEDIA_VOLUME_DEC,0,0,0,0,0,0},
@@ -372,11 +377,21 @@ void loop() {
 //
 // Turn on the LED on the Teensy for Caps Lock based on bit 1 in the keyboard_leds variable controlled by the USB host computer
 //
-  if (keyboard_leds & 1<<1) {  // mask off all bits but D1 and test if set
+  if (keyboard_leds & 1<<USB_CAPS_LOCK) {  // mask off all bits but D1 and test if set
     go_1(CAPS_LED); // turn on the LED
   }
   else {
     go_0(CAPS_LED); // turn off the LED
+  }
+  if(keyboard_leds & 1<<USB_NUM_LOCK) {   // mask off all bits but D0 and test if set
+    go_1(NUM_LOCK_LED);
+  }else{
+    go_0(NUM_LOCK_LED);
+  }
+  if(keyboard_leds & 1<<USB_SCROLL_LOCK) {  // mask off all bits but D2 and test if set
+    go_1(SCROLL_LOCK_LED);
+  }else {
+    go_0(SCROLL_LOCK_LED);
   }
 //
   delay(25); // The overall keyboard scanning rate is about 30ms
