@@ -1,0 +1,94 @@
+cntrl-l			10	22	
+cntrl-r			26	22	
+shift-l			30	21	
+shift-r			26	21	
+alt-l			32	1	
+alt-r			24	1	
+gui				
+fn				
+a				28	20	
+b				29	24	
+c				27	26	
+d				28	27	
+e				11	27	
+f				29	28	
+g				32	29	
+h				33	32	
+i				8	11	
+j				33	28	
+k				8	28	
+l				7	28	
+m				33	26	
+n				33	24	
+o				7	11	
+p				11	6	
+q				11	20	
+r				11	29	
+s				28	25	
+t				30	29	
+u				33	11	
+v				29	26	
+w				11	25	
+x				26	25	
+y				33	30	
+z				26	20	
+`				10	20	
+1				12	20	
+2				12	25	
+3				12	27	
+4				29	12	
+5				10	29	
+6				33	10	
+7				33	12	
+8				8	12	
+9				7	12	
+0				6	12	
+-				10	6	
+=				8	10	
+bckspace		31	30	
+esc				32	20	
+f1				10	25	
+f2				10	27	
+f3				30	27	
+f4				32	27	
+f5				32	31	
+f6				32	8	
+f7				30	7	
+f8				10	7	
+f9				10	31	
+f10				31	12	
+f11				12	5	
+f12				12	4	
+insert			10	4	
+delete			10	5	
+home			10	2	
+pg-up			10	3	
+pg-dn			12	3	
+end				12	2	
+arrow-r			24	4	
+arrow-l			24	2	
+arrow-u			32	2	
+arrow-d			5	24	
+menu			
+/				6	24	
+period			7	26	
+comma			8	26	
+;				28	6	
+'				32	6	
+enter			31	26	
+[				30	6	
+]				8	30	
+\				31	28	
+caps-lck		30	25	
+tab				30	20	
+space			31	24	
+prt-sc			12	1	
+screen-lk		11	1	
+pause			26	2	
+access IBM		32	5	
+vol down		30	5	
+vol up			11	5	
+mute			28	5	
+page left		26	3	
+page right		24	3	
+
