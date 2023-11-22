@@ -28,8 +28,8 @@
 // account when programming the TMK or Teensyduino keyboard routine.   
 //
 // Revision History
-// Rev 1.00 - Feb 25, 2020 - Original Release
-// Rev 1.1 - April 19, 2020 - Use min_pin in bottom up loop
+// Rev 1.00 - Nov 22, 2023 - Original Release
+// 
 //
 // Load an array with the Teensy 4.1 I/O numbers that correspond to FPC pins 1 thru 34.
  int con_pin[] = {23, 0, 22, 1, 21, 2, 20, 3, 19, 4, 18, 5, 17, 6, 16, 7, 15, 8, 14, 9, 10, 11, 12, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 41};
