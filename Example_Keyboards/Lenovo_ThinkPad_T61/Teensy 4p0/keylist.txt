@@ -1,0 +1,95 @@
+cntrl-l			7	32	
+cntrl-r			22	32	
+shift-l			19	28	
+shift-r			22	28	
+alt-l				8	10	
+alt-r				10	23	
+gui				6	14	
+fn	(known to be I/O 18 and ground)					
+a				5	26	
+b				23	25	
+c				17	22	
+d				5	17	
+e				6	17	
+f				5	25	
+g				8	25	
+h				8	15	
+i				6	9	
+j				5	15	
+k				5	9	
+l				5	16	
+m				15	22	
+n				15	23	
+o				6	16	
+p				6	27	
+q				6	26	
+r				6	25	
+s				5	31	
+t				19	25	
+u				6	15	
+v				22	25	
+w				6	31	
+x				22	31	
+y				15	19	
+z				22	26	
+`				7	26	
+1				4	26	
+2				4	31	
+3				4	17	
+4				4	25	
+5				7	25	
+6				7	15	
+7				4	15	
+8				4	9	
+9				4	16	
+0				4	27	
+-				7	27	
+=				7	9	
+bckspace			23	33	
+esc				8	26	
+f1				7	31	
+f2				7	17	
+f3				17	19	
+f4				8	17	
+f5					
+f6				8	9	
+f7				16	19	
+f8				7	16	
+f9				7	33		
+f10				4	33	
+f11				4	29	
+f12				4	24	
+insert			7	24	
+delete			7	29	
+home				7	30	
+pg-up				7	14	
+pg-dn				4	14	
+end				4	30	
+arrow-r			23	24	
+arrow-l			23	30	
+arrow-u			8	30	
+arrow-d			23	29	
+menu				5	14	
+/				23	27	
+period			16	22	
+comma				9	22	
+;				5	27	
+'				8	27	
+enter				22	33	
+[				19	27	
+]				9	19	
+\				5	33	
+caps-lck			19	31	
+tab				19	26	
+space				23	33	
+prt-sc			4	10	
+num-lk			6	10	
+page left 			14	22	
+page right			14	23	
+mute				5	29	
+volume down			19	29	
+volume up			6	29	
+thinkvantage		8	29	
+
+
+
