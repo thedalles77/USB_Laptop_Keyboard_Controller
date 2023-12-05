@@ -30,11 +30,15 @@
 //
 // Revision History
 // Rev New - June 6, 2020 - Original Release
-// Rev A - Nov 22, 2023 - No longer use PIN_D6 so the onboard LED does not need to be removed. Now use PIN_A0
+// Rev A - Nov 22, 2023 - No longer use PIN_D6 so the onboard LED does not need to be removed. Now use PIN_A0. Use Arduino pin numbers instead of PIN_XX Silkscreen
 //
-// Load an array with the Teensy ++2.0 I/O numbers that correspond to FPC pins 1 thru 36.                                        
- int con_pin[] = {PIN_B7, PIN_B6, PIN_D0, PIN_B5, PIN_D1, PIN_B4, PIN_D2, PIN_B3, PIN_D3, PIN_B2, PIN_D4, PIN_B1, PIN_D5, PIN_B0, PIN_A0, PIN_E7, PIN_D7, PIN_E6, 
-                  PIN_E0, PIN_E1, PIN_F0, PIN_C0, PIN_F1, PIN_C1, PIN_F2, PIN_C2, PIN_F3, PIN_C3, PIN_F4, PIN_C4, PIN_F5, PIN_C5, PIN_F6, PIN_C6, PIN_F7, PIN_C7};
+// Load an array with the Teensy ++2.0 I/O numbers that correspond to FPC pins 1 thru 36.
+// Old way of assigning the I/O pins using the silk screen names                                         
+// int con_pin[] = {PIN_B7, PIN_B6, PIN_D0, PIN_B5, PIN_D1, PIN_B4, PIN_D2, PIN_B3, PIN_D3, PIN_B2, PIN_D4, PIN_B1, PIN_D5, PIN_B0, PIN_A0, PIN_E7, PIN_D7, PIN_E6, 
+//                  PIN_E0, PIN_E1, PIN_F0, PIN_C0, PIN_F1, PIN_C1, PIN_F2, PIN_C2, PIN_F3, PIN_C3, PIN_F4, PIN_C4, PIN_F5, PIN_C5, PIN_F6, PIN_C6, PIN_F7, PIN_C7};
+// New way of assigning the I/O 
+ int con_pin[] = {27, 26, 0, 25, 1, 24, 2, 23, 3, 22, 4, 21, 5, 20, 28, 19, 7, 18, 
+                  8, 9, 38, 10, 39, 11, 40, 12, 41, 13, 42, 14, 43, 15, 44, 16, 45, 17};
 //
 // Define maximum and minimum pin numbers that will be tested.
 // max_pin is usually set to the FPC connector size. min_pin is usually set to 1. The routine will start testing at pin 1 and go up to the max pin size.
@@ -43,7 +47,7 @@
 // min_pin to 2 or the max_pin to 35.
 //  
 int max_pin = 36; // the keyboard FPC connector pin count. 
-int min_pin = 1; // the first pin to be tested on the FPC connector (usually pin 1)
+int min_pin = 3; // the first pin to be tested on the FPC connector (usually pin 1)
 //
 // load the key codes used in sending usb numbers, tab, and down arrow
 int key_1 = KEY_1; 
