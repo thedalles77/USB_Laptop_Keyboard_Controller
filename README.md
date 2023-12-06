@@ -21,6 +21,6 @@
  
  https://github.com/thedalles77/USB_Laptop_Keyboard_Controller-1/blob/master/matrixgenerator.py
  
- All files and folders in my repo have readme files to explain their contents
+ All folders in my repo have readme files to explain their contents
  
  
