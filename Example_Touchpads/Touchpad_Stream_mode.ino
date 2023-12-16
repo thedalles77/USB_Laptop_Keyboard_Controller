@@ -1,19 +1,19 @@
 //
-// This software interfaces a Teensy 3.2 with a PS/2 laptop touchpad.
+// This software interfaces a Teensy with a PS/2 laptop touchpad.
 // The touchpad is commanded to be in Stream Mode (not remote mode).
 // This causes the touchpad to send data when ever it detects finger movement.
 // The ps/2 code uses the USB PJRC Mouse functions at www.pjrc.com/teensy/td_mouse.html 
 // The ps/2 code has a watchdog timer so the code can't hang if a clock edge is missed.
-// In the Arduino IDE, select Tools, Teensy 3.2. Also under Tools, select Keyboard+Mouse+Joystick
+// In the Arduino IDE, select Tools, Teensy you are using. Also under Tools, select Keyboard+Mouse+Joystick
 //
 // Revision History
 // Rev 1.0 - Aug 1, 2020 - Original Release
-//
+// Rev 2.0 - Dec 16, 2023 - Removed comments for Teensy 3.2 since this code works on all Teensies
 // The touchpad ps/2 data and clock lines are connected to the following Teensy I/O pins
 #define TP_DATA 0
 #define TP_CLK 1
 // Teensy LED will be turned ON to show if errors are detected during initialization or during normal use
-#define ERROR_LED 13
+#define ERROR_LED 13  // change to 6 for Teensy 2.0++
 //
 // Declare variables that will be used by functions
 boolean init_error = LOW; // set high if initialization detects an error
@@ -506,7 +506,7 @@ void touchpad_init()
 //
 // ************************************Begin Routine*********************************************************
 void setup() {
-  pinMode(ERROR_LED, OUTPUT); // define teensy I/O 13 as an output
+  pinMode(ERROR_LED, OUTPUT); // define teensy LED pin as an output
   touchpad_init(); // reset tp and check that self diagnostic passed. Put tp in stream mode and enable it 
   digitalWrite(ERROR_LED, init_error); //LED off means touchpad passed its power up test, ACKed all communications, and never caused a watchdog timeout
   delay(5000);  // wait 5 seconds to show init_error LED status
