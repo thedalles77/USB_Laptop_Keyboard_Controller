@@ -1,5 +1,6 @@
 The Teensy LC, 4.0, and 4.1 need level translators on the clock and data signals when connected to a 5 volt touchpad.
 The Touchpad_Remote_mode.ino code sets up the touchpad to be in remote mode so that the Teensy can poll it after finishing the keyboard scan. 
+Touchpad_3p2.ino is the same as Touchpad_Remote_mode.ino
 The Touchpad_Stream_mode.ino code sets up the touchpad to be in Stream Mode so it sends data when ever it detects finger movement.
 ADB_Trackball.ino will read an Apple Data Bus trackball and send the results as USB mouse commands. 
 Fujitsu_Ergotrac.ino uses the ADC in the Teensy to read the X and Y capacitive sensor.
