@@ -9,7 +9,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software implements an I2C Touchpad Controller using a Teensy 3.2 
+// This software implements an I2C Touchpad Controller using a Teensy  
 // It assumes the TP is at I2C address 0x24
 // Register 0 function unknown - not used
 // Register 1 is the button register. 0x00=no buttons, 0x03=left button, 0x04=right button
