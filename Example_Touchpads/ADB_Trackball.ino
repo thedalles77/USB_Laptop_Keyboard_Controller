@@ -1,9 +1,9 @@
 // This software implements an Apple ADB interface for a trackball. It uses a  
 // Teensy 3.2 and is based on the code from this Imgur post https://imgur.com/a/BQjt9le
-// 
+// If using a Teensy LC, 4.0, or 4.1 that are not 5 volt tolerant, be sure to use a level translator.
 // Revision History
 // Initial Release Aug 3, 2021
-// 
+// Rev A Dec 17, 2023   -  Added comment to use level translator for other Teensies
 #define ADB_DATA_PIN 5 // TB bidirectional data pin
 //
 // TB Constants
