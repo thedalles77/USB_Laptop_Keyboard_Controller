@@ -1,4 +1,4 @@
-/* Copyright 2020 Frank Adams
+/* Copyright 2023 Frank Adams
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
@@ -9,11 +9,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software implements a Heathkit H89 Keyboard Controller using a Teensy 3.2 directly soldered to
+// This software implements a Heathkit H89 Keyboard Controller using a Teensy directly soldered to
 // a 34 pin ribbon cable connected to the pins on the keyboard. 
-// This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
-// keys over USB. 
-// Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
+// 
+// The project originally used a Teensy 3.2 (see PDF) but the code will also work with a Teensy 4.0 or 4.1
+// No I/O translation is required because the keyboard is directly wired to the Teensy.
 // 
 // Revision History
 // Initial Release June 16, 2020
@@ -22,7 +22,7 @@
 // Rev C June 18, 2020 - Changed how Caps lock is reported (the mechanical switch locks down) 
 // Rev D June 18, 2020 - Fixed semicolon
 // Rev E June 19, 2020 - Really fixed the zero and oh keys
-//
+// Rev F 
 #define MODIFIERKEY_FN 0x8f   // give Fn key a fake HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
 #define NUM_LED 32 // Wire a Num Lock LED with a current limit resistor to this I/O pin
