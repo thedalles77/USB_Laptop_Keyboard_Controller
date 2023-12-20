@@ -9,7 +9,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software creates a USB keyboard from a Toshiba 2415 keyboard.
+// This software creates a USB keyboard from a Toshiba 2415 keyboard using a Teensy 3.2
 //
 // Revision History
 // Initial Release Sept 7, 2020
