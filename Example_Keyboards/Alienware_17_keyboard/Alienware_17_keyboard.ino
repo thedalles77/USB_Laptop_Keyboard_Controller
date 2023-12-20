@@ -1,4 +1,4 @@
-/* Copyright 2020 Frank Adams
+/* Copyright 2023 Frank Adams
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
@@ -9,12 +9,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software implements an Alienware 17 Laptop Keyboard Controller using a Teensy LC on 
-// a daughterboard with a 26 pin FPC connector. The FPC cable has 25 pins and is inserted
-// into FPC connector pins 2 thru 25 (pin 2 is not active). The laptop model number is p18e001.
-// This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
-// keys over USB. Multi-media keys are sent with keyboard press and release functions.
-// Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
+// This software implements an Alienware 17 Laptop Keyboard Controller (laptop model number p18e001) using a Teensy LC on 
+// a daughterboard with a 26 pin FPC connector. The FPC cable has been trimmed down from its original pin count 
+// (see PDF picture) and is inserted into FPC connector pins 2 thru 26 (pin 2 is not active). 
+// Now that the Teensy LC is obsolete, this keyboard controller should be implemented with a Teensy 4.0 or 4.1
+// and an FPC connector sized so the cable does not need to be trimmed.
 // 
 // Revision History
 // Initial Release Aug 30, 2020
