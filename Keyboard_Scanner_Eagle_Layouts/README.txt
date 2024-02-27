@@ -2,6 +2,8 @@ The Eagle .brd files can be sent to OSHPark. The Zipped gerber files can be sent
 
 The files in this folder are for creating a "generic" FPC connector board. For keyboards with special connectors, look in the Example_Keyboards folder.
 
+If you want to build a prototype keyboard controller without soldering a board, read the PDF file titled "No_solder_method".
+
 The Teensy 4.0, 4.1, and 2.0++ clone are available for purchase.
 
 Teensy 4.0 board, schematic, and zipped Gerber files are called T4p0 and T4p0_cutout. They accept 1mm, 0.8mm, and 0.5mm surface mount FPC connectors.
