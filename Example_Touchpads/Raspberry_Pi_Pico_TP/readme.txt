@@ -1,0 +1,1 @@
+Read the PDF for a complete description on how to control a laptop touchpad with a Pi Pico
