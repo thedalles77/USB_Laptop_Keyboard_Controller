@@ -15,3 +15,5 @@ https://www.hackster.io/frank-adams/laptop-touchpad-conversion-to-usb-d70519
 
 The folder "Adafruit_Trinket_M0" contains touchpad routines for a PS2 touchpad and a Azoteq I2C touchpad that can be used on
 an Adafruit_Trinket_M0 or any other Arduino that has hardware HID capability (like a Pro Micro).
+
+The folder "Raspberry_Pi_Pico_TP" contains a PS2 touchpad routine written in Arduino C that converts a typical laptop touchpad to USB.  
