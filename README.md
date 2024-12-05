@@ -15,4 +15,4 @@
  
  See the KVM Instructable at https://www.instructables.com/DIY-Portable-KVM-Crashcart-From-Recycled-Laptop-Pr/ 
 
- If you don't know how to solder but still want to build a USB laptop keyboard, check out the "No_solder_method" PDF file.
+ If you don't know how to solder but still want to build a USB laptop keyboard, check out the "No_solder_method" PDF file at https://github.com/thedalles77/USB_Laptop_Keyboard_Controller/blob/master/Keyboard_Scanner_Eagle_Layouts/No_solder_method.pdf.
