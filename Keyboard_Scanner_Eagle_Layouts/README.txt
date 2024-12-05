@@ -1,4 +1,4 @@
-The Eagle .brd files can be sent to OSHPark. The Zipped gerber files can be sent to OSH Park for fabrication.
+The Eagle .brd files can be sent to OSHPark. The Zipped gerber files can be sent to JLCPCB for fabrication.
 
 The files in this folder are for creating a "generic" FPC connector board. For keyboards with special connectors, look in the Example_Keyboards folder.
 
