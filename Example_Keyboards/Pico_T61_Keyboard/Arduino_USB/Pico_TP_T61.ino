@@ -28,7 +28,7 @@ USBMouseKeyboard MouseKeyboard;
 #include "hardware/watchdog.h"
 //
 #define TP_DATA 1 // connect the tp data to this Pico I/O pin
-#define TP_CLK 0 // connect the tp clock to this Pico I/O pin
+#define TP_CLK 0 // connect the tp clock to this Pico I/O pin                    
 #define TP_ERROR 15 // // test point for monitoring if a watchdog timeout has occured
 //
 // Function to set a pin to high impedance (acts like open drain output)
@@ -57,9 +57,9 @@ void go_1(int pin)
   digitalWrite(pin, HIGH);
 }
 //
-// *****************Functions for Touchpad***************************
+// *****************Functions for TP***************************
 //
-// Function to send the touchpad a byte of data (command)
+// Function to send the tp a byte of data (command)
 //
 void tp_write(char send_data)  
 {
@@ -124,11 +124,11 @@ while (digitalRead(TP_CLK) == LOW) { // loop until the clock goes high
 //  watch for clock to go high
   while (digitalRead(TP_CLK) == LOW) { // loop if clock is low 
   }
-// Write to touchpad is complete - inhibit the bus so the tp only talks when we're listening
+// Write to tp is complete - inhibit the bus so the tp only talks when we're listening
   go_0(TP_CLK);
 }
 //
-// Function to get a byte of data from the touchpad
+// Function to get a byte of data from the tp
 //
 char tp_read(void)
 {
@@ -191,14 +191,14 @@ char tp_read(void)
   return rcv_data; // pass the received data back
 }
 //
-void touchpad_init()
+void tp_init()
 {
-  go_z(TP_CLK); // float the clock and data to touchpad
+  go_z(TP_CLK); // float the clock and data to tp
   go_z(TP_DATA);
   
   delay(1000); // wait 1 second so tp can run its power up self diagnostic  
   watchdog_update(); // reloads watchdog timer with initial value
-  //  Send reset command to touchpad
+  //  Send reset command to tp
   tp_write(0xff);
                    
   if (tp_read() != 0xfa) { // verify correct ack byte
@@ -216,7 +216,7 @@ void touchpad_init()
   // future error handler here    
   }
          
-  //  Send touchpad disable code so the other registers can be safely setup
+  //  Send tp disable code so the other registers can be safely setup
   
   tp_write(0xf5);  // tp disable 
              
@@ -293,12 +293,12 @@ void touchpad_init()
   if (tp_read() != 0xfa) { // verify correct ack byte
   // future error handler
   }              
-  //  Sending remote mode code so the touchpad will send data only when polled (instead of stream mode)
+  //  Sending remote mode code so the tp will send data only when polled (instead of stream mode)
   tp_write(0xf0);  // remote mode 
   if (tp_read() != 0xfa) { // verify correct ack byte
   // future error handler
   }
-//  Sending touchpad enable code 
+//  Sending tp enable code 
   tp_write(0xf4);  // f4 = tp enable 
   if (tp_read() != 0xfa) { // verify correct ack byte
   //  future error handler here
@@ -310,7 +310,7 @@ void setup()
 {
   pinMode(TP_ERROR, OUTPUT); //
   watchdog_enable(1500, 1); // start the watchdog timer with 1.5 second value
-  touchpad_init(); // reset touchpad, then set it's resolution and put it in remote mode
+  tp_init(); // reset tp, then set it's resolution and put it in remote mode
 // For debug, drive an output pin high if the watchdog timer ever causes a reboot
   if (watchdog_caused_reboot()) {
     digitalWrite(TP_ERROR, HIGH);
@@ -321,10 +321,10 @@ void setup()
 //
 }
 // declare and initialize variables  
-  char mstat; // touchpad status reg = Y overflow, X overflow, Y sign bit, X sign bit, Always 1, Middle Btn, Right Btn, Left Btn
-  char mx; // touchpad x movement = 8 data bits. The sign bit is in the status register to 
-           // make a 9 bit 2's complement value. Left to right on the touchpad gives a positive value, (MouseKeyboard.move is same) 
-  char my; // touchpad y movement also 8 bits plus sign. Movement bottom to top gives a positive value, (MouseKeyboard.move is opposite)
+  char mstat; // tp status reg = Y overflow, X overflow, Y sign bit, X sign bit, Always 1, Middle Btn, Right Btn, Left Btn
+  char mx; // tp x movement = 8 data bits. The sign bit is in the status register to 
+           // make a 9 bit 2's complement value. Left to right on the tp gives a positive value, (MouseKeyboard.move is same) 
+  char my; // tp y movement also 8 bits plus sign. Movement bottom to top gives a positive value, (MouseKeyboard.move is opposite)
   int16_t mx16; //need 16 bit x and y movement values for MouseKeyboard.move 
   int16_t my16;
   boolean over_flow; // set if x or y movement values are bad due to overflow
@@ -337,7 +337,7 @@ void setup()
 // 
 // ************************************Main Loop***************************************************************
 void loop() {
-// poll the touchpad for new movement data
+// poll the tp for new movement data
   over_flow = 0; // assume no overflow until status is received 
   tp_write(0xeb);  // request data
   if (tp_read() != 0xfa) { // verify correct ack byte
@@ -373,7 +373,7 @@ void loop() {
     MouseKeyboard.move(mx16,my16);
   }
 //
-// Send the touchpad left and right button status over usb if a change has occured (push or release).
+// Send the tp left and right button status over usb if a change has occured (push or release).
 // Two reads in a row must give the same result in order to give a press or release (noise filter) 
   if ((0x01 & mstat) == 0x01) {   // if left button set 
     left_button = 1;   
@@ -405,7 +405,7 @@ void loop() {
   old_left_button = left_button; 
   old_right_button = right_button;
 //
-// **************************************End of touchpad routine***********************************
+// **************************************End of tp routine***********************************
 // 
   watchdog_update(); // reloads watchdog timer with initial value
 //
