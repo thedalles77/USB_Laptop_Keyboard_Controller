@@ -26,7 +26,7 @@ keyboard.diode_orientation = DiodeOrientation.COL2ROW
 keyboard.modules.append(Layers())
 keyboard.extensions.append(MediaKeys())
 
-FN = KC.TG(1)
+FN = KC.MO(1)
 
 keyboard.keymap = [
     [#layer 0: Base Layer
