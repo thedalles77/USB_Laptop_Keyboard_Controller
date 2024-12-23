@@ -163,8 +163,8 @@
 <text x="45.3" y="44.5" size="0.6096" layer="21" ratio="15" rot="R90">C2</text>
 <text x="48.4" y="40.6" size="0.6096" layer="21" ratio="15" rot="R180">C3</text>
 <text x="53.7" y="38.8" size="0.6096" layer="21" ratio="15" rot="R270">C4</text>
-<text x="51" y="30.7" size="0.6096" layer="21" ratio="15">TP PWR</text>
-<text x="29.4" y="52.7" size="0.6096" layer="21" ratio="15">USB PWR</text>
+<text x="51.2" y="30.4" size="0.6096" layer="21" ratio="15">TP PWR</text>
+<text x="29" y="53.5" size="0.6096" layer="21" ratio="15">USB PWR</text>
 <wire x1="36.4" y1="42.9" x2="36.4" y2="44.2" width="0.1524" layer="21"/>
 <wire x1="36.4" y1="44.2" x2="39.6" y2="44.2" width="0.1524" layer="21"/>
 <wire x1="39.6" y1="44.2" x2="39.6" y2="42.9" width="0.1524" layer="21"/>
@@ -1453,9 +1453,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 &lt;br&gt;
 You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
 <packages>
-<package name="1X01NS_KIT" urn="urn:adsk.eagle:footprint:37650/1" library_version="1">
-<description>&lt;h3&gt;Plated Through Hole - No Silk Outline Kit Version&lt;/h3&gt;
-&lt;p&gt; Mask on only one side to make soldering in kits easier.
+<package name="1X01" urn="urn:adsk.eagle:footprint:37642/1" library_version="1">
+<description>&lt;h3&gt;Plated Through Hole&lt;/h3&gt;
 &lt;p&gt;Specifications:
 &lt;ul&gt;&lt;li&gt;Pin count:1&lt;/li&gt;
 &lt;li&gt;Pin pitch:0.1"&lt;/li&gt;
@@ -1463,17 +1462,23 @@ You are welcome to use this library for commercial purposes. For attribution, we
 &lt;p&gt;Example device(s):
 &lt;ul&gt;&lt;li&gt;CONN_01&lt;/li&gt;
 &lt;/ul&gt;&lt;/p&gt;</description>
-<pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" rot="R90" stop="no"/>
-<circle x="0" y="0" radius="0.508" width="0" layer="29"/>
-<circle x="0" y="0" radius="0.9398" width="0" layer="30"/>
-<text x="-1.27" y="1.143" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-1.27" y="-1.016" size="0.6096" layer="27" font="vector" ratio="20" align="top-left">&gt;VALUE</text>
+<wire x1="1.27" y1="0.635" x2="0.635" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="-0.635" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="-0.635" y1="-1.27" x2="0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="1.27" y2="0.635" width="0.2032" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<text x="-1.27" y="1.397" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-1.27" y="-1.524" size="0.6096" layer="27" font="vector" ratio="20" align="top-left">&gt;VALUE</text>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 </package>
 </packages>
 <packages3d>
-<package3d name="1X01NS_KIT" urn="urn:adsk.eagle:package:38038/1" type="box" library_version="1">
-<description>Plated Through Hole - No Silk Outline Kit Version
- Mask on only one side to make soldering in kits easier.
+<package3d name="1X01" urn="urn:adsk.eagle:package:38028/1" type="box" library_version="1">
+<description>Plated Through Hole
 Specifications:
 Pin count:1
 Pin pitch:0.1"
@@ -1482,7 +1487,7 @@ Example device(s):
 CONN_01
 </description>
 <packageinstances>
-<packageinstance name="1X01NS_KIT"/>
+<packageinstance name="1X01"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -1959,12 +1964,12 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PROD_ID" value="RES-00824" x="50" y="46.7" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="50.762" y="46.7" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
-<element name="J3" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" package="1X01NS_KIT" package3d_urn="urn:adsk.eagle:package:38038/1" value="" x="52.7" y="32.5" smashed="yes">
-<attribute name="NAME" x="51.43" y="33.643" size="0.6096" layer="25" font="vector" ratio="20"/>
+<element name="J3" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" package="1X01" package3d_urn="urn:adsk.eagle:package:38028/1" value="" x="52.7" y="32.5" smashed="yes">
+<attribute name="NAME" x="52.23" y="34.043" size="0.6096" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="51.43" y="31.484" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
 </element>
-<element name="J1" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" package="1X01NS_KIT" package3d_urn="urn:adsk.eagle:package:38038/1" value="" x="34.1" y="52.7" smashed="yes">
-<attribute name="NAME" x="32.13" y="51.743" size="0.6096" layer="25" font="vector" ratio="20"/>
+<element name="J1" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" package="1X01" package3d_urn="urn:adsk.eagle:package:38028/1" value="" x="34.1" y="52.7" smashed="yes">
+<attribute name="NAME" x="31.63" y="52.343" size="0.6096" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="32.83" y="51.684" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
 </element>
 <element name="J2" library="JST-PH-3PIN" package="JST-PH-3PIN" value="JST-PH-3PIN" x="42.9" y="51.4" smashed="yes">
