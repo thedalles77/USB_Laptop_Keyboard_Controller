@@ -47,7 +47,7 @@
 // min_pin to 2 or the max_pin to 35.
 //  
 int max_pin = 36; // the keyboard FPC connector pin count. 
-int min_pin = 3; // the first pin to be tested on the FPC connector (usually pin 1)
+int min_pin = 1; // the first pin to be tested on the FPC connector (usually pin 1)
 //
 // load the key codes used in sending usb numbers, tab, and down arrow
 int key_1 = KEY_1; 
