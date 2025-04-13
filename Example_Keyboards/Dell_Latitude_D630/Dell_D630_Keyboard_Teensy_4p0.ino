@@ -17,11 +17,14 @@
 // 
 // Revision History
 // Initial Release Feb 26, 2020
+// Rev A April 8, 2025 added LEDs, Number pad, and Volume media keys
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
-#define CAPS_LED 13 // Teensy LED shows Caps-Lock
+#define CAPS_LED 25 
+#define NUM_LED 26
+#define SCRL_LED 24
 //
-const byte rows_max = 17; // sets the number of rows in the matrix
+const byte rows_max = 18; // sets the number of rows in the matrix
 const byte cols_max = 8; // sets the number of columns in the matrix
 //
 // Load the normal key matrix with the Teensyduino key names described at www.pjrc.com/teensy/td_keyboard.html
@@ -44,6 +47,7 @@ int normal[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,KEY_PAGE_UP,KEY_PAGE_DOWN,0,0},
+  {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0}
 };
 // Load the modifier key matrix with key names at the correct row-column location. 
@@ -65,10 +69,11 @@ int modifier[rows_max][cols_max] = {
   {0,0,MODIFIERKEY_LEFT_SHIFT,0,0,0,MODIFIERKEY_RIGHT_SHIFT,0},
   {0,MODIFIERKEY_LEFT_CTRL,0,0,0,0,MODIFIERKEY_RIGHT_CTRL,0},
   {0,0,0,MODIFIERKEY_GUI,0,0,0,0},
-  {0,0,0,0,0,MODIFIERKEY_FN,0,0}
+  {0,0,0,0,0,MODIFIERKEY_FN,0,0},
+  {0,0,0,0,0,0,0,0}
 };
 // Load the media key matrix with Fn key names at the correct row-column location. 
-// A zero indicates no media key at that location.
+// A zero indicates no media key at that location.  
 int media[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
@@ -80,13 +85,14 @@ int media[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
-  {0,KEY_SYSTEM_SLEEP,0,0,0,0,0,0},   
+  {0,0,0,0,0,0,0,0},   
   {0,0,0,0,0,0,0,0},
-  {0,0,0,0,KEY_SCROLL_LOCK,0,0,0},
+  {0,0,0,0,0,0,0,0},  
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
-  {0,0,0,0,0,0,0,0}
+  {0,0,0,0,0,0,0,0},
+  {0,0,0,KEY_MEDIA_VOLUME_DEC,0,KEY_MEDIA_VOLUME_INC,KEY_MEDIA_MUTE,0}
 };
 // Initialize the old_key matrix with one's. 
 // 1 = key not pressed, 0 = key is pressed
@@ -107,13 +113,14 @@ boolean old_key[rows_max][cols_max] = {
   {1,1,1,1,1,1,1,1},
   {1,1,1,1,1,1,1,1},
   {1,1,1,1,1,1,1,1},
+  {1,1,1,1,1,1,1,1},
   {1,1,1,1,1,1,1,1}
 };
 //
 // Define the Teensy 4.0 I/O numbers (translated from the FPC pin #)
-// Row FPC pin # 02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18
-// Teensy I/O  # 00,22,01,21,02,20,03,19,04,18,05,17,06,29,07,31,08
-int Row_IO[rows_max] = {0,22,1,21,2,20,3,19,4,18,5,17,6,29,7,31,8}; // Teensy 4.0 I/O numbers for rows
+// Row FPC pin # 02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,31
+// Teensy I/O  # 00,22,01,21,02,20,03,19,04,18,05,17,06,29,07,31,08,16
+int Row_IO[rows_max] = {0,22,1,21,2,20,3,19,4,18,5,17,6,29,7,31,8,16}; // Teensy 4.0 I/O numbers for rows
 //
 // Column FPC pin # 19,20,21,22,23,24,25,26
 // Teensy I/O     # 33,09,32,10,30,11,28,12
@@ -343,42 +350,75 @@ void loop() {
 // ***********end of modifier section
 //
 // ***********Normal keys and media keys in this section
-      else if ((normal[x][y] != 0) || (media[x][y] != 0)) {  // check if normal or media key exists at this location in the array
-        if (!digitalRead(Col_IO[y]) && (old_key[x][y]) && (!slots_full)) { // check if key is pressed and was not previously pressed and slots not full
+      else if (normal[x][y] != 0) {  // check if normal key exists at this location in the array (a non-zero value)
+        if (!digitalRead(Col_IO[y]) && (old_key[x][y]) && (!slots_full)) { // check if key pressed and not previously pressed and slots not full
           old_key[x][y] = LOW; // Save state of key as "pressed"
-          if (Fn_pressed) {  // Fn_pressed is active low so it is not pressed and normal key needs to be sent
-            load_slot(normal[x][y]); //update first available slot with normal key name
-            send_normals(); // send all slots over USB including the key that just got pressed
+          if ((normal[x][y] == KEY_NUM_LOCK) && (!Fn_pressed)) { // check for special case of Scroll Lock Key
+            load_slot(KEY_SCROLL_LOCK); // update first available slot with SCROLL Lock instead of NUM Lock
+            send_normals(); // send all slots over USB including the SCROLL Lock Key that just got pressed
           }
-          else if (media[x][y] != 0) { // Fn is pressed so send media if a key exists in the matrix
-            Keyboard.press(media[x][y]); // media key is sent using keyboard press function per PJRC    
-            delay(5); // delay 5 milliseconds before releasing to make sure it gets sent over USB
-            Keyboard.release(media[x][y]); // send media key release
+          else {
+            load_slot(normal[x][y]); //update first available slot with normal key name
+            send_normals(); // send all slots over USB including the key that just got pressed 
           }
         }          
-        else if (digitalRead(Col_IO[y]) && (!old_key[x][y])) { //check if key is not pressed, but was previously pressed 
+        else if (digitalRead(Col_IO[y]) && (!old_key[x][y])) { //check if key is not pressed, but was previously pressed
           old_key[x][y] = HIGH; // Save state of key as "not pressed"
-          if (Fn_pressed) {  // Fn is not pressed
+          if ((normal[x][y] == KEY_NUM_LOCK) && (!Fn_pressed)) { // check for special case of SCROLL Lock Key
+            clear_slot(KEY_SCROLL_LOCK); // clear the slot that contains SCROLL Lock
+            send_normals(); // send all slots over USB including the SCROLL Lock key
+          }
+          else {
             clear_slot(normal[x][y]); //clear the slot that contains the normal key name
             send_normals(); // send all slots over USB including the key that was just released 
           }
         }
-      } 
+      }
 // **************end of normal and media key section 
 //
+//
+// *************Volume key section. Note PJRC states that volume up, down, & mute should be sent with Keyboard.press function. 
+      else if (media[x][y] != 0) {  // check if any volume control key exists at this location in the array (a non-zero value)
+        if (!digitalRead(Col_IO[y]) && (old_key[x][y])) { // check if key is pressed and was not previously pressed
+          old_key[x][y] = LOW; // Save state of key as "pressed" 
+          Keyboard.press(media[x][y]); // send volume key press
+        }
+        else if (digitalRead(Col_IO[y]) && (!old_key[x][y])) { //check if key is not pressed, but was previously pressed
+          old_key[x][y] = HIGH; // Save state of key as "not pressed" 
+          Keyboard.release(media[x][y]); // send volume key release 
+        }
+      }
+// ***************end of volume section
     }
     go_z(Row_IO[x]); // De-activate Row (send it to hi-z)
   }
 //
 // **********keyboard scan complete
 //
-// Turn on the LED on the Teensy for Caps Lock based on bit 1 in the keyboard_leds variable controlled by the USB host computer
+// Turn on or off the LEDs for Num Lock, Caps Lock, and Scroll Lock based on bit 0, 1, and 2 from the keyboard_leds 
+// variable controlled by the USB host computer
 //
-  if (keyboard_leds & 1<<1) {  // mask off all bits but D1 and test if set
-    go_1(CAPS_LED); // turn on the LED
+  if (keyboard_leds & 1) {  // mask off all bits but D0 and test if set
+    go_0(NUM_LED); // turn on the Num Lock LED
   }
   else {
-    go_0(CAPS_LED); // turn off the LED
+    go_1(NUM_LED); // turn off the Num Lock LED
+  }
+//
+//
+  if (keyboard_leds & 1<<1) {  // mask off all bits but D1 and test if set
+    go_0(CAPS_LED); // turn on the Caps Lock LED
+  }
+  else {
+    go_1(CAPS_LED); // turn off the Caps Lock LED
+  }
+//
+//
+  if (keyboard_leds & 1<<2) {  // mask off all bits but D2 and test if set
+    go_0(SCRL_LED); // turn on the Scroll Lock LED
+  }
+  else {
+    go_1(SCRL_LED); // turn off the Scroll Lock LED
   }
 //
   delay(25); // The overall keyboard scanning rate is about 30ms
