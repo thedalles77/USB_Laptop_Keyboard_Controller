@@ -1,4 +1,4 @@
-Thinkpad T61 USB or Bluetooth Keyboard Controller using a Raspberry Pi Pico W 
+Thinkpad T61 and T420 USB or Bluetooth Keyboard Controller using a Raspberry Pi Pico W 
 
 **************This project is still in development*************************. 
 The keyboard was tested with KMK and all keys are working (see KMK folder). 
