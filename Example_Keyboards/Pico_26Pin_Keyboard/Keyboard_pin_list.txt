@@ -1,0 +1,97 @@
+LCTRL				
+RCTRL				
+LSHIFT				
+RSHIFT				
+LALT				
+RALT				
+LGUI				
+FN					
+A					
+B					
+C					
+D					
+E					
+F					
+G					
+H					
+I					
+J					
+K					
+L					
+M					
+N					
+O					
+P					
+Q					
+R					
+S					
+T					
+U					
+V					
+W					
+X					
+Y					
+Z					
+GRAVE `				
+N1	(number 1)		
+N2					
+N3					
+N4					
+N5					
+N6					
+N7					
+N8					
+N9					
+N0					
+MINUS				
+EQUAL				
+BSPACE				
+ESC					
+F1					
+F2					
+F3					
+F4					
+F5					
+F6					
+F7					
+F8					
+F9					
+F10					
+F11					
+F12					
+INSERT				
+DELETE				
+RIGHT				
+LEFT				
+UP					
+DOWN				
+APP (MENU)			
+SLASH	/			
+DOT 	.			
+COMMA	,			
+SCOLON	;			
+QUOTE	'			
+ENTER				
+LBRC	[			
+RBRC	]			
+BSLASH	\			
+CAPS				
+TAB					
+SPACE				
+HOME				
+END					
+PGUP				
+PGDOWN				
+PSCREEN					
+EJCT (EJECT)		
+MPRV (PREVIOUS)		
+MNXT (NEXT)			
+VOLD (VOL DOWN)		
+VOLU (VOL UP)		
+MPLY (PLAYPAUSE)	
+MUTE				
+BRIU (BRIGHT UP)	
+BRID (BRIGHT DOWN)	
+
+Add any other keys that your keyboard has using the KMK keycodes from https://docs.qmk.fm/keycodes_basic
+and the media keys from https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/media_keys.md
