@@ -1,0 +1,121 @@
+LCTRL				17	8
+RCTRL				17	2
+LSHIFT				3	0
+RSHIFT				3	2
+LALT				18	11
+RALT				18	1
+LGUI				19	0
+FN					29	28
+A					6	4
+B					13	1
+C					10	2
+D					10	4
+E					10	7
+F					13	4
+G					13	11
+H					11	9
+I					16	7
+J					9	4
+K					16	4
+L					14	4
+M					9	2
+N					9	1
+O					14	7
+P					15	7
+Q					7	6
+R					13	7
+S					12	4
+T					13	0
+U					9	7
+V					13	2
+W					12	7
+X					12	2
+Y					9	0
+Z					6	2
+GRAVE `				8	6
+N1	(number 1)		6	5
+N2					12	5
+N3					10	5
+N4					13	5
+N5					13	8
+N6					9	8
+N7					9	5
+N8					16	5
+N9					14	5
+N0					15	5
+MINUS				15	8
+EQUAL				16	8
+BSPACE				22	0
+ESC					11	6
+F1					12	8
+F2					10	8
+F3					10	0
+F4					11	10
+F5					22	11
+F6					16	11
+F7					14	0
+F8					14	8
+F9					22	8
+F10					22	5
+F11					21	5
+F12					19	5
+INSERT				23	5
+DELETE				23	8
+RIGHT				19	1
+LEFT				20	1
+UP					20	11
+DOWN				21	1
+APP (MENU)			no key w/ this symbol. 
+SLASH	/			15	1
+DOT 	.			14	2
+COMMA	,			16	2
+SCOLON	;			15	4
+QUOTE	'			15	11
+ENTER				22	2
+LBRC	[			15	0
+RBRC	]			16	0
+BSLASH	\			22	4
+CAPS				12	0
+TAB					6	0
+SPACE				22	1
+HOME				21	8
+END					20	5
+PGUP				23	2
+PGDOWN				23	1
+PSCREEN				23	4
+EJCT (EJECT)		
+MPRV (PREVIOUS)		
+MNXT (NEXT)			
+VOLD (VOL DOWN)		10	8	FN-F2 
+VOLU (VOL UP)		10	0	FN-F3	
+MPLY (PLAYPAUSE)	
+MUTE				12	8	FN-F1
+BRIU (BRIGHT UP)	16	11	FN-F6
+BRID (BRIGHT DOWN)	22	11	FN-F5
+
+SCRL
+NUM					30	11
+KP_SLASH			30	0
+KP_ASTERISK			30	7
+KP_MINUS			30	8
+KP_PLUS				30	1
+KP_ENTER			31	2
+KP_DOT				20	2
+KP_0				31	1
+KP_1				31	8
+KP_2				31	4
+KP_3				31	5
+KP_4				31	11
+KP_5				31	0
+KP_6				31	7
+KP_7				30	4
+KP_8				30	5
+KP_9				30	2
+
+CALCULATOR			18	5
+Globe				19	8
+Folder				20	8     
+Lock				18	7    
+
+Add any other keys that your keyboard has using the KMK keycodes from https://docs.qmk.fm/keycodes_basic
+and the media keys from https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/media_keys.md
