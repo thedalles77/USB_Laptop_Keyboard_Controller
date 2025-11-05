@@ -65,7 +65,7 @@ RIGHT				19	1
 LEFT				20	1
 UP					20	11
 DOWN				21	1
-APP (MENU)			no key w/ this symbol. 
+APP (MENU)		
 SLASH	/			15	1
 DOT 	.			14	2
 COMMA	,			16	2
@@ -116,6 +116,3 @@ CALCULATOR			18	5
 Globe				19	8
 Folder				20	8     
 Lock				18	7    
-
-Add any other keys that your keyboard has using the KMK keycodes from https://docs.qmk.fm/keycodes_basic
-and the media keys from https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/media_keys.md
