@@ -1,3 +1,14 @@
+#   Copyright 2025 Frank Adams
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#       http://www.apache.org/licenses/LICENSE-2.0
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
 # This program is used to decode the key matrix of a laptop keyboard. Use an FPC connector to connect all the 
 # laptop keyboard pins to the GPIO pins of a Raspberry Pi Pico. The program cycles thru all the possible pin 
 # combinations looking for a connection when a key is pressed. Open an editor with a text file that lists all 
@@ -150,3 +161,4 @@ while True:
         row.deinit() # release the row pin as an output
      
     time.sleep(0.001) # small delay before repeating main loop
+
