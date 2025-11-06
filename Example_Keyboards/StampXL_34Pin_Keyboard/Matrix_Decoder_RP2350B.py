@@ -1,3 +1,14 @@
+#   Copyright 2025 Frank Adams
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#       http://www.apache.org/licenses/LICENSE-2.0
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
 # This program is used to decode the key matrix of a laptop keyboard. Use an FPC connector to connect all the 
 # laptop keyboard pins to the GPIO pins of a RP2350 Stamp XL which uses a RP2350B chip and has 48 GPIO.
 # The program cycles thru all the possible pin 
@@ -17,8 +28,7 @@ kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
 
 # List the Pi Pico GP I/O pins in the array that are connected to the keyboard FPC cable.
-# If the program finds that 2 pins are always connected (probably grounds or LEDs), remove them from the I_O list and
-# comment them in the Send_GP function. See GP23, GP24, and GP25 in the Send_GP function for an example.
+# If the program finds that 2 pins are always connected (probably grounds or LEDs), remove them from the I_O list.
 
 I_O = [board.GP0, board.GP1, board.GP2, board.GP3, board.GP4, board.GP5, board.GP6, board.GP7, board.GP8,  
 board.GP9, board.GP10, board.GP11, board.GP12, board.GP13, board.GP14, board.GP15, board.GP16, board.GP17, 
@@ -151,3 +161,4 @@ while True:
         row.deinit() # release the row pin as an output
      
     time.sleep(0.001) # small delay before repeating main loop
+
