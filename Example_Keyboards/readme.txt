@@ -1,2 +1,2 @@
-This folder contains keyboard code and documentation, including 3 PDF's that detail how to modify the code from an existing keyboard to a new keyboard.  
+This folder contains keyboard code, documentation, and PDF's that detail how to make a USB keyboard controller from a laptop keyboard.  
 
