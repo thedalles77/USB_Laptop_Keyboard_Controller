@@ -1,0 +1,6 @@
+I'm writing this email using your P17 keyboard with the Teensy 4.1 controller on the new circuit board. 
+The middle mouse button (as well as the left and right buttons) work normally. 
+The keypad keys work as a number pad when the NumLock control key is active (the LED will turn on). 
+The backlight works and is turned on and off with Fn and Backspace keys. 
+The trackpoint is working and I increased the default response speed. To toggle the trackpoint speed, push Fn and F12. 
+I made a low profile USB extension cable so you can move the connector to the side or rear of your case. 
