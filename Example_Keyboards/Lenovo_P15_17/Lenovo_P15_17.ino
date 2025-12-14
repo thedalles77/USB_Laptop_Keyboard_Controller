@@ -13,7 +13,7 @@
 // The PS/2 code for the Trackpoint uses Stream mode instead of Remote mode.
 //
 // Revision History
-// Rev New - Dec 6 , 2025 - Original Release
+// Rev New - Dec 13, 2025 - Original Release
 //
 // Keyboard LEDs
 #define LED_PWR 25    // Anode side of LEDs always driven high to 3.3 volts
@@ -36,7 +36,7 @@
 // Set the keyboard row & column size
 const byte rows_max = 18; // sets the number of rows in the matrix
 const byte cols_max = 8; // sets the number of columns in the matrix
-// 
+//
 int brightness = 0;   // Variable for the keyboard backlight brightness to store the PWM duty cycle (0=off, 255=max) 
 //
 // Load the normal key matrix with the Teensyduino key names described at www.pjrc.com/teensy/td_keyboard.html
@@ -53,13 +53,13 @@ int normal[rows_max][cols_max] = {
   {KEY_RIGHT_BRACE,0,KEY_COMMA,KEY_K,KEY_8,KEY_I,KEY_EQUAL,KEY_F6},
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,KEY_PRINTSCREEN,0,0,0},
-  {0,KEY_RIGHT,0,0,KEY_F12,0,KEY_INSERT,0},
-  {0,KEY_LEFT,0,0,KEY_END,0,KEY_HOME,KEY_UP},
+  {0,KEY_RIGHT,0,0,KEY_F12,KEYPAD_PERIOD,KEY_INSERT,0},
+  {KEY_EQUAL,KEY_LEFT,0,0,KEY_END,KEY_LEFT_BRACE,KEY_HOME,KEY_UP},
   {0,KEY_DOWN,0,0,KEY_F11,0,KEY_DELETE,0},
   {KEY_BACKSPACE,KEY_SPACE,KEY_ENTER,KEY_BACKSLASH,KEY_F10,0,KEY_F9,KEY_F5},
-  {0,0,0,0,KEY_PAGE_DOWN,0,KEY_PAGE_UP,0},
-  {KEY_A,KEY_B,KEY_C,KEY_D,KEY_E,KEY_F,KEY_G,KEY_H}, //REPLACE WITH KEYPAD_
-  {KEY_I,KEY_J,KEY_K,KEY_L,KEY_M,KEY_N,KEY_O,KEY_P}
+  {KEY_RIGHT_BRACE,0,0,0,KEY_PAGE_DOWN,KEY_BACKSPACE,KEY_PAGE_UP,0},
+  {KEYPAD_SLASH,KEYPAD_PLUS,KEYPAD_9,KEYPAD_7,KEYPAD_8,KEYPAD_ASTERIX,KEYPAD_MINUS,KEY_NUM_LOCK},
+  {KEYPAD_5,KEYPAD_0,KEYPAD_ENTER,KEYPAD_2,KEYPAD_3,KEYPAD_6,KEYPAD_1,KEYPAD_4}  
 };
 // Load the modifier key matrix with key names at the correct row-column location. 
 // A zero indicates no modifier key at that location.
@@ -130,9 +130,9 @@ boolean old_key[rows_max][cols_max] = {
 //
 // Define the Teensy 4.1 I/O numbers 
 //
-// Row FPC pin # 4,7, 10,11,13,14,15,16,17,18,19,20,21,22,23,24
-// Teensy I/O  # 1,20,4, 18,17,6, 16,7, 15,8, 14,9, 10,11,12,24
-int Row_IO[rows_max] = {1,20,4,18,17,6,16,7,15,8,14,9,10,11,12,24}; // Teensy 4.1 I/O numbers for rows
+// Row FPC pin # 4,7, 10,11,13,14,15,16,17,18,19,20,21,22,23,24,36,37
+// Teensy I/O  # 1,20,4, 18,17,6, 16,7, 15,8, 14,9, 10,11,12,24,36,37
+int Row_IO[rows_max] = {1,20,4,18,17,6,16,7,15,8,14,9,10,11,12,24,36,37}; // Teensy 4.1 I/O numbers for rows
 //
 // Column FPC pin # 1, 2,3, 5, 6,8,9, 12
 // Teensy I/O     # 23,0,22,21,2,3,19,5
