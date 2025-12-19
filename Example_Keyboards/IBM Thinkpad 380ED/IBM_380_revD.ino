@@ -433,8 +433,8 @@ void loop() {
               noise_zone = noise_zone - 5;
             }
           }
-          else if (normal[x][y] == KEY_F11) { // Fn is active and F11 is pressed - Set noise zone to default value of 50
-            noise_zone = 50;
+          else if (normal[x][y] == KEY_F11) { // Fn is active and F11 is pressed - Set noise zone to default value of 15
+            noise_zone = 15;
           }
         }          
         else if (digitalRead(Col_IO[y]) && (!old_key[x][y])) { //check if key is not pressed, but was previously pressed 
@@ -562,3 +562,4 @@ void loop() {
 //
   delay(8); // The overall keyboard/trackpoint scanning rate is about 13ms
 }
+
