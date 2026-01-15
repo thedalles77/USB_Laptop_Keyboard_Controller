@@ -1,0 +1,116 @@
+KC.LCTRL					27	8
+KC.RCTRL					8	2
+KC.LSHIFT					22	5
+KC.RSHIFT					22	2
+KC.LALT						9	6
+KC.RALT						9	1
+KC.LGUI						7	4
+KC.RGUI						
+FN							26	3
+KC.A						10	3
+KC.B						20	1
+KC.C						11	2
+KC.D						11	3
+KC.E						28	11
+KC.F						20	3
+KC.G						20	6
+KC.H						19	6
+KC.I						28	13
+KC.J						19	3
+KC.K						13	3
+KC.L						14	3
+KC.M						19	2
+KC.N						19	1
+KC.O						28	14
+KC.P						28	18
+KC.Q						28	10
+KC.R						28	20
+KC.S						21	3
+KC.T						20	5
+KC.U						28	19
+KC.V						20	2
+KC.W						28	21
+KC.X						21	2
+KC.Y						19	5
+KC.Z						10	2
+KC.GRAVE					27	10
+KC.N1						10	4
+KC.N2						21	4
+KC.N3						11	4
+KC.N4						20	4
+KC.N5						27	20
+KC.N6						27	19
+KC.N7						19	4
+KC.N8						13	4
+KC.N9						14	4
+KC.N0						18	4
+KC.MINUS					27	18
+KC.EQUAL					27	13
+KC.BSPACE					12	5
+KC.ESC						10	6
+KC.F1						27	21
+KC.F2						27	11
+KC.F3						11	5
+KC.F4						11	6
+KC.F5						12	6
+KC.F6						13	6
+KC.F7						14	5
+KC.F8						27	14
+KC.F9						27	12
+KC.F10						12	4
+KC.F11						17	4
+KC.F12						16	4
+KC.INSERT					27	16
+KC.DELETE					27	17
+KC.RIGHT					16	1
+KC.LEFT						15	1
+KC.UP						15	6
+KC.DOWN						17	1
+KC.SLASH					18	1
+KC.DOT 						14	2
+KC.COMMA					13	2
+KC.SCOLON					18	3
+KC.QUOTE					18	6
+KC.ENTER					12	2
+KC.LBRC						18	5
+KC.RBRC						13	5
+KC.BSLASH					12	3
+KC.CAPS						21	5
+KC.TAB						10	5
+KC.SPACE					12	1
+KC.HOME						27	15
+KC.END						15	4
+KC.PGUP						28	7
+KC.PGDOWN					7	3
+KC.PSCREEN					9	4	
+KC.SCROLLLOCK				
+KC.NUM_LOCK					
+KC.PAUSE					
+KC.PSLS						
+KC.PAST						
+KC.PMNS						
+KC.PPLS						
+KC.PENT						
+KC.PDOT						
+KC.P0						
+KC.P1						
+KC.P2						
+KC.P3						
+KC.P4						
+KC.P5						
+KC.P6						
+KC.P7						
+KC.P8						
+KC.P9						
+KC.AUDIO_MUTE	Func		14	5
+KC.AUDIO_VOL_UP	Func		27	12
+KC.AUDIO_VOL_DOWN	Func	27	14
+KC.BRIGHTNESS_UP	Func	12	6
+KC.BRIGHTNESS_DOWN	Func	11	6
+KC.MEDIA_NEXT_TRACK	Func	16	4
+KC.MEDIA_PREV_TRACK	Func	12	4
+KC.MEDIA_STOP	Func		
+KC.MEDIA_PLAY_PAUSE	Func	17	4
+KC.MEDIA_EJECT	Func		28	9
+KC.MEDIA_FAST_FORWARD Func
+KC.MEDIA_REWIND	Func		
