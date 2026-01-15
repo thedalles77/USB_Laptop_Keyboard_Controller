@@ -1,118 +1,116 @@
-LCTRL				17	8
-RCTRL				17	2
-LSHIFT				3	0
-RSHIFT				3	2
-LALT				18	11
-RALT				18	1
-LGUI				19	0
-FN					29	28
-A					6	4
-B					13	1
-C					10	2
-D					10	4
-E					10	7
-F					13	4
-G					13	11
-H					11	9
-I					16	7
-J					9	4
-K					16	4
-L					14	4
-M					9	2
-N					9	1
-O					14	7
-P					15	7
-Q					7	6
-R					13	7
-S					12	4
-T					13	0
-U					9	7
-V					13	2
-W					12	7
-X					12	2
-Y					9	0
-Z					6	2
-GRAVE `				8	6
-N1	(number 1)		6	5
-N2					12	5
-N3					10	5
-N4					13	5
-N5					13	8
-N6					9	8
-N7					9	5
-N8					16	5
-N9					14	5
-N0					15	5
-MINUS				15	8
-EQUAL				16	8
-BSPACE				22	0
-ESC					11	6
-F1					12	8
-F2					10	8
-F3					10	0
-F4					11	10
-F5					22	11
-F6					16	11
-F7					14	0
-F8					14	8
-F9					22	8
-F10					22	5
-F11					21	5
-F12					19	5
-INSERT				23	5
-DELETE				23	8
-RIGHT				19	1
-LEFT				20	1
-UP					20	11
-DOWN				21	1
-APP (MENU)		
-SLASH	/			15	1
-DOT 	.			14	2
-COMMA	,			16	2
-SCOLON	;			15	4
-QUOTE	'			15	11
-ENTER				22	2
-LBRC	[			15	0
-RBRC	]			16	0
-BSLASH	\			22	4
-CAPS				12	0
-TAB					6	0
-SPACE				22	1
-HOME				21	8
-END					20	5
-PGUP				23	2
-PGDOWN				23	1
-PSCREEN				23	4
-EJCT (EJECT)		
-MPRV (PREVIOUS)		
-MNXT (NEXT)			
-VOLD (VOL DOWN)		10	8	FN-F2 
-VOLU (VOL UP)		10	0	FN-F3	
-MPLY (PLAYPAUSE)	
-MUTE				12	8	FN-F1
-BRIU (BRIGHT UP)	16	11	FN-F6
-BRID (BRIGHT DOWN)	22	11	FN-F5
-
-SCRL
-NUM					30	11
-KP_SLASH			30	0
-KP_ASTERISK			30	7
-KP_MINUS			30	8
-KP_PLUS				30	1
-KP_ENTER			31	2
-KP_DOT				20	2
-KP_0				31	1
-KP_1				31	8
-KP_2				31	4
-KP_3				31	5
-KP_4				31	11
-KP_5				31	0
-KP_6				31	7
-KP_7				30	4
-KP_8				30	5
-KP_9				30	2
-
-CALCULATOR			18	5
-Globe				19	8
-Folder				20	8     
-Lock				18	7    
+KC.LCTRL					17	8
+KC.RCTRL					17	2
+KC.LSHIFT					3	0
+KC.RSHIFT					3	2
+KC.LALT						18	11
+KC.RALT						18	1
+KC.LGUI						19	0
+KC.RGUI						
+FN							29	28
+KC.A						6	4
+KC.B						13	1
+KC.C						10	2
+KC.D						10	4
+KC.E						10	7
+KC.F						13	4
+KC.G						13	11
+KC.H						11	9
+KC.I						16	7
+KC.J						9	4
+KC.K						16	4
+KC.L						14	4
+KC.M						9	2
+KC.N						9	1
+KC.O						14	7
+KC.P						15	7
+KC.Q						7	6
+KC.R						13	7
+KC.S						12	4
+KC.T						13	0
+KC.U						9	7
+KC.V						13	2
+KC.W						12	7
+KC.X						12	2
+KC.Y						9	0
+KC.Z						6	2
+KC.GRAVE					8	6
+KC.N1						6	5
+KC.N2						12	5
+KC.N3						10	5
+KC.N4						13	5
+KC.N5						13	8
+KC.N6						9	8
+KC.N7						9	5
+KC.N8						16	5
+KC.N9						14	5
+KC.N0						15	5
+KC.MINUS					15	8
+KC.EQUAL					16	8
+KC.BSPACE					22	0
+KC.ESC						11	6
+KC.F1						12	8
+KC.F2						10	8
+KC.F3						10	0
+KC.F4						11	10
+KC.F5						22	11
+KC.F6						16	11
+KC.F7						14	0
+KC.F8						14	8
+KC.F9						22	8
+KC.F10						22	5
+KC.F11						21	5
+KC.F12						19	5
+KC.INSERT					23	5
+KC.DELETE					23	8
+KC.RIGHT					19	1
+KC.LEFT						20	1
+KC.UP						20	11
+KC.DOWN						21	1
+KC.SLASH					15	1
+KC.DOT 						14	2
+KC.COMMA					16	2
+KC.SCOLON					15	4
+KC.QUOTE					15	11
+KC.ENTER					22	2
+KC.LBRC						15	0
+KC.RBRC						16	0
+KC.BSLASH					22	4
+KC.CAPS						12	0
+KC.TAB						6	0
+KC.SPACE					22	1
+KC.HOME						21	8
+KC.END						20	5
+KC.PGUP						23	2
+KC.PGDOWN					23	1
+KC.PSCREEN					23	4
+KC.SCROLLLOCK				
+KC.NUM_LOCK					30	11
+KC.PAUSE					11	28
+KC.PSLS						30	0
+KC.PAST						30	7
+KC.PMNS						30	8
+KC.PPLS						30	1
+KC.PENT						31	2
+KC.PDOT						20	2
+KC.P0						31	1
+KC.P1						31	8
+KC.P2						31	4
+KC.P3						31	5
+KC.P4						31	11
+KC.P5						31	0
+KC.P6						31	7
+KC.P7						30	4
+KC.P8						30	5
+KC.P9						30	2
+KC.AUDIO_MUTE	Func		12	8
+KC.AUDIO_VOL_UP	Func		10	0
+KC.AUDIO_VOL_DOWN	Func	10	8
+KC.BRIGHTNESS_UP	Func	16	11
+KC.BRIGHTNESS_DOWN	Func	22	11
+KC.MEDIA_NEXT_TRACK	Func	
+KC.MEDIA_PREV_TRACK	Func	
+KC.MEDIA_STOP	Func		
+KC.MEDIA_PLAY_PAUSE	Func	
+KC.MEDIA_EJECT	Func		
+KC.MEDIA_FAST_FORWARD Func
+KC.MEDIA_REWIND	Func		
