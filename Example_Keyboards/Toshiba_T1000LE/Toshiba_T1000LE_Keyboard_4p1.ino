@@ -9,14 +9,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software implements a Toshiba T1200 Laptop Keyboard Controller using a Teensy 4.1 with a 22 pin 1.25mm pitch FPC connector. 
-// Use the easy soldering board in step 5 of my Instructable
-// I didn't have a keyboard to test so there may be errors. I got the matrix from this reddit post.
-// https://www.reddit.com/r/olkb/comments/dk514w/using_existing_laptop_keyboard_from_toshiba_t1200/
-// Note that connector pins 4, 9, and 18 are ground.
+// This software implements a Laptop Keyboard Controller using a Teensy 4.1 for a Toshiba T1000LE with a UK key layout. 
+// 
+// 
+// 
+// 
 //
 // Revision History
-// Initial Release Dec 19, 2023 
+// Initial Release Feb 28, 2026 
 //
 #define MODIFIERKEY_FN 0x8f   // give Fn key a HID code 
 #define CAPS_LED 13 // Teensy LED shows Caps-Lock
@@ -69,7 +69,7 @@ int modifier[rows_max][cols_max] = {
 {0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0},
 {0,0,0,0,0,MODIFIERKEY_RIGHT_SHIFT,0,0},
-{0,MODIFIERKEY_FN,0,MODIFIERKEY_RIGHT_ALT,0,0,0,0},   // there is no Windows GUI key so I used the System Request key
+{0,MODIFIERKEY_FN,0,MODIFIERKEY_RIGHT_ALT,0,0,0,0},   
 };
 // Load the media key matrix with Fn key names at the correct row-column location. 
 // A zero indicates no media key at that location.
@@ -102,7 +102,7 @@ boolean old_key[rows_max][cols_max] = {
   {1,1,1,1,1,1,1,1}
 };
 //
-// Define the Teensy 4.1 I/O numbers (translated from the FPC pin #)
+// Define the Teensy 4.1 I/O numbers 
 // 
 int Row_IO[rows_max] = {23,0,22,1,21,2,20,3,19,4,18};
 //                      
