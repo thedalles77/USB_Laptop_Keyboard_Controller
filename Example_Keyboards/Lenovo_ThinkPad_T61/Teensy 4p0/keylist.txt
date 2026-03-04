@@ -45,7 +45,7 @@ z				22	26
 0				4	27	
 -				7	27	
 =				7	9	
-bckspace			23	33	
+bckspace			19	33	
 esc				8	26	
 f1				7	31	
 f2				7	17	
@@ -90,6 +90,7 @@ mute				5	29
 volume down			19	29	
 volume up			6	29	
 thinkvantage		8	29	
+
 
 
 
