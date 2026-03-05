@@ -782,7 +782,7 @@ void loop() {
       mx_track = 0x80 | mx_track;        
     } 
 // change the y data from 9 bit to 8 bit 2's complement and then take the 2's complement 
-// because y movement on ps/2 format is opposite of touchpad.move function
+// because y movement on ps/2 format is opposite of mouse.move function
     my_track = my_track >> 1; // convert to 7 bits of data by dividing by 2
     my_track = my_track & 0x7f; // don't allow sign extension
     if ((0x20 & mstat_track) == 0x20) {   // move the sign into 
@@ -867,3 +867,4 @@ void loop() {
 //
   delay(24); // The overall keyboard/trackpoint scanning rate is approximately 30ms
 }
+
