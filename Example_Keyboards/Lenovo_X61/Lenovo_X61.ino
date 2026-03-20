@@ -9,19 +9,19 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-// This software controls a Lenovo ThinkPad X61 Laptop Keyboard and PS/2 Trackpoint
-// using a Teensy 4.0 on a daughterboard with a 40 pin connector. 
+// This Teensy 4.0 software controls a Lenovo ThinkPad X61 Laptop Keyboard that has 2 backslash keys and a narrow left shift key.  
+// The code also controls the PS/2 Trackpoint. The Teensy 4.0 is on a daughterboard with a 40 pin keyboard connector. 
 // This routine uses the Teensyduino "Micro-Manager Method" to send Normal and Modifier 
 // keys over USB. Only the volume control multi-media keys are supported by this routine.
 // Description of Teensyduino keyboard functions is at www.pjrc.com/teensy/td_keyboard.html
 // The ps/2 code uses the USB PJRC Mouse functions at www.pjrc.com/teensy/td_mouse.html 
 // In the Arduino IDE, select Tools, Teensy 4.0. Also under Tools, select Keyboard+Mouse+Joystick
-// 
+// If you have an X61 keyboard with only 1 backslash key, this code will also work, (I added a backslash at the T61 location).
 // Revision History
 // Rev New - March 3 , 2026 - Original Release copied from the T61 code with these changes:
-//   1. Right side backslash is at column 22-row 27 on the X61 instead of column 5-row 33 on the T61
-//   2. Left side backslash at column 8-row 31 doesn't exist for T61. Made this key another left shift 
-//   due to the real left shift being a single wide key cap prone to typo's.
+//   1. Right side backslash is at column 22-row 27 for the X61 and also at column 5-row 33 just like a T61 (for keyboards with only 1 backslash).
+//   2. Left side backslash at column 8-row 31 doesn't exist for T61. I made this backslash key act as another left shift key
+//   due to the real left shift key being a single wide key cap prone to typo's.
 // 
 // Trackpoint signals
 #define TRACK_DATA 1   // ps/2 data to trackpoint (level translated)
@@ -53,7 +53,7 @@ int normal[rows_max][cols_max] = {
   {KEY_F1,KEY_W,KEY_2,0,KEY_X,KEY_S,KEY_CAPS_LOCK,0},
   {KEY_F2,KEY_E,KEY_3,0,KEY_C,KEY_D,KEY_F3,KEY_F4},
   {KEY_5,KEY_R,KEY_4,KEY_B,KEY_V,KEY_F,KEY_T,KEY_G},
-  {KEY_F9,0,KEY_F10,KEY_SPACE,KEY_ENTER,0,KEY_BACKSPACE,KEY_F5},
+  {KEY_F9,0,KEY_F10,KEY_SPACE,KEY_ENTER,KEY_BACKSLASH,KEY_BACKSPACE,KEY_F5},
   {KEY_6,KEY_U,KEY_7,KEY_N,KEY_M,KEY_J,KEY_Y,KEY_H},
   {KEY_PAGE_UP,0,KEY_PAGE_DOWN,KEY_PAGE_DOWN,KEY_PAGE_UP,KEY_MENU,0,0}
 };
@@ -74,7 +74,7 @@ int numlock[rows_max][cols_max] = {
   {KEY_F1,KEY_W,KEY_2,0,KEY_X,KEY_S,KEY_CAPS_LOCK,0},
   {KEY_F2,KEY_E,KEY_3,0,KEY_C,KEY_D,KEY_F3,KEY_F4},
   {KEY_5,KEY_R,KEY_4,KEY_B,KEY_V,KEY_F,KEY_T,KEY_G},
-  {KEY_F9,0,KEY_F10,KEY_SPACE,KEY_ENTER,0,KEY_BACKSPACE,KEY_F5},
+  {KEY_F9,0,KEY_F10,KEY_SPACE,KEY_ENTER,KEY_BACKSLASH,KEY_BACKSPACE,KEY_F5},
   {KEY_6,KEYPAD_4,KEYPAD_7,KEY_N,KEYPAD_0,KEYPAD_1,KEY_Y,KEY_H},
   {KEY_PAGE_UP,0,KEY_PAGE_DOWN,KEY_PAGE_DOWN,KEY_PAGE_UP,KEY_MENU,0,0}
 };
@@ -93,7 +93,7 @@ int modifier[rows_max][cols_max] = {
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,MODIFIERKEY_RIGHT_SHIFT,0,MODIFIERKEY_LEFT_SHIFT,0},
   {MODIFIERKEY_LEFT_CTRL,0,0,0,MODIFIERKEY_RIGHT_CTRL,0,0,0},
-  {0,0,0,0,0,0,0,MODIFIERKEY_LEFT_SHIFT}, // Extra left shift instead of extra backspace
+  {0,0,0,0,0,0,0,MODIFIERKEY_LEFT_SHIFT}, // Extra left shift instead of extra backslash
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0},
