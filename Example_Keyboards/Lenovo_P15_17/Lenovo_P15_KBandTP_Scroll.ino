@@ -947,21 +947,21 @@ void loop() {
       } 
 // scroll if middle button is pressed and my is non-zero
     if (!digitalRead(TP_MIDDLE)) { // check for middle button press 
-      if (my >= 35) { // check if trackpoint is being pushed hard up
+      if (my >= 35) { // check if trackpoint is being pushed hard up (big delta y value)
         Mouse.scroll(-4); // scroll the cursor fast
-        delay(200);
+        delay(200); // wait before proceeding to avoid scrolling too fast
       }
-      else if (my >= 3) { // check if trackpoint is being pushed lightly up
+      else if (my >= 3) { // check if trackpoint is being pushed lightly up (small delta y value)
         Mouse.scroll(-1); // scroll the cursor slow
-        delay(200);
+        delay(200); // wait before proceeding to avoid scrolling too fast
       }
-      else if (my <= -35) { // check if trackpoint is being pushed hard up
+      else if (my <= -35) { // check if trackpoint is being pushed hard down (big delta y value)
         Mouse.scroll(4); // scroll the cursor fast
-        delay(200);
+        delay(200); // wait before proceeding to avoid scrolling too fast
       }
-      else if (my <= -3) { // check if trackpoint is being pushed lightly down
+      else if (my <= -3) { // check if trackpoint is being pushed lightly down (small delta y value)
         Mouse.scroll(1); // scroll the cursor slow
-        delay(200);
+        delay(200); // wait before proceeding to avoid scrolling too fast
       }   
     } 
 // if no scroll, send the x and y data back via usb if any are non-zero
