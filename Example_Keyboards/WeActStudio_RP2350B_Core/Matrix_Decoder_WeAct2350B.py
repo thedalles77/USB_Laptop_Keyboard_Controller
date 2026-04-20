@@ -1,3 +1,14 @@
+#   Copyright 2026 Frank Adams
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#       http://www.apache.org/licenses/LICENSE-2.0
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
 # This program is used to decode the key matrix of a laptop keyboard. Use an FPC connector to connect all the 
 # laptop keyboard pins to the GPIO pins of a WeAct 2350B Core which uses a RP2350B chip and has 48 GPIO.
 # The program cycles through all the possible pin combinations looking for a connection when a key is pressed.
