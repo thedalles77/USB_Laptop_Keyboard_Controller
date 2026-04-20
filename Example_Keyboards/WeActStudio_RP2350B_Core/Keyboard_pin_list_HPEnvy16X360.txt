@@ -1,0 +1,116 @@
+KC.LCTRL					        24	22
+KC.RCTRL					        24	21
+KC.LSHIFT					        20	18
+KC.RSHIFT					        18	16
+KC.LALT						        19	5
+KC.RALT						        13	5
+KC.LGUI						        17	7
+KC.RGUI						        
+FN							        14	8
+KC.A						        21	12
+KC.B						        13	11
+KC.C						        20	10
+KC.D						        21	10
+KC.E						        16	10
+KC.F						        21	11
+KC.G						        17	11
+KC.H						        17	9
+KC.I						        16	6
+KC.J						        21	9
+KC.K						        21	6
+KC.L						        21	3
+KC.M						        20	9
+KC.N						        13	9
+KC.O						        16	3
+KC.P						        41	16
+KC.Q						        16	12
+KC.R						        16	11
+KC.S						        21	15
+KC.T						        22	11
+KC.U						        16	9
+KC.V						        20	11
+KC.W						        16	15
+KC.X						        20	15
+KC.Y						        22	9
+KC.Z						        20	12
+KC.GRAVE					        14	12
+KC.N1						        19	12
+KC.N2						        19	15
+KC.N3						        19	10
+KC.N4						        19	11
+KC.N5						        14	11
+KC.N6						        14	9
+KC.N7						        19	9
+KC.N8						        19	6
+KC.N9						        19	3
+KC.N0						        41	19
+KC.MINUS					        41	14
+KC.EQUAL					        41	13
+KC.BSPACE					        17	2
+KC.ESC						        17	12
+KC.F1						        13	10
+KC.F2						        14	10
+KC.F3						        22	10
+KC.F4						        17	10
+KC.F5						        15	14
+KC.F6						        22	15
+KC.F7						        17	15
+KC.F8						        15	13
+KC.F9						        14	3
+KC.F10						        22	3
+KC.F11						        17	3
+KC.F12						        13	3
+KC.INSERT					        
+KC.DELETE					        13	1
+KC.RIGHT					        19	1
+KC.LEFT						        16	1
+KC.UP						        16	2  
+KC.DOWN						        19	2
+KC.SLASH					        41	20
+KC.DOT 						        20	3
+KC.COMMA					        20	6
+KC.SCOLON					        41	21
+KC.QUOTE					        41	17
+KC.ENTER					        21	2
+KC.LBRC						        41	22
+KC.RBRC						        22	6
+KC.BSLASH					        14	2
+KC.CAPS						        13	12
+KC.TAB						        22	12
+KC.SPACE					        20	2
+KC.HOME						        22	1
+KC.END						        20	1
+KC.PGUP						        14	1
+KC.PGDOWN					        21	1
+KC.PSCREEN					      
+KC.SCROLLLOCK				      
+KC.NUM_LOCK					      
+KC.PAUSE					        
+KC.PSLS						        
+KC.PAST						        
+KC.PMNS						        
+KC.PPLS						        
+KC.PENT						        
+KC.PDOT						        
+KC.P0						          
+KC.P1						          
+KC.P2						          
+KC.P3						          
+KC.P4						          
+KC.P5						          
+KC.P6						          
+KC.P7						          
+KC.P8						          
+KC.P9						          
+KC.AUDIO_MUTE	Func		    	15	14
+KC.AUDIO_VOL_UP	Func				17	15
+KC.AUDIO_VOL_DOWN	Func			22	15
+KC.BRIGHTNESS_UP	Func			22	10
+KC.BRIGHTNESS_DOWN	Func			14	10
+KC.MEDIA_NEXT_TRACK	Func			17	3
+KC.MEDIA_PREV_TRACK	Func			14	3
+KC.MEDIA_STOP	Func		    	
+KC.MEDIA_PLAY_PAUSE	Func			3	1
+KC.MEDIA_EJECT	Func		  		
+KC.MEDIA_FAST_FORWARD Func			
+KC.MEDIA_REWIND	Func		  		
