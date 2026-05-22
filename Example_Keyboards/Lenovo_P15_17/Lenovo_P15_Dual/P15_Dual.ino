@@ -16,7 +16,7 @@
 // reads the left, middle, and right buttons and sends them over USB regardless of switch positions.
 //
 // Revision History
-// Rev New - May 18, 2026 - Original Release
+// Rev New - May 22, 2026 - Original Release
 //
 // Keyboard LEDs used to indicate the switch position. If these LED indicators are not wanted, change the 26 & 25 to 40 & 41 (unused I/O's)
 #define MIC_LED 26    // Active low signal turns on Mic LED to indicate Teensy sending keyboard info over USB
@@ -139,7 +139,7 @@ int Col_IO[cols_max] = {23,0,22,21,2,3,19,5};  // Teensy 4.1 I/O numbers for col
 //
 // Define the time to hold down the fn key that causes the switches to change state
 //
-int fn_trip = 133; // fn_trip x 30msec = seconds fn key must be held down to cause the switches to toggle. 133 gives 4 seconds
+int fn_trip = 100; // fn_trip x 30msec = seconds fn key must be held down to cause the switches to toggle. 133 gives 4 seconds, 100 gives 3 seconds
 int fn_counter = 0; // will be incremented every 30ms if the fn key is held down. When the counter reaches the trip value, the switches all toggle
 //
 // Declare variables that will be used by functions
@@ -313,22 +313,23 @@ void send_normals() {
 //
 // Function to open or close all ADG714 switches
 void sw_cntrl(boolean data_in)
-{ // control data into adg714 DIN pin
+{ 
   if (data_in) {
     go_1(DIN); // drive data high into the adg714 shift registers to close all switches
   }
   else  {
     go_0(DIN); // drive data low into the adg714 shift registers to open all switches
   }
+  delay(1); // delay before dropping sync_n
 // drop SYNC_N to enable shifting in new data
   go_0(SYNC_N); 
-  delayMicroseconds(1); // delay before dropping SCLK
+  delay(1); // delay before dropping SCLK
 // toggle SCLK 8 times to shift in the data.
   for (int j=0; j<8; j++) {
     go_0(SCLK);
-    delayMicroseconds(1); // delay 1/2 of the SCLK duty cycle
+    delay(1); // delay 1/2 of the SCLK duty cycle
     go_1(SCLK);
-    delayMicroseconds(1); // delay 1/2 of the SCLK duty cycle
+    delay(1); // delay 1/2 of the SCLK duty cycle
   }
   go_1(SYNC_N); // rising edge transfers adg714 shift register contents to register that controls switches 
 }
@@ -349,17 +350,17 @@ void teensy_scan() {
   go_0(MIC_LED);    // mic led on showing that Teensy is scanning the keyboard
 }
 //
-// Function to float the Teensy I/Os so the MB can scan the keyboard wothout interference. Turn on mute LED
+// Function to setup Teensy I/O's and turn on mute LED (testing showed it works best to keep Teensy pull ups enabled)
 void mb_scan() {
   for (int a = 0; a < cols_max; a++) {  // loop thru all column pins 
-    go_z(Col_IO[a]); // set each column pin as floating
+    go_pu(Col_IO[a]); // set each column pin as pulled up input
   }
 //
   for (int b = 0; b < rows_max; b++) {  // loop thru all row pins 
     go_z(Row_IO[b]); // set each row pin as floating
   } 
 //
-  go_z(HOTKEY);    // Float the Fn "Hotkey" Teensy input. The MB has a 20K pullup to 3.3V.
+  go_pu(HOTKEY);    // Pull up the Fn "Hotkey" Teensy input. 
 //
   go_0(MUTE_LED);   // mute led turned on showing that MB is scanning the keyboard
   go_1(MIC_LED);    // mic led turned off
@@ -369,8 +370,6 @@ void mb_scan() {
 void setup() {
 // At power up, the Teensy I/O's are setup to scan the row/column and fn pins of the keyboard
   teensy_scan(); // rows are floating, columns are pulled up, Mic LED is turned on
-// Teensy LED
-  go_0(TEENSY_LED); // Turn off the onboard Teensy LED
 // TP Button Inputs
   go_pu(TP_LEFT); // Set the TP buttons as inputs with pullups
   go_pu(TP_RIGHT);
@@ -408,10 +407,10 @@ void loop() {
       MB = !MB; // Toggle the motherboard/Teensy control signal
       sw_cntrl(MB); // set the adg714 switches accordingly
       if (MB) {
-        mb_scan(); // configure teensy I/O's for motherboard scan (all float)
+        mb_scan(); // configure teensy I/O's for motherboard scan and turn on correct LED
       }
       else {
-        teensy_scan(); // configure I/O's for Teensy scan
+        teensy_scan(); // configure I/O's for Teensy scan and turn on correct LED
       }
     }
     else {
@@ -430,7 +429,6 @@ void loop() {
 // The old_key matrix also uses negative logic (low=pressed). 
 //
   if (!MB) { // proceed with Teensy keyboard scan when the MB is not switched to the keyboard
-    go_0(TEENSY_LED); // for debug, turn Teensy LED off for teensy scan
     for (int x = 0; x < rows_max; x++) {   // loop thru the rows
       go_0(Row_IO[x]); // Activate Row (send it low)
       delayMicroseconds(10); // give the row time to go low and settle out
@@ -477,9 +475,6 @@ void loop() {
       go_z(Row_IO[x]); // De-activate Row (send it to hi-z)
     }
   }
-  else { // MB is high so don't scan the keyboard
-    go_1(TEENSY_LED); // for debug, turn Teensy LED on to indicate MB is connected to the keyboard
-  }
 //
 // **********keyboard section finished********************************
 //
@@ -515,7 +510,7 @@ void loop() {
 //
 // End of trackpoint button routine
 //
-// ****************End of main loop
+// ****************End of main loop*****
 //
-delay(28); // The overall keyboard scanning rate is about 30ms
+delay(28); // This delay value added to the delay from the above code makes the overall keyboard scanning rate about 30ms
 }
