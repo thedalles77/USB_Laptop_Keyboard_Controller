@@ -325,7 +325,7 @@ void sw_cntrl(boolean data_in)
   go_0(SYNC_N); 
   delay(1); // delay before dropping SCLK
 // toggle SCLK 8 times to shift in the data.
-  for (int j=0; j<8; j++) {
+  for (int j=0; j<8; j++) {  //debug***************************************************************
     go_0(SCLK);
     delay(1); // delay 1/2 of the SCLK duty cycle
     go_1(SCLK);
@@ -380,6 +380,7 @@ void setup() {
   go_0(DIN); // resting state low
 // send serial signals that initialize the adg714 switches
   sw_cntrl(LOW); // shift in 0's to open all adg714 switches so MB is not able to see the keyboard
+  sw_cntrl(LOW); // do it again just to be sure
 }
 // initialize the MB/Teensy control variable to "not motherboard"
 boolean MB = LOW; // Motherboard tied to keyboard when high, Teensy reads keyboard when low
@@ -406,6 +407,7 @@ void loop() {
       fn_counter = 0; // clear counter
       MB = !MB; // Toggle the motherboard/Teensy control signal
       sw_cntrl(MB); // set the adg714 switches accordingly
+      sw_cntrl(MB); // do it again just to be sure
       if (MB) {
         mb_scan(); // configure teensy I/O's for motherboard scan and turn on correct LED
       }
