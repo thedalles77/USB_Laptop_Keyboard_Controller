@@ -131,7 +131,7 @@ boolean old_key[rows_max][cols_max] = {
 //
 // Row FPC pin # 4,7, 10,11,13,14,15,16,17,18,19,20,21,22,23,24,36,37
 // Teensy I/O  # 1,20,4, 18,17,6, 16,7, 15,8, 14,9, 10,11,12,24,28,29
-int Row_IO[rows_max] = {1,20,4,18,17,6,16,7,15,8,14,9,10,11,12,24,28,29}; // Teensy 4.1 I/O numbers for rows
+int Row_IO[rows_max] = {1,20,4,18,17,6,16,7,15,8,14,9,10,11,12,24,28,29}; // Teensy 4.1 I/O numbers for rows 
 //
 // Column FPC pin # 1, 2,3, 5, 6,8,9, 12
 // Teensy I/O     # 23,0,22,21,2,3,19,5
@@ -139,7 +139,7 @@ int Col_IO[cols_max] = {23,0,22,21,2,3,19,5};  // Teensy 4.1 I/O numbers for col
 //
 // Define the time to hold down the fn key that causes the switches to change state
 //
-int fn_trip = 100; // fn_trip x 30msec = seconds fn key must be held down to cause the switches to toggle. 133 gives 4 seconds, 100 gives 3 seconds
+int fn_trip = 67; // fn_trip x 30msec = seconds fn key must be held down to cause the switches to toggle. 67 gives 2 seconds, 100 gives 3 seconds
 int fn_counter = 0; // will be incremented every 30ms if the fn key is held down. When the counter reaches the trip value, the switches all toggle
 //
 // Declare variables that will be used by functions
@@ -325,7 +325,7 @@ void sw_cntrl(boolean data_in)
   go_0(SYNC_N); 
   delay(1); // delay before dropping SCLK
 // toggle SCLK 8 times to shift in the data.
-  for (int j=0; j<8; j++) {  //debug***************************************************************
+  for (int j=0; j<8; j++) {  
     go_0(SCLK);
     delay(1); // delay 1/2 of the SCLK duty cycle
     go_1(SCLK);
