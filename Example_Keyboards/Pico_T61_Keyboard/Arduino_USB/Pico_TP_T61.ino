@@ -12,9 +12,6 @@
 // This code allows a Raspberry Pi Pico to control the PS/2 trackpoint (herein refered to as TP) in a Lenovo T61 keyboard. 
 // The TP is set up in remote mode so it can be polled at a regular rate.
 // The PS/2 relative movement and button pushes are sent as a USB mouse to the host computer.
-// I initially used: #include USBMouse.h and USBMouse Mouse but I want to use keyboard functions in future code.
-// This link talks about using #include USBMouseKeyboard.h and USBMouseKeyboard MouseKeyboard when you want both to work.
-// https://github.com/arduino/ArduinoCore-mbed/issues/412
 // 
 // The Pico's built in watchdog timer is coded based on the example at:
 // https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#example155
@@ -27,8 +24,8 @@ USBMouseKeyboard MouseKeyboard;
 
 #include "hardware/watchdog.h"
 //
-#define TP_DATA 1 // connect the tp data to this Pico I/O pin
-#define TP_CLK 0 // connect the tp clock to this Pico I/O pin                    
+#define TP_DATA 0 // connect the tp data to this Pico I/O pin (the clock and data GPIO's were swapped for the R1 board)
+#define TP_CLK 1 // connect the tp clock to this Pico I/O pin                    
 #define TP_ERROR 15 // // test point for monitoring if a watchdog timeout has occured
 //
 // Function to set a pin to high impedance (acts like open drain output)
