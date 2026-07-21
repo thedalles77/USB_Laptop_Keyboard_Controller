@@ -12,7 +12,8 @@
     },
     "matrix_pins": {
         "cols": ["GP11", "GP22", "GP10", "GP21", "GP9", "GP20", "GP8", "GP7"],
-		"rows": ["GP27", "GP26", "GP17", "GP14", "GP12", "GP19", "GP18", "GP15", "GP13", "GP6", "GP16", "GP5", "GP28", "GP2", "GP4", "GP3"]
+		"rows": ["GP27", "GP26", "GP17", "GP14", "GP12", "GP19", "GP18", "GP15", 
+		            "GP13", "GP6", "GP16", "GP5", "GP28", "GP2", "GP4", "GP3"]
     },
     "processor": "RP2040",
     "url": "",
@@ -21,6 +22,13 @@
         "pid": "0x0000",
         "vid": "0xFEED"
     },
+	"ps2": {
+		"enabled": true,
+		"mouse_enabled": true,
+		"driver": "vendor",
+		"clock_pin": "GP1",
+		"data_pin": "GP0"
+	},
     "layouts": {
         "LAYOUT": {
             "layout": [
