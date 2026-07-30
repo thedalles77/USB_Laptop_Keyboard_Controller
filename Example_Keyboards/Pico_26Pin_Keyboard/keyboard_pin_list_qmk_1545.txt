@@ -1,0 +1,116 @@
+KC_LCTRL					27	8
+KC_RCTRL					8	2
+KC_LSHIFT					22	5
+KC_RSHIFT					22	2
+KC_LALT						9	6
+KC_RALT						9	1
+KC_LGUI						7	4
+KC_RGUI						
+FN							26	3
+KC_A						10	3
+KC_B						20	1
+KC_C						11	2
+KC_D						11	3
+KC_E						28	11
+KC_F						20	3
+KC_G						20	6
+KC_H						19	6
+KC_I						28	13
+KC_J						19	3
+KC_K						13	3
+KC_L						14	3
+KC_M						19	2
+KC_N						19	1
+KC_O						28	14
+KC_P						28	18
+KC_Q						28	10
+KC_R						28	20
+KC_S						21	3
+KC_T						20	5
+KC_U						28	19
+KC_V						20	2
+KC_W						28	21
+KC_X						21	2
+KC_Y						19	5
+KC_Z						10	2
+KC_GRAVE					27	10
+KC_1						10	4
+KC_2						21	4
+KC_3						11	4
+KC_4						20	4
+KC_5						27	20
+KC_6						27	19
+KC_7						19	4
+KC_8						13	4
+KC_9						14	4
+KC_0						18	4
+KC_MINUS					27	18
+KC_EQUAL					27	13
+KC_BSPACE					12	5
+KC_ESC						10	6
+KC_F1						27	21
+KC_F2						27	11
+KC_F3						11	5
+KC_F4						11	6
+KC_F5						12	6
+KC_F6						13	6
+KC_F7						14	5
+KC_F8						27	14
+KC_F9						27	12
+KC_F10						12	4
+KC_F11						17	4
+KC_F12						16	4
+KC_INSERT					27	16
+KC_DELETE					27	17
+KC_RIGHT					16	1
+KC_LEFT						15	1
+KC_UP						15	6
+KC_DOWN						17	1
+KC_SLASH					18	1
+KC_DOT 						14	2
+KC_COMMA					13	2
+KC_SCOLON					18	3
+KC_QUOTE					18	6
+KC_ENTER					12	2
+KC_LBRC						18	5
+KC_RBRC						13	5
+KC_BSLASH					12	3
+KC_CAPS						21	5
+KC_TAB						10	5
+KC_SPACE					12	1
+KC_HOME						27	15
+KC_END						15	4
+KC_PGUP						28	7
+KC_PGDOWN					7	3
+KC_PSCREEN					9	4	
+KC_SCROLLLOCK				
+KC_NUM_LOCK					
+KC_PAUSE					
+KC_PSLS						
+KC_PAST						
+KC_PMNS						
+KC_PPLS						
+KC_PENT						
+KC_PDOT						
+KC_P0						
+KC_P1						
+KC_P2						
+KC_P3						
+KC_P4						
+KC_P5						
+KC_P6						
+KC_P7						
+KC_P8						
+KC_P9						
+KC_MUTE	Func				14	5
+KC_VOLU	Func				27	12
+KC_VOLD	Func				27	14
+KC_BRIU	Func				12	6
+KC_BRID	Func				11	6
+KC_MNXT	Func				16	4
+KC_MPRV	Func				12	4
+KC_MSTP	Func				
+KC_MPLY	Func				17	4
+KC_EJCT	Func				28	9
+KC_MFFD Func				
+KC_MRWD	Func				
