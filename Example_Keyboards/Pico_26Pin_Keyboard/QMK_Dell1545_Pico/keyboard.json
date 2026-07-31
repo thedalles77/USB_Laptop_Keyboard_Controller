@@ -11,9 +11,9 @@
         "nkro": false
     },
     "matrix_pins": {
-		"rows": ["GP16", "GP17", "GP15", "GP14", "GP18", "GP13", "GP19", "GP12", 
-		         "GP20", "GP11", "GP21", "GP10", "GP9", "GP22", "GP8", "GP7", "GP26"],
-        "cols": ["GP6", "GP27", "GP5", "GP4", "GP28", "GP3", "GP2", "GP1"]
+		"rows": [GP16, GP17, GP15, GP14, GP18, GP13, GP19, GP12, 
+		         GP20, GP11, GP21, GP10, GP9, GP22, GP8, GP7, GP26],
+        "cols": [GP6, GP27, GP5, GP4, GP28, GP3, GP2, GP1]
     },
     "processor": "RP2040",
     "url": "",
