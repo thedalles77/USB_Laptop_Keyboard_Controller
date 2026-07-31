@@ -11,9 +11,9 @@
         "nkro": false
     },
     "matrix_pins": {
-		"rows": [GP16, GP17, GP15, GP14, GP18, GP13, GP19, GP12, 
-		         GP20, GP11, GP21, GP10, GP9, GP22, GP8, GP7, GP26],
-        "cols": [GP6, GP27, GP5, GP4, GP28, GP3, GP2, GP1]
+		"rows": [16, 17, 15, 14, 18, 13, 19, 12, 
+		         20, 11, 21, 10, 9, 22, 8, 7, 26],
+        "cols": [6, 27, 5, 4, 28, 3, 2, 1]
     },
     "processor": "RP2040",
     "url": "",
