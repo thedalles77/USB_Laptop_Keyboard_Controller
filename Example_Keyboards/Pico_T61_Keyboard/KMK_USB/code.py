@@ -21,7 +21,7 @@ keyboard = KMKKeyboard()
 keyboard.col_pins = (board.GP11, board.GP22, board.GP10, board.GP21, board.GP9, board.GP20, board.GP8, board.GP7)
 keyboard.row_pins = (board.GP27, board.GP26, board.GP17, board.GP14, board.GP12, board.GP19, board.GP18, board.GP15, 
 					board.GP13, board.GP6, board.GP16, board.GP5, board.GP28, board.GP2, board.GP4, board.GP3)
-keyboard.diode_orientation = DiodeOrientation.COL2ROW
+keyboard.diode_orientation = DiodeOrientation.COL2ROW # COL2ROW forces open-drain scanning to protect diodeless matrices
 
 keyboard.modules.append(Layers())
 keyboard.extensions.append(MediaKeys())
