@@ -39,7 +39,9 @@ keyboard.row_pins = (microcontroller.pin.GPIO3, microcontroller.pin.GPIO46, micr
                      microcontroller.pin.GPIO15, microcontroller.pin.GPIO16, microcontroller.pin.GPIO17, microcontroller.pin.GPIO18,
                      microcontroller.pin.GPIO21)
 keyboard.diode_orientation = DiodeOrientation.ROW2COL # rows are inputs because IO3 & 46 must be inputs on the ESP32-S3
-
+# this is risky b/c row2col sets columns as inputs with internal pull-downs. The scanner drives the active row logic high (3.3V) and sets 
+# unselected rows to LOW. On a diodeless laptop keyboard, holding down multiple keys simultaneously with a ROW2COL setting will bridge a 
+# high active row to a low inactive row, creating a direct pin-to-pin short circuit. 
 keyboard.modules.append(Layers())
 keyboard.extensions.append(MediaKeys())
 
