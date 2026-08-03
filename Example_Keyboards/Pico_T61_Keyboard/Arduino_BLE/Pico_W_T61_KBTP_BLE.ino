@@ -142,8 +142,7 @@ void setup() {
     pinMode(rowPins[r], INPUT_PULLUP);
   }
   for (int c = 0; c < NUM_COLS; c++) {
-    pinMode(colPins[c], OUTPUT);
-    digitalWrite(colPins[c], HIGH);
+    pinMode(colPins[c], INPUT); // Make the column gpio's float by making them inputs w/o pullups to start.
   }
   
   pinMode(PS2_CLOCK_PIN, INPUT_PULLUP);
@@ -167,7 +166,8 @@ void setup() {
 void loop() {
   // ==================== PART 1: KEYBOARD MATRIX SCANNING ====================
   for (int c = 0; c < NUM_COLS; c++) {
-    digitalWrite(colPins[c], LOW);
+    pinMode(colPins[c], OUTPUT); // make the selected column pin an output (it was floating as an input)
+    digitalWrite(colPins[c], LOW); // drive the column pin low
     delayMicroseconds(10); 
 
     for (int r = 0; r < NUM_ROWS; r++) {
@@ -193,7 +193,7 @@ void loop() {
         lastKeyState[r][c] = currentPressed;
       }
     }
-    digitalWrite(colPins[c], HIGH);
+    pinMode(colPins[c], INPUT); // return column that was driven low to an input so it floats 
   }
 
   // ==================== PART 2: TRACKPOINT PACKET PROCESSING ====================

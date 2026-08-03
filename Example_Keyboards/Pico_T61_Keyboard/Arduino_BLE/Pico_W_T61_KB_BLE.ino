@@ -55,8 +55,7 @@ void setup() {
     pinMode(rowPins[r], INPUT_PULLUP); // Make the row gpio's inputs with pullups
   }
   for (int c = 0; c < NUM_COLS; c++) {
-    pinMode(colPins[c], OUTPUT);
-    digitalWrite(colPins[c], HIGH); // Make the column gpio's outputs, all driven high to start.
+    pinMode(colPins[c], INPUT); // Make the column gpio's float by making them inputs w/o pullups to start.
   }
 
   KeyboardBLE.begin("T61 BLE Keyboard", "Lenovo Mod"); // "T61 BLE Keyboard" defines the Device Name that
@@ -69,7 +68,8 @@ void setup() {
 void loop() {
   // Single Pass Matrix Scan drives each column low, one at a time and reads all the rows
   for (int c = 0; c < NUM_COLS; c++) {
-    digitalWrite(colPins[c], LOW); // drive the column low
+    pinMode(colPins[c], OUTPUT); // make the selected column pin an output (it was floating as an input)
+    digitalWrite(colPins[c], LOW); // drive the column pin low 
     delayMicroseconds(10); // give it some time to settle out
 
     for (int r = 0; r < NUM_ROWS; r++) { // read each row, looking for a low that indicates the key is pushed
@@ -114,7 +114,7 @@ void loop() {
         lastKeyState[r][c] = currentPressed; // save state of the key to the last key state array for next loop
       }
     }
-    digitalWrite(colPins[c], HIGH); // return column that was just read to high 
+    pinMode(colPins[c], INPUT); // return column that was driven low to an input so it floats 
   }
   delay(8); // overall 8 msec keyboard scan rate is slow enough to eliminate any chance of key bounce
 }
