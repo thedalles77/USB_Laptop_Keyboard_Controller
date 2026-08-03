@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -1192,7 +1192,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <pin name="GP20" x="25.4" y="2.54" length="middle" rot="R180"/>
 <pin name="GP21" x="25.4" y="0" length="middle" rot="R180"/>
 <pin name="GP22" x="25.4" y="-2.54" length="middle" rot="R180"/>
-<pin name="!RUN" x="-25.4" y="25.4" length="middle" direction="in"/>
+<pin name="RUN" x="-25.4" y="25.4" length="middle" direction="in"/>
 <pin name="GP26" x="25.4" y="-5.08" length="middle" rot="R180"/>
 <pin name="GP27" x="25.4" y="-7.62" length="middle" rot="R180"/>
 <pin name="AGND" x="25.4" y="-12.7" length="middle" direction="pwr" rot="R180"/>
@@ -1227,7 +1227,6 @@ In this library the device names are the same as the pin names of the symbols, t
 <devices>
 <device name="" package="MODULE_SC0918">
 <connects>
-<connect gate="G$1" pin="!RUN" pad="30"/>
 <connect gate="G$1" pin="3V3_EN" pad="37"/>
 <connect gate="G$1" pin="3V3_OUT" pad="36"/>
 <connect gate="G$1" pin="ADC_VREF" pad="35"/>
@@ -1272,6 +1271,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <connect gate="G$1" pin="P3" pad="P3"/>
 <connect gate="G$1" pin="P38" pad="P38"/>
 <connect gate="G$1" pin="P8" pad="P8"/>
+<connect gate="G$1" pin="RUN" pad="30"/>
 <connect gate="G$1" pin="VBUS" pad="40"/>
 <connect gate="G$1" pin="VSYS" pad="39"/>
 </connects>
@@ -1459,6 +1459,7 @@ Source: &lt;a href="http://www.onsemi.com/pub/Collateral/MBR120VLSFT1-D.PDF"&gt;
 <wire x1="13.88" y1="2.8" x2="13.88" y2="1.3" width="0.1524" layer="51"/>
 <wire x1="-15.8" y1="2.8" x2="-15.9" y2="2.8" width="0.1524" layer="51"/>
 <wire x1="-15.9" y1="2.8" x2="-15.9" y2="1.3" width="0.1524" layer="51"/>
+<text x="12.1476" y="3.606" size="1.27" layer="21">26</text>
 </package>
 </packages>
 <symbols>
@@ -1584,6 +1585,7 @@ DigiKey Part Number</description>
 <smd name="26" x="6.3" y="3.6" dx="1.35" dy="0.5" layer="1" rot="R90"/>
 <wire x1="-16.1" y1="1.6" x2="8.82" y2="1.6" width="0.1524" layer="21"/>
 <wire x1="8.62" y1="1.8" x2="-15.9" y2="1.8" width="0.1524" layer="51"/>
+<text x="7.0168" y="3.6822" size="1.27" layer="21">26</text>
 </package>
 </packages>
 <symbols>
@@ -1712,6 +1714,7 @@ DigiKey Part Number</description>
 <wire x1="-16.1" y1="1.7" x2="-16.1" y2="3" width="0.127" layer="21"/>
 <wire x1="-16.1" y1="1.7" x2="1.16" y2="1.7" width="0.1524" layer="21"/>
 <wire x1="-15.9" y1="1.9" x2="0.96" y2="1.9" width="0.1524" layer="51"/>
+<text x="-0.4762" y="3.6314" size="1.27" layer="21">26</text>
 </package>
 </packages>
 <symbols>
@@ -1796,6 +1799,51 @@ DigiKey Part Number</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="JST-PH-2PIN">
+<packages>
+<package name="JST-PH-2PIN">
+<pad name="P$1" x="-1" y="0" drill="0.9" shape="square"/>
+<pad name="P$2" x="1" y="0" drill="0.9"/>
+<text x="-6.1" y="2.4" size="0.6096" layer="25">&gt;Name</text>
+<text x="-6.1" y="1.6" size="0.6096" layer="27">&gt;Value</text>
+<wire x1="-3" y1="3" x2="3" y2="3" width="0.1524" layer="21"/>
+<wire x1="-3" y1="-1.8" x2="3" y2="-1.8" width="0.1524" layer="21"/>
+<wire x1="-3" y1="3" x2="-3" y2="-1.8" width="0.1524" layer="21"/>
+<wire x1="3" y1="3" x2="3" y2="-1.8" width="0.1524" layer="21"/>
+<text x="-1.1" y="-3.1" size="0.6096" layer="21">1</text>
+</package>
+</packages>
+<symbols>
+<symbol name="JST-PH-2PIN">
+<pin name="P1" x="-7.62" y="2.54" visible="pin" length="middle"/>
+<pin name="P2" x="-7.62" y="-2.54" visible="pin" length="middle"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
+<text x="-7.62" y="7.62" size="1.778" layer="95">&gt;Name</text>
+<text x="-7.62" y="-10.16" size="1.778" layer="96">&gt;Value</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="JST-PH-2PIN" prefix="J" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="JST-PH-2PIN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="JST-PH-2PIN">
+<connects>
+<connect gate="G$1" pin="P1" pad="P$1"/>
+<connect gate="G$1" pin="P2" pad="P$2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1814,12 +1862,21 @@ DigiKey Part Number</description>
 <part name="J1" library="FPC26" deviceset="FPC26" device="" value="1mm Pitch FPC"/>
 <part name="J2" library="FPC26_p8mm" deviceset="FPC26_P8MM" device="" value="0.8mm Pitch FPC"/>
 <part name="J3" library="FPC26_p5mm" deviceset="FPC26_P5MM" device="" value="0.5mm Pitch FPC"/>
+<part name="J5" library="JST-PH-2PIN" deviceset="JST-PH-2PIN" device="" value="JST-PH-2PIN"/>
+<part name="SUPPLY2" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
+<part name="J6" library="JST-PH-2PIN" deviceset="JST-PH-2PIN" device="" value="JST-PH-2PIN"/>
+<part name="SUPPLY3" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="-17.78" y="116.84" size="1.778" layer="97">Wire USB 5 Volts on pin 2 to a battery charger.
+<text x="-12.7" y="114.3" size="1.778" layer="97">Wire USB 5 Volts on pin 2 to a battery charger.
 Wire battery output to pin 3</text>
+<text x="-83.82" y="111.76" size="1.778" layer="97">Wire to a Reset Push Button Switch</text>
+<text x="-43.18" y="101.6" size="1.778" layer="97">Wire to a Switch that powers down the
+Pico if running from a battery</text>
+<text x="17.78" y="81.28" size="1.778" layer="97">Install diode only if running 
+from battery power</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="-22.86" y="27.94" smashed="yes">
@@ -1851,6 +1908,20 @@ Wire battery output to pin 3</text>
 <instance part="J3" gate="G$1" x="121.92" y="2.54" smashed="yes">
 <attribute name="NAME" x="127" y="71.12" size="1.6764" layer="95"/>
 <attribute name="VALUE" x="119.38" y="-2.54" size="1.778" layer="96"/>
+</instance>
+<instance part="J5" gate="G$1" x="-55.88" y="102.362" smashed="yes" rot="R90">
+<attribute name="NAME" x="-63.5" y="102.362" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="-62.738" y="109.22" size="1.778" layer="96"/>
+</instance>
+<instance part="SUPPLY2" gate="GND" x="-58.42" y="88.9" smashed="yes">
+<attribute name="VALUE" x="-60.325" y="85.725" size="1.778" layer="96"/>
+</instance>
+<instance part="J6" gate="G$1" x="-22.86" y="92.202" smashed="yes" rot="R90">
+<attribute name="NAME" x="-30.48" y="92.202" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="-29.718" y="99.06" size="1.778" layer="96"/>
+</instance>
+<instance part="SUPPLY3" gate="GND" x="-25.4" y="78.74" smashed="yes">
+<attribute name="VALUE" x="-27.305" y="75.565" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -1939,6 +2010,16 @@ Wire battery output to pin 3</text>
 <pinref part="SUPPLY5" gate="GND" pin="GND"/>
 <pinref part="J4" gate="G$1" pin="P1"/>
 <wire x1="5.08" y1="93.98" x2="5.08" y2="96.52" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J5" gate="G$1" pin="P1"/>
+<pinref part="SUPPLY2" gate="GND" pin="GND"/>
+<wire x1="-58.42" y1="94.742" x2="-58.42" y2="91.44" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY3" gate="GND" pin="GND"/>
+<pinref part="J6" gate="G$1" pin="P1"/>
+<wire x1="-25.4" y1="81.28" x2="-25.4" y2="84.582" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VSYS" class="0">
@@ -2642,6 +2723,24 @@ Wire battery output to pin 3</text>
 <label x="-71.12" y="48.26" size="1.778" layer="95"/>
 <pinref part="U1" gate="G$1" pin="GP0"/>
 <wire x1="-73.66" y1="48.26" x2="-48.26" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="J5" gate="G$1" pin="P2"/>
+<wire x1="-53.34" y1="94.742" x2="-53.34" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="RUN"/>
+<wire x1="-53.34" y1="53.34" x2="-48.26" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="J6" gate="G$1" pin="P2"/>
+<wire x1="-20.32" y1="84.582" x2="-20.32" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="71.12" x2="-50.8" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="71.12" x2="-50.8" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="3V3_EN"/>
+<wire x1="-50.8" y1="55.88" x2="-48.26" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
