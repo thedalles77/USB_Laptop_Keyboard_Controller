@@ -137,12 +137,11 @@ void clkInterruptSR() {
 }
 
 void setup() {
-  // --- Initialize Pins ---
-  for (int r = 0; r < NUM_ROWS; r++) {
-    pinMode(rowPins[r], INPUT_PULLUP);
-  }
   for (int c = 0; c < NUM_COLS; c++) {
-    pinMode(colPins[c], INPUT); // Make the column gpio's float by making them inputs w/o pullups to start.
+    pinMode(colPins[c], INPUT_PULLUP); // Make the col gpio's inputs with pullups
+  }
+  for (int r = 0; r < NUM_ROWS; r++) {
+    pinMode(rowPins[r], INPUT); // Make the row gpio's float by making them inputs w/o pullups to start.
   }
   
   pinMode(PS2_CLOCK_PIN, INPUT_PULLUP);
@@ -165,13 +164,13 @@ void setup() {
 
 void loop() {
   // ==================== PART 1: KEYBOARD MATRIX SCANNING ====================
-  for (int c = 0; c < NUM_COLS; c++) {
-    pinMode(colPins[c], OUTPUT); // make the selected column pin an output (it was floating as an input)
-    digitalWrite(colPins[c], LOW); // drive the column pin low
-    delayMicroseconds(10); 
+  for (int r = 0; r < NUM_ROWS; r++) {
+    pinMode(rowPins[r], OUTPUT); // make the selected row pin an output instead of floating as an input
+    digitalWrite(rowPins[r], LOW); // drive the row pin low 
+    delayMicroseconds(20); // give it some time before sampling due to weak 50K pullups in RP2040. 10usec is marginal
 
-    for (int r = 0; r < NUM_ROWS; r++) {
-      bool currentPressed = (digitalRead(rowPins[r]) == LOW);
+    for (int c = 0; c < NUM_COLS; c++) { // read each column, looking for a low that indicates the key is pushed
+      bool currentPressed = (digitalRead(colPins[c]) == LOW);
 
       if (currentPressed != lastKeyState[r][c]) {
         uint8_t standardKey = keyMap[r][c];
@@ -193,7 +192,7 @@ void loop() {
         lastKeyState[r][c] = currentPressed;
       }
     }
-    pinMode(colPins[c], INPUT); // return column that was driven low to an input so it floats 
+    pinMode(rowPins[r], INPUT); // return row that was driven low to an input so it floats 
   }
 
   // ==================== PART 2: TRACKPOINT PACKET PROCESSING ====================

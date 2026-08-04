@@ -51,11 +51,11 @@ bool lastKeyState[NUM_ROWS][NUM_COLS] = {false}; // this creates a 2D array fill
 // keep track of when a key has been pressed so it only sends the key once and not constantly until released. 
 
 void setup() {
-  for (int r = 0; r < NUM_ROWS; r++) {
-    pinMode(rowPins[r], INPUT_PULLUP); // Make the row gpio's inputs with pullups
-  }
   for (int c = 0; c < NUM_COLS; c++) {
-    pinMode(colPins[c], INPUT); // Make the column gpio's float by making them inputs w/o pullups to start.
+    pinMode(colPins[c], INPUT_PULLUP); // Make the col gpio's inputs with pullups
+  }
+  for (int r = 0; r < NUM_ROWS; r++) {
+    pinMode(rowPins[r], INPUT); // Make the row gpio's float by making them inputs w/o pullups to start.
   }
 
   KeyboardBLE.begin("T61 BLE Keyboard", "Lenovo Mod"); // "T61 BLE Keyboard" defines the Device Name that
@@ -66,14 +66,14 @@ void setup() {
 }
 
 void loop() {
-  // Single Pass Matrix Scan drives each column low, one at a time and reads all the rows
-  for (int c = 0; c < NUM_COLS; c++) {
-    pinMode(colPins[c], OUTPUT); // make the selected column pin an output (it was floating as an input)
-    digitalWrite(colPins[c], LOW); // drive the column pin low 
-    delayMicroseconds(10); // give it some time to settle out
+  // Single Pass Matrix Scan drives each row low, one at a time and reads all the columns
+  for (int r = 0; r < NUM_ROWS; r++) {
+    pinMode(rowPins[r], OUTPUT); // make the selected row pin an output instead of floating as an input
+    digitalWrite(rowPins[r], LOW); // drive the row pin low 
+    delayMicroseconds(20); // give it some time before sampling due to weak 50K pullups in RP2040. 10usec is marginal
 
-    for (int r = 0; r < NUM_ROWS; r++) { // read each row, looking for a low that indicates the key is pushed
-      bool currentPressed = (digitalRead(rowPins[r]) == LOW);
+    for (int c = 0; c < NUM_COLS; c++) { // read each column, looking for a low that indicates the key is pushed
+      bool currentPressed = (digitalRead(colPins[c]) == LOW);
 
       if (currentPressed != lastKeyState[r][c]) { // check if current key state is not the same as the last loop
         uint8_t standardKey = keyMap[r][c]; // save the name of the newly pressed (or released) key from the matrix
@@ -114,7 +114,7 @@ void loop() {
         lastKeyState[r][c] = currentPressed; // save state of the key to the last key state array for next loop
       }
     }
-    pinMode(colPins[c], INPUT); // return column that was driven low to an input so it floats 
+    pinMode(rowPins[r], INPUT); // return row that was driven low to an input so it floats 
   }
   delay(8); // overall 8 msec keyboard scan rate is slow enough to eliminate any chance of key bounce
 }
