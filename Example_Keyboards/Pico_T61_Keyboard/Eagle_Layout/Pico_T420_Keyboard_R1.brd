@@ -185,7 +185,7 @@
 <wire x1="50.7" y1="45.1" x2="50.7" y2="48.3" width="0.1524" layer="21"/>
 <wire x1="50.7" y1="48.3" x2="49.3" y2="48.3" width="0.1524" layer="21"/>
 <wire x1="49.3" y1="48.3" x2="49.3" y2="45.1" width="0.1524" layer="21"/>
-<text x="5.9" y="12.8" size="1.778" layer="21" ratio="15" rot="R90">Raspberry Pi Pico W
+<text x="37.7" y="11.2" size="1.27" layer="21" ratio="15" rot="R90">Raspberry Pi Pico W
 T420 Keyboard Controller R1</text>
 <text x="35.8" y="2.1" size="0.8128" layer="21" ratio="15">Power
 Switch</text>
@@ -198,6 +198,17 @@ Switch</text>
 <wire x1="48.32" y1="28.44" x2="48.32" y2="13.44" width="0.1524" layer="21"/>
 <wire x1="42.33" y1="13.44" x2="48.32" y2="13.44" width="0.1524" layer="21"/>
 <wire x1="42.33" y1="28.44" x2="42.33" y2="13.44" width="0.1524" layer="21"/>
+<text x="1.1" y="44.4" size="0.8128" layer="21" ratio="15">EN</text>
+<text x="1.3" y="30" size="0.8128" layer="21" ratio="15">RUN</text>
+<text x="5.1" y="22.8" size="1.016" layer="22" rot="MR0">GND</text>
+<text x="5.2" y="37.2" size="1.016" layer="22" rot="MR0">GND</text>
+<text x="38.7" y="53" size="1.016" layer="22" rot="MR270">GND</text>
+<text x="46.9" y="5.1" size="1.016" layer="22" rot="MR270">GND</text>
+<text x="41.5" y="5.4" size="1.016" layer="22" rot="MR270">KBSW</text>
+<text x="4.5" y="43.1" size="1.016" layer="22" rot="MR0">EN</text>
+<text x="4.8" y="28.7" size="1.016" layer="22" rot="MR0">RUN</text>
+<text x="40.9" y="54" size="1.016" layer="22" rot="MR180">5V</text>
+<text x="46.2" y="53.4" size="1.016" layer="22" rot="MR270">VBAT</text>
 </plain>
 <libraries>
 <library name="WM6787_A01B">
@@ -301,7 +312,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package3d>
 </packages3d>
 </library>
-<library name="SparkFun-Resistors" urn="urn:adsk.eagle:library:532">
+<library name="SparkFun-Resistors">
 <description>&lt;h3&gt;SparkFun Resistors&lt;/h3&gt;
 This library contains resistors. Reference designator:R. 
 &lt;br&gt;
@@ -316,7 +327,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 &lt;br&gt;
 You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
 <packages>
-<package name="0603" urn="urn:adsk.eagle:footprint:39615/1" library_version="1">
+<package name="0603" urn="urn:adsk.eagle:footprint:39615/1" locally_modified="yes">
 <description>&lt;p&gt;&lt;b&gt;Generic 1608 (0603) package&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
 <wire x1="-1.6" y1="0.7" x2="1.6" y2="0.7" width="0.0508" layer="39"/>
@@ -332,10 +343,14 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <rectangle x1="-0.8382" y1="-0.4699" x2="-0.3381" y2="0.4801" layer="51"/>
 <rectangle x1="0.3302" y1="-0.4699" x2="0.8303" y2="0.4801" layer="51"/>
 <rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+<wire x1="-1.6" y1="0.7" x2="1.6" y2="0.7" width="0.127" layer="21"/>
+<wire x1="1.6" y1="0.7" x2="1.6" y2="-0.7" width="0.127" layer="21"/>
+<wire x1="1.6" y1="-0.7" x2="-1.6" y2="-0.7" width="0.127" layer="21"/>
+<wire x1="-1.6" y1="-0.7" x2="-1.6" y2="0.7" width="0.127" layer="21"/>
 </package>
 </packages>
 <packages3d>
-<package3d name="0603" urn="urn:adsk.eagle:package:39650/1" type="box" library_version="1">
+<package3d name="0603" urn="urn:adsk.eagle:package:39650/1" type="box">
 <description>Generic 1608 (0603) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
 <packageinstances>
@@ -1411,10 +1426,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="1.6" y1="1.3" x2="1.6" y2="-1.3" width="0.05" layer="51"/>
 <wire x1="1.6" y1="-1.3" x2="-1.6" y2="-1.3" width="0.05" layer="51"/>
 <wire x1="-1.6" y1="-1.3" x2="-1.6" y2="1.3" width="0.05" layer="51"/>
-<wire x1="-1" y1="1" x2="1" y2="1" width="0.1" layer="51"/>
-<wire x1="1" y1="1" x2="1" y2="-1" width="0.1" layer="51"/>
-<wire x1="1" y1="-1" x2="-1" y2="-1" width="0.1" layer="51"/>
-<wire x1="-1" y1="-1" x2="-1" y2="1" width="0.1" layer="51"/>
+<wire x1="-1" y1="1" x2="1" y2="1" width="0.1" layer="21"/>
+<wire x1="1" y1="1" x2="1" y2="-1" width="0.1" layer="21"/>
+<wire x1="1" y1="-1" x2="-1" y2="-1" width="0.1" layer="21"/>
+<wire x1="-1" y1="-1" x2="-1" y2="1" width="0.1" layer="21"/>
 <wire x1="-1" y1="0.5" x2="-0.5" y2="1" width="0.1" layer="51"/>
 <circle x="-1.35" y="1.325" radius="0.125" width="0.25" layer="25"/>
 </package>
@@ -1438,7 +1453,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package>
 </packages>
 </library>
-<library name="SparkFun-Connectors" urn="urn:adsk.eagle:library:513">
+<library name="SparkFun-Connectors">
 <description>&lt;h3&gt;SparkFun Connectors&lt;/h3&gt;
 This library contains electrically-functional connectors. 
 &lt;br&gt;
@@ -1889,22 +1904,22 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PROD_ID" value="TRANS-00830" x="17.8" y="103.6" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="36.469" y="40.1" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center" display="off"/>
 </element>
-<element name="R2" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="42.54" y="43.56" smashed="yes">
+<element name="R2" library="SparkFun-Resistors" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="42.54" y="43.56" smashed="yes">
 <attribute name="NAME" x="42.54" y="44.322" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-00824" x="78.1" y="-17.4" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" value="10k" x="42.54" y="42.798" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
 </element>
-<element name="R3" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="38.03" y="43.56" smashed="yes">
+<element name="R3" library="SparkFun-Resistors" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="38.03" y="43.56" smashed="yes">
 <attribute name="NAME" x="38.03" y="44.322" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-00824" x="77.4" y="-17.4" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" value="10k" x="38.03" y="42.798" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
 </element>
-<element name="R4" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="42.78" y="36.54" smashed="yes" rot="R180">
+<element name="R4" library="SparkFun-Resistors" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="42.78" y="36.54" smashed="yes" rot="R180">
 <attribute name="NAME" x="42.78" y="37.978" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-00824" x="-0.4" y="97.5" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" value="10k" x="42.88" y="35.202" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center"/>
 </element>
-<element name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="38.21" y="36.56" smashed="yes">
+<element name="R5" library="SparkFun-Resistors" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="38.21" y="36.56" smashed="yes">
 <attribute name="NAME" x="38.21" y="37.322" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-00824" x="85.2" y="-24.4" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" value="10k" x="38.21" y="35.798" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
@@ -1959,16 +1974,16 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="C1" library="0603_CAP" package="0603_CAP" value="1UF" x="51.2" y="43.3" smashed="yes" rot="R90"/>
 <element name="C2" library="0603_CAP" package="0603_CAP" value="2.2UF" x="46.2" y="44.8" smashed="yes" rot="R90"/>
 <element name="C3" library="0603_CAP" package="0603_CAP" value="2.2UF" x="48.5" y="41.5" smashed="yes"/>
-<element name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="50" y="46.7" smashed="yes" rot="R90">
+<element name="R1" library="SparkFun-Resistors" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="50" y="46.7" smashed="yes" rot="R90">
 <attribute name="NAME" x="49.138" y="46.7" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-00824" x="50" y="46.7" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="50.762" y="46.7" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
-<element name="J3" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" package="1X01" package3d_urn="urn:adsk.eagle:package:38028/1" value="" x="52.7" y="32.5" smashed="yes">
+<element name="J3" library="SparkFun-Connectors" package="1X01" package3d_urn="urn:adsk.eagle:package:38028/1" value="" x="52.7" y="32.5" smashed="yes">
 <attribute name="NAME" x="52.23" y="34.043" size="0.6096" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="51.43" y="31.484" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
 </element>
-<element name="J1" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" package="1X01" package3d_urn="urn:adsk.eagle:package:38028/1" value="" x="34.1" y="52.7" smashed="yes">
+<element name="J1" library="SparkFun-Connectors" package="1X01" package3d_urn="urn:adsk.eagle:package:38028/1" value="" x="34.1" y="52.7" smashed="yes">
 <attribute name="NAME" x="31.63" y="52.343" size="0.6096" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="32.83" y="51.684" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
 </element>
@@ -1976,8 +1991,16 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="46.12" y="51.71" size="0.8128" layer="25" ratio="15"/>
 <attribute name="VALUE" x="38.92" y="53.51" size="0.6096" layer="27"/>
 </element>
-<element name="U$2" library="oshw_revA" package="OSHW_8MM" value="" x="36.5" y="19.2" smashed="yes"/>
-<element name="U$1" library="oshw_backside" package="OSHW_8MM" value="" x="36.5" y="19.2" smashed="yes"/>
+<element name="U$2" library="oshw_revA" package="OSHW_8MM" value="" x="19.5" y="29.8" smashed="yes"/>
+<element name="U$1" library="oshw_backside" package="OSHW_8MM" value="" x="36.7" y="19.1" smashed="yes"/>
+<element name="J6" library="JST-PH-2PIN" package="JST-PH-2PIN" value="" x="3.7" y="26.2" smashed="yes" rot="R90">
+<attribute name="NAME" x="3.5" y="22.7" size="0.8128" layer="25" rot="R180"/>
+<attribute name="VALUE" x="2.1" y="20.1" size="0.6096" layer="27" rot="R90"/>
+</element>
+<element name="J7" library="JST-PH-2PIN" package="JST-PH-2PIN" value="" x="3.7" y="40.7" smashed="yes" rot="R90">
+<attribute name="NAME" x="3.5" y="37.2" size="0.8128" layer="25" rot="R180"/>
+<attribute name="VALUE" x="2.1" y="34.6" size="0.6096" layer="27" rot="R90"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -2080,9 +2103,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="9.31" y1="7.7" x2="5.9" y2="7.7" width="2.54" layer="1"/>
 <wire x1="9.31" y1="20.45" x2="5.2" y2="20.45" width="2.54" layer="1"/>
 <wire x1="9.31" y1="33.15" x2="5.3" y2="33.15" width="2.54" layer="1"/>
-<wire x1="9.31" y1="45.85" x2="5.6" y2="45.85" width="2.54" layer="1"/>
-<wire x1="28.69" y1="45.85" x2="32" y2="45.85" width="2.2" layer="1"/>
-<wire x1="28.69" y1="45.85" x2="25.1" y2="45.85" width="2.2" layer="1"/>
+<wire x1="9.31" y1="45.85" x2="5.6" y2="45.85" width="1.27" layer="1"/>
+<wire x1="28.69" y1="45.85" x2="32" y2="45.85" width="1.27" layer="1"/>
+<wire x1="28.69" y1="45.85" x2="25.1" y2="45.85" width="1.27" layer="1"/>
 <wire x1="28.69" y1="20.45" x2="31.1" y2="20.45" width="1.6" layer="1"/>
 <wire x1="28.69" y1="7.75" x2="31.6" y2="7.75" width="1.6" layer="1"/>
 <via x="32.8" y="8.8" extent="1-16" drill="0.35"/>
@@ -2110,6 +2133,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="12.35" y1="20.45" x2="13.6" y2="19.2" width="1.27" layer="1"/>
 <wire x1="13.6" y1="19.2" x2="25.8" y2="19.2" width="1.27" layer="1"/>
 <wire x1="25.8" y1="19.2" x2="27.05" y2="20.45" width="1.27" layer="1"/>
+<contactref element="J6" pad="P$1"/>
+<contactref element="J7" pad="P$1"/>
 </signal>
 <signal name="ADC_VREF">
 <contactref element="U1" pad="35"/>
@@ -2252,11 +2277,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="37.17" y1="41.1" x2="37.17" y2="43.55" width="0.1524" layer="1"/>
 <wire x1="37.17" y1="43.55" x2="37.18" y2="43.56" width="0.1524" layer="1"/>
 <wire x1="37.18" y1="43.56" x2="33.06" y2="43.56" width="0.1524" layer="1"/>
-<wire x1="33.06" y1="43.56" x2="31.6" y2="42.1" width="0.1524" layer="1"/>
-<wire x1="31.6" y1="42.1" x2="18.5" y2="42.1" width="0.1524" layer="1"/>
-<wire x1="15.3" y1="41.5" x2="11.9" y2="44.9" width="0.1524" layer="1"/>
-<wire x1="17.9" y1="41.5" x2="15.3" y2="41.5" width="0.1524" layer="1"/>
-<wire x1="18.5" y1="42.1" x2="17.9" y2="41.5" width="0.1524" layer="1"/>
+<wire x1="12.4" y1="44.4" x2="11.9" y2="44.9" width="0.1524" layer="1"/>
 <contactref element="U1" pad="1"/>
 <wire x1="11.9" y1="51.9" x2="11.5" y2="52.3" width="0.1524" layer="1"/>
 <wire x1="11.5" y1="52.3" x2="9.5" y2="52.3" width="0.1524" layer="1"/>
@@ -2266,13 +2287,17 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="11.9" y1="44.9" x2="11.9" y2="51.9" width="0.1524" layer="1"/>
 <wire x1="9.2" y1="52" x2="9.2" y2="51.40395" width="0.1524" layer="1"/>
 <wire x1="9.31" y1="50.93" x2="9.1314" y2="50.93" width="0.1524" layer="1"/>
+<wire x1="33.06" y1="43.56" x2="32.2248" y2="44.3952" width="0.1524" layer="1"/>
+<wire x1="32.2248" y1="44.3952" x2="13.97374375" y2="44.3952" width="0.1524" layer="1"/>
+<wire x1="13.97374375" y1="44.3952" x2="13.96894375" y2="44.4" width="0.1524" layer="1"/>
+<wire x1="13.96894375" y1="44.4" x2="12.4" y2="44.4" width="0.1524" layer="1"/>
 </signal>
 <signal name="39">
 <contactref element="Q1" pad="2"/>
 <contactref element="R2" pad="1"/>
-<wire x1="14.3" y1="44.5" x2="12.3" y2="46.5" width="0.1524" layer="1"/>
-<wire x1="14.3" y1="44.5" x2="41.69" y2="44.5" width="0.1524" layer="1"/>
-<wire x1="41.69" y1="44.5" x2="41.69" y2="43.56" width="0.1524" layer="1"/>
+<wire x1="14.1" y1="44.7" x2="12.3" y2="46.5" width="0.1524" layer="1"/>
+<wire x1="14.1" y1="44.7" x2="41.69" y2="44.7" width="0.1524" layer="1"/>
+<wire x1="41.69" y1="44.7" x2="41.69" y2="43.56" width="0.1524" layer="1"/>
 <wire x1="41.69" y1="43.56" x2="41.69" y2="41.1" width="0.1524" layer="1"/>
 <contactref element="U1" pad="2"/>
 <wire x1="12.3" y1="52.6" x2="11.9" y2="53" width="0.1524" layer="1"/>
@@ -2623,6 +2648,24 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="49.75" y1="44.35" x2="49.75" y2="45.6" width="0.3048" layer="1"/>
 <wire x1="49.75" y1="45.6" x2="50" y2="45.85" width="0.3048" layer="1"/>
 </signal>
+<signal name="N$1">
+<contactref element="J6" pad="P$2"/>
+<contactref element="U1" pad="30"/>
+<wire x1="28.69" y1="25.53" x2="12.37" y2="25.53" width="0.1524" layer="1"/>
+<wire x1="4.1" y1="26.8" x2="3.7" y2="27.2" width="0.1524" layer="1"/>
+<wire x1="12.37" y1="25.53" x2="11.1" y2="26.8" width="0.1524" layer="1"/>
+<wire x1="11.1" y1="26.8" x2="4.1" y2="26.8" width="0.1524" layer="1"/>
+</signal>
+<signal name="N$4">
+<contactref element="J7" pad="P$2"/>
+<contactref element="U1" pad="37"/>
+<wire x1="28.69" y1="43.31" x2="18.69" y2="43.31" width="0.1524" layer="1"/>
+<wire x1="18.69" y1="43.31" x2="18" y2="44" width="0.1524" layer="1"/>
+<wire x1="6.6" y1="44.6" x2="3.7" y2="41.7" width="0.1524" layer="1"/>
+<wire x1="18" y1="44" x2="11.5" y2="44" width="0.1524" layer="1"/>
+<wire x1="11.5" y1="44" x2="10.9" y2="44.6" width="0.1524" layer="1"/>
+<wire x1="10.9" y1="44.6" x2="6.6" y2="44.6" width="0.1524" layer="1"/>
+</signal>
 </signals>
 <mfgpreviewcolors>
 <mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
@@ -2700,6 +2743,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <approved hash="19,1,389f14a31ec3db66"/>
 <approved hash="19,1,957830acb551324f"/>
 <approved hash="19,1,b74c456fec761562"/>
+<approved hash="19,1,a195a41b5a135f9d"/>
+<approved hash="19,1,1302fc1a1a9b1e55"/>
+<approved hash="19,1,09060b6cf564f70e"/>
+<approved hash="19,1,062bfb1a15a90cb2"/>
 </errors>
 </board>
 </drawing>

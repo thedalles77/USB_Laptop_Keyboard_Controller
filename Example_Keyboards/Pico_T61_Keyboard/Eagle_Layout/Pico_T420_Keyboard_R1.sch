@@ -551,7 +551,7 @@ In this library the device names are the same as the pin names of the symbols, t
 </deviceset>
 </devicesets>
 </library>
-<library name="SparkFun-Resistors" urn="urn:adsk.eagle:library:532">
+<library name="SparkFun-Resistors">
 <description>&lt;h3&gt;SparkFun Resistors&lt;/h3&gt;
 This library contains resistors. Reference designator:R. 
 &lt;br&gt;
@@ -566,7 +566,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 &lt;br&gt;
 You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
 <packages>
-<package name="0603" urn="urn:adsk.eagle:footprint:39615/1" library_version="1">
+<package name="0603" urn="urn:adsk.eagle:footprint:39615/1" locally_modified="yes">
 <description>&lt;p&gt;&lt;b&gt;Generic 1608 (0603) package&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
 <wire x1="-1.6" y1="0.7" x2="1.6" y2="0.7" width="0.0508" layer="39"/>
@@ -582,6 +582,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <rectangle x1="-0.8382" y1="-0.4699" x2="-0.3381" y2="0.4801" layer="51"/>
 <rectangle x1="0.3302" y1="-0.4699" x2="0.8303" y2="0.4801" layer="51"/>
 <rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+<wire x1="-1.6" y1="0.7" x2="1.6" y2="0.7" width="0.127" layer="21"/>
+<wire x1="1.6" y1="0.7" x2="1.6" y2="-0.7" width="0.127" layer="21"/>
+<wire x1="1.6" y1="-0.7" x2="-1.6" y2="-0.7" width="0.127" layer="21"/>
+<wire x1="-1.6" y1="-0.7" x2="-1.6" y2="0.7" width="0.127" layer="21"/>
 </package>
 <package name="AXIAL-0.3" urn="urn:adsk.eagle:footprint:39622/1" library_version="1">
 <description>&lt;h3&gt;AXIAL-0.3&lt;/h3&gt;
@@ -672,7 +676,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package>
 </packages>
 <packages3d>
-<package3d name="0603" urn="urn:adsk.eagle:package:39650/1" type="box" library_version="1">
+<package3d name="0603" urn="urn:adsk.eagle:package:39650/1" type="box">
 <description>Generic 1608 (0603) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
 <packageinstances>
@@ -711,7 +715,7 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="RESISTOR" urn="urn:adsk.eagle:symbol:39614/1" library_version="1">
+<symbol name="RESISTOR">
 <wire x1="-2.54" y1="0" x2="-2.159" y2="1.016" width="0.1524" layer="94"/>
 <wire x1="-2.159" y1="1.016" x2="-1.524" y2="-1.016" width="0.1524" layer="94"/>
 <wire x1="-1.524" y1="-1.016" x2="-0.889" y2="1.016" width="0.1524" layer="94"/>
@@ -728,7 +732,7 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="10KOHM" urn="urn:adsk.eagle:component:39764/1" prefix="R" library_version="1">
+<deviceset name="10KOHM" prefix="R">
 <description>&lt;h3&gt;10kΩ resistor&lt;/h3&gt;
 &lt;p&gt;A resistor is a passive two-terminal electrical component that implements electrical resistance as a circuit element. Resistors act to reduce current flow, and, at the same time, act to lower voltage levels within circuits. - Wikipedia&lt;/p&gt;</description>
 <gates>
@@ -2118,7 +2122,7 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 <pin name="GP20" x="25.4" y="2.54" length="middle" rot="R180"/>
 <pin name="GP21" x="25.4" y="0" length="middle" rot="R180"/>
 <pin name="GP22" x="25.4" y="-2.54" length="middle" rot="R180"/>
-<pin name="!RUN" x="-25.4" y="25.4" length="middle" direction="in"/>
+<pin name="RUN" x="-25.4" y="25.4" length="middle" direction="in"/>
 <pin name="GP26" x="25.4" y="-5.08" length="middle" rot="R180"/>
 <pin name="GP27" x="25.4" y="-7.62" length="middle" rot="R180"/>
 <pin name="AGND" x="25.4" y="-12.7" length="middle" direction="pwr" rot="R180"/>
@@ -2153,7 +2157,6 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 <devices>
 <device name="" package="MODULE_SC0918">
 <connects>
-<connect gate="G$1" pin="!RUN" pad="30"/>
 <connect gate="G$1" pin="3V3_EN" pad="37"/>
 <connect gate="G$1" pin="3V3_OUT" pad="36"/>
 <connect gate="G$1" pin="ADC_VREF" pad="35"/>
@@ -2198,6 +2201,7 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 <connect gate="G$1" pin="P3" pad="P3"/>
 <connect gate="G$1" pin="P38" pad="P38"/>
 <connect gate="G$1" pin="P8" pad="P8"/>
+<connect gate="G$1" pin="RUN" pad="30"/>
 <connect gate="G$1" pin="VBUS" pad="40"/>
 <connect gate="G$1" pin="VSYS" pad="39"/>
 </connects>
@@ -2335,10 +2339,10 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 <wire x1="1.6" y1="1.3" x2="1.6" y2="-1.3" width="0.05" layer="51"/>
 <wire x1="1.6" y1="-1.3" x2="-1.6" y2="-1.3" width="0.05" layer="51"/>
 <wire x1="-1.6" y1="-1.3" x2="-1.6" y2="1.3" width="0.05" layer="51"/>
-<wire x1="-1" y1="1" x2="1" y2="1" width="0.1" layer="51"/>
-<wire x1="1" y1="1" x2="1" y2="-1" width="0.1" layer="51"/>
-<wire x1="1" y1="-1" x2="-1" y2="-1" width="0.1" layer="51"/>
-<wire x1="-1" y1="-1" x2="-1" y2="1" width="0.1" layer="51"/>
+<wire x1="-1" y1="1" x2="1" y2="1" width="0.1" layer="21"/>
+<wire x1="1" y1="1" x2="1" y2="-1" width="0.1" layer="21"/>
+<wire x1="1" y1="-1" x2="-1" y2="-1" width="0.1" layer="21"/>
+<wire x1="-1" y1="-1" x2="-1" y2="1" width="0.1" layer="21"/>
 <wire x1="-1" y1="0.5" x2="-0.5" y2="1" width="0.1" layer="51"/>
 <circle x="-1.35" y="1.325" radius="0.125" width="0.25" layer="25"/>
 </package>
@@ -2517,7 +2521,7 @@ Source: &lt;a href="http://componentsearchengine.com/Datasheets/1/TPS60150DRVR.p
 </deviceset>
 </devicesets>
 </library>
-<library name="SparkFun-Connectors" urn="urn:adsk.eagle:library:513">
+<library name="SparkFun-Connectors">
 <description>&lt;h3&gt;SparkFun Connectors&lt;/h3&gt;
 This library contains electrically-functional connectors. 
 &lt;br&gt;
@@ -2908,7 +2912,7 @@ CONN_01
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="CONN_01" urn="urn:adsk.eagle:symbol:37640/1" library_version="1">
+<symbol name="CONN_01">
 <description>&lt;h3&gt;1 Pin Connection&lt;/h3&gt;</description>
 <wire x1="3.81" y1="-2.54" x2="-2.54" y2="-2.54" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.6096" layer="94"/>
@@ -2921,7 +2925,7 @@ CONN_01
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="CONN_01" urn="urn:adsk.eagle:component:38322/1" prefix="J" uservalue="yes" library_version="1">
+<deviceset name="CONN_01" prefix="J" uservalue="yes">
 <description>&lt;h3&gt;Single connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections&lt;/h3&gt;
 &lt;p&gt;&lt;/p&gt;
 
@@ -3160,10 +3164,10 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <parts>
 <part name="Q1" library="SparkFun-DiscreteSemi" library_urn="urn:adsk.eagle:library:514" deviceset="MOSFET-NCH" device="-BSS138" package3d_urn="urn:adsk.eagle:package:38446/1" value="220mA/50V/3.5Ω"/>
 <part name="Q2" library="SparkFun-DiscreteSemi" library_urn="urn:adsk.eagle:library:514" deviceset="MOSFET-NCH" device="-BSS138" package3d_urn="urn:adsk.eagle:package:38446/1" value="220mA/50V/3.5Ω"/>
-<part name="R2" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R4" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R3" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R2" library="SparkFun-Resistors" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R4" library="SparkFun-Resistors" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R5" library="SparkFun-Resistors" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R3" library="SparkFun-Resistors" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
 <part name="SUPPLY3" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="SUPPLY6" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="J5" library="WM6787_A01B" deviceset="WM6787_A01B" device="" value="AA01B-S040"/>
@@ -3182,10 +3186,14 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <part name="C1" library="0603_CAP" deviceset="0603_CAP" device="" value="1UF"/>
 <part name="C2" library="0603_CAP" deviceset="0603_CAP" device="" value="2.2UF"/>
 <part name="C3" library="0603_CAP" deviceset="0603_CAP" device="" value="2.2UF"/>
-<part name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="J3" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" deviceset="CONN_01" device="" package3d_urn="urn:adsk.eagle:package:38028/1"/>
-<part name="J1" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" deviceset="CONN_01" device="" package3d_urn="urn:adsk.eagle:package:38028/1"/>
+<part name="R1" library="SparkFun-Resistors" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="J3" library="SparkFun-Connectors" deviceset="CONN_01" device="" package3d_urn="urn:adsk.eagle:package:38028/1"/>
+<part name="J1" library="SparkFun-Connectors" deviceset="CONN_01" device="" package3d_urn="urn:adsk.eagle:package:38028/1"/>
 <part name="J2" library="JST-PH-3PIN" deviceset="JST-PH-3PIN" device="" value="JST-PH-3PIN"/>
+<part name="J6" library="JST-PH-2PIN" deviceset="JST-PH-2PIN" device=""/>
+<part name="J7" library="JST-PH-2PIN" deviceset="JST-PH-2PIN" device=""/>
+<part name="SUPPLY4" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
+<part name="SUPPLY10" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3207,6 +3215,8 @@ Wire Battery output to pin 3</text>
 <text x="106.68" y="121.92" size="1.778" layer="97">Trackpoint 5 Volts</text>
 <text x="10.16" y="137.16" size="1.778" layer="97">If not using Bluetooth, use the USB 5 volts to power the Trackpoint.
 Add Jumper wire from J1 to J3 and do not install IC1, C1, C2, C3, R1, D1, and J2.  </text>
+<text x="-83.82" y="96.52" size="1.778" layer="97">Reset switch</text>
+<text x="-60.96" y="96.52" size="1.778" layer="97">Enable switch</text>
 </plain>
 <instances>
 <instance part="Q1" gate="NMOS" x="93.98" y="60.96" smashed="yes" rot="R270">
@@ -3312,6 +3322,20 @@ Add Jumper wire from J1 to J3 and do not install IC1, C1, C2, C3, R1, D1, and J2
 <instance part="J2" gate="G$1" x="10.16" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="15.24" y="104.14" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="0" y="111.76" size="1.778" layer="96"/>
+</instance>
+<instance part="J6" gate="G$1" x="-76.2" y="88.9" smashed="yes" rot="R90">
+<attribute name="NAME" x="-83.82" y="81.28" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="-66.04" y="81.28" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="J7" gate="G$1" x="-53.34" y="88.9" smashed="yes" rot="R90">
+<attribute name="NAME" x="-60.96" y="81.28" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="-43.18" y="81.28" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY4" gate="GND" x="-78.74" y="76.2" smashed="yes">
+<attribute name="VALUE" x="-80.645" y="73.025" size="1.778" layer="96"/>
+</instance>
+<instance part="SUPPLY10" gate="GND" x="-55.88" y="76.2" smashed="yes">
+<attribute name="VALUE" x="-57.785" y="73.025" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -3563,6 +3587,16 @@ Add Jumper wire from J1 to J3 and do not install IC1, C1, C2, C3, R1, D1, and J2
 <pinref part="SUPPLY5" gate="GND" pin="GND"/>
 <pinref part="J2" gate="G$1" pin="P1"/>
 <wire x1="5.08" y1="93.98" x2="5.08" y2="96.52" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J6" gate="G$1" pin="P1"/>
+<pinref part="SUPPLY4" gate="GND" pin="GND"/>
+<wire x1="-78.74" y1="81.28" x2="-78.74" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J7" gate="G$1" pin="P1"/>
+<pinref part="SUPPLY10" gate="GND" pin="GND"/>
+<wire x1="-55.88" y1="81.28" x2="-55.88" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="5" class="0">
@@ -4020,6 +4054,22 @@ Add Jumper wire from J1 to J3 and do not install IC1, C1, C2, C3, R1, D1, and J2
 <wire x1="60.96" y1="99.06" x2="58.42" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="1"/>
 <wire x1="58.42" y1="99.06" x2="58.42" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="J6" gate="G$1" pin="P2"/>
+<wire x1="-73.66" y1="81.28" x2="-73.66" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="RUN"/>
+<wire x1="-73.66" y1="53.34" x2="-48.26" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="P2"/>
+<wire x1="-50.8" y1="81.28" x2="-50.8" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="3V3_EN"/>
+<wire x1="-50.8" y1="55.88" x2="-48.26" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
