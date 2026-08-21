@@ -160,8 +160,8 @@
 <wire x1="12" y1="10.3" x2="12" y2="0" width="0" layer="20"/>
 <wire x1="12" y1="0" x2="0" y2="0" width="0" layer="20"/>
 <text x="34.5" y="52.8" size="0.6096" layer="21" ratio="15">Battery</text>
-<text x="37.58" y="13.71" size="1.778" layer="21" ratio="15" rot="R90">Raspberry Pi Pico W
-26 Pin Keyboard Controller</text>
+<text x="37.77" y="12.82" size="1.778" layer="21" ratio="15" rot="R90">Raspberry Pi Pico W 26 Pin
+Keyboard Controller</text>
 <text x="1.61" y="45.41" size="0.6096" layer="21" ratio="15">Shut Off</text>
 <text x="2.04" y="24.77" size="0.6096" layer="21" ratio="15">Reset</text>
 <text x="40.83" y="48.87" size="1.778" layer="22" rot="MR270">GND</text>
@@ -186,6 +186,18 @@ Breakout Boaed</text>
 <text x="45.63" y="14.93" size="1.778" layer="21">21</text>
 <text x="45.68" y="12.38" size="1.778" layer="21">23</text>
 <text x="45.69" y="9.77" size="1.778" layer="21">25</text>
+<text x="36.35" y="43.73" size="1.4224" layer="21">1N5817</text>
+<wire x1="40.73" y1="47.51" x2="40.73" y2="45.78" width="0.1524" layer="21"/>
+<wire x1="40.73" y1="45.78" x2="39.88" y2="46.63" width="0.1524" layer="21"/>
+<wire x1="39.88" y1="46.63" x2="39.88" y2="46.64" width="0.1524" layer="21"/>
+<wire x1="39.88" y1="46.64" x2="40.73" y2="47.49" width="0.1524" layer="21"/>
+<wire x1="40.73" y1="47.49" x2="40.74" y2="47.49" width="0.1524" layer="21"/>
+<wire x1="39.88" y1="47.52" x2="39.88" y2="45.75" width="0.1524" layer="21"/>
+<wire x1="39.88" y1="47.52" x2="39.87" y2="47.53" width="0.1524" layer="21"/>
+<wire x1="39.87" y1="47.53" x2="39.56" y2="47.53" width="0.1524" layer="21"/>
+<wire x1="39.56" y1="47.53" x2="39.56" y2="47.22" width="0.1524" layer="21"/>
+<wire x1="39.88" y1="45.75" x2="40.18" y2="45.75" width="0.1524" layer="21"/>
+<wire x1="40.18" y1="45.75" x2="40.18" y2="46.03" width="0.1524" layer="21"/>
 </plain>
 <libraries>
 <library name="SC0918">
@@ -1172,34 +1184,31 @@ Breakout Boaed</text>
 <description>&lt;b&gt;https://componentsearchengine.com&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
 <packages>
-<package name="SODFL3616X98N">
-<description>&lt;b&gt;SOD-123FL CASE498&lt;/b&gt;&lt;br&gt;
+<package name="DIOAD1410W86L470D235">
+<description>&lt;b&gt;DO-204AL (DO-41)&lt;/b&gt;&lt;br&gt;
 </description>
-<smd name="1" x="-1.5" y="0" dx="1.24" dy="1.12" layer="1"/>
-<smd name="2" x="1.5" y="0" dx="1.24" dy="1.12" layer="1"/>
-<text x="0" y="-2.54" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="3.81" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-2.27" y1="1.05" x2="2.27" y2="1.05" width="0.05" layer="51"/>
-<wire x1="2.27" y1="1.05" x2="2.27" y2="-1.05" width="0.05" layer="51"/>
-<wire x1="2.27" y1="-1.05" x2="-2.27" y2="-1.05" width="0.05" layer="51"/>
-<wire x1="-2.27" y1="-1.05" x2="-2.27" y2="1.05" width="0.05" layer="51"/>
-<wire x1="-1.35" y1="0.825" x2="1.35" y2="0.825" width="0.1" layer="51"/>
-<wire x1="1.35" y1="0.825" x2="1.35" y2="-0.825" width="0.1" layer="51"/>
-<wire x1="1.35" y1="-0.825" x2="-1.35" y2="-0.825" width="0.1" layer="51"/>
-<wire x1="-1.35" y1="-0.825" x2="-1.35" y2="0.825" width="0.1" layer="51"/>
-<wire x1="-1.35" y1="0.205" x2="-0.73" y2="0.825" width="0.1" layer="51"/>
-<wire x1="-2.12" y1="0.825" x2="1.35" y2="0.825" width="0.2" layer="21"/>
-<wire x1="-1.35" y1="-0.825" x2="1.35" y2="-0.825" width="0.2" layer="21"/>
-<wire x1="1.3716" y1="1.778" x2="0.3302" y2="1.778" width="0.127" layer="21"/>
-<wire x1="0.3302" y1="1.778" x2="0.3302" y2="1.7526" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="2.2352" x2="0.3048" y2="2.2098" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="2.2098" x2="0.3048" y2="1.3208" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="1.3208" x2="0.3556" y2="1.27" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="1.3208" x2="-0.127" y2="1.7526" width="0.127" layer="21"/>
-<wire x1="-0.127" y1="1.7526" x2="-0.1524" y2="1.7526" width="0.127" layer="21"/>
-<wire x1="-0.1524" y1="1.7526" x2="0.3048" y2="2.2098" width="0.127" layer="21"/>
-<wire x1="-0.2286" y1="1.2954" x2="-0.2286" y2="2.2352" width="0.127" layer="21"/>
-<wire x1="-0.2794" y1="1.778" x2="-1.27" y2="1.778" width="0.127" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.05" diameter="1.575" shape="square"/>
+<pad name="2" x="14.1" y="0" drill="1.05" diameter="1.575"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.038" y1="1.525" x2="15.137" y2="1.525" width="0.05" layer="51"/>
+<wire x1="15.137" y1="1.525" x2="15.137" y2="-1.525" width="0.05" layer="51"/>
+<wire x1="15.137" y1="-1.525" x2="-1.038" y2="-1.525" width="0.05" layer="51"/>
+<wire x1="-1.038" y1="-1.525" x2="-1.038" y2="1.525" width="0.05" layer="51"/>
+<wire x1="4.7" y1="1.175" x2="9.4" y2="1.175" width="0.1" layer="51"/>
+<wire x1="9.4" y1="1.175" x2="9.4" y2="-1.175" width="0.1" layer="51"/>
+<wire x1="9.4" y1="-1.175" x2="4.7" y2="-1.175" width="0.1" layer="51"/>
+<wire x1="4.7" y1="-1.175" x2="4.7" y2="1.175" width="0.1" layer="51"/>
+<wire x1="4.7" y1="0" x2="5.875" y2="1.175" width="0.1" layer="51"/>
+<wire x1="0" y1="0" x2="4.7" y2="0" width="0.1" layer="51"/>
+<wire x1="9.4" y1="0" x2="14.1" y2="0" width="0.1" layer="51"/>
+<wire x1="4.7" y1="1.175" x2="9.4" y2="1.175" width="0.2" layer="21"/>
+<wire x1="9.4" y1="1.175" x2="9.4" y2="-1.175" width="0.2" layer="21"/>
+<wire x1="9.4" y1="-1.175" x2="4.7" y2="-1.175" width="0.2" layer="21"/>
+<wire x1="4.7" y1="-1.175" x2="4.7" y2="1.175" width="0.2" layer="21"/>
+<wire x1="4.7" y1="0" x2="5.875" y2="1.175" width="0.2" layer="21"/>
+<wire x1="1.138" y1="0" x2="4.7" y2="0" width="0.2" layer="21"/>
+<wire x1="9.4" y1="0" x2="12.962" y2="0" width="0.2" layer="21"/>
 </package>
 </packages>
 </library>
@@ -1809,15 +1818,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="SNAPEDA_LINK" value="https://www.snapeda.com/parts/SC0918/Raspberry+Pi/view-part/?ref=snap" x="44.4" y="-2.41" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="15.76" y="12" size="1.27" layer="27" align="top-left"/>
 </element>
-<element name="D1" library="SamacSys_Parts" package="SODFL3616X98N" value="MBR120VLSFT1G" x="34.37" y="48.42" smashed="yes">
-<attribute name="DESCRIPTION" value="Diode Schottky 20V 1A SOD123FL ON Semi MBR120VLSFT1G, SMT Schottky Diode, 20V 1A, 2-Pin SOD-123FL" x="23.17" y="57.12" size="1.778" layer="27" display="off"/>
-<attribute name="HEIGHT" value="0.98mm" x="23.17" y="57.12" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER_NAME" value="onsemi" x="23.17" y="57.12" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="MBR120VLSFT1G" x="23.17" y="57.12" size="1.778" layer="27" display="off"/>
-<attribute name="MOUSER_PART_NUMBER" value="863-MBR120VLSFT1G" x="23.17" y="57.12" size="1.778" layer="27" display="off"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/onsemi/MBR120VLSFT1G?qs=3JMERSakebpX%252BkItPpFCkg%3D%3D" x="23.17" y="57.12" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="34.37" y="45.88" size="1.27" layer="25" align="center"/>
-<attribute name="VALUE" x="34.37" y="52.23" size="1.27" layer="27" align="center"/>
+<element name="D1" library="SamacSys_Parts" package="DIOAD1410W86L470D235" value="1N5817" x="33.04" y="46.65" smashed="yes">
+<attribute name="DESCRIPTION" value="Schottky Diodes &amp; Rectifiers 1A, 20V, Schottky Rectifier" x="21.84" y="55.35" size="1.778" layer="27" display="off"/>
+<attribute name="HEIGHT" value="mm" x="21.84" y="55.35" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER_NAME" value="Taiwan Semiconductor" x="21.84" y="55.35" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="1N5817" x="21.84" y="55.35" size="1.778" layer="27" display="off"/>
+<attribute name="MOUSER_PART_NUMBER" value="821-1N5817" x="21.84" y="55.35" size="1.778" layer="27" display="off"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Taiwan-Semiconductor/1N5817?qs=G5AQjGfRJcITga2hz4Rc2w%3D%3D" x="21.84" y="55.35" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="36.43" y="48.08" size="1.27" layer="25" align="center"/>
+<attribute name="VALUE" x="33.04" y="50.46" size="1.27" layer="27" align="center"/>
 </element>
 <element name="J4" library="JST-PH-3PIN" package="JST-PH-3PIN" value="JST-PH-3PIN" x="42.9" y="51.1" smashed="yes">
 <attribute name="NAME" x="46.23" y="51.71" size="0.8128" layer="25"/>
@@ -1834,7 +1843,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="VALUE" x="5.66" y="39.98" size="0.6096" layer="27" rot="R90"/>
 </element>
 <element name="J1" library="SparkFun-Connectors" package="2X13" package3d_urn="urn:adsk.eagle:package:38269/1" value="" x="41.24" y="41.16" smashed="yes" rot="R270">
-<attribute name="NAME" x="43.144" y="43.66" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="NAME" x="44.194" y="43.66" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="38.827" y="42.43" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
 </elements>
@@ -1879,7 +1888,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="27.89" y1="20.45" x2="28.64" y2="20.45" width="0.1524" layer="1"/>
 <wire x1="28.64" y1="20.45" x2="28.69" y2="20.45" width="0.1524" layer="1"/>
 <contactref element="J4" pad="P$1"/>
-<wire x1="26.9" y1="20.45" x2="28.64" y2="20.45" width="1.27" layer="1"/>
+<wire x1="26.9" y1="20.45" x2="27.8" y2="20.45" width="1.27" layer="1"/>
+<wire x1="27.8" y1="20.45" x2="28.64" y2="20.45" width="1.27" layer="1"/>
 <wire x1="10.11" y1="20.45" x2="16.35" y2="20.45" width="1.27" layer="1"/>
 <wire x1="16.35" y1="20.45" x2="17.75" y2="19.05" width="1.27" layer="1"/>
 <wire x1="17.75" y1="19.05" x2="25.5" y2="19.05" width="1.27" layer="1"/>
@@ -1893,7 +1903,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="10.11" y1="20.45" x2="9.31" y2="20.45" width="1.27" layer="1"/>
 <wire x1="10.11" y1="45.85" x2="9.38" y2="45.85" width="1.27" layer="1"/>
 <wire x1="9.31" y1="45.85" x2="6.23" y2="45.85" width="1.27" layer="1"/>
-<wire x1="27.89" y1="45.85" x2="28.69" y2="45.85" width="1.27" layer="1"/>
+<wire x1="27.89" y1="45.85" x2="28.44" y2="45.85" width="1.27" layer="1"/>
+<wire x1="28.44" y1="45.85" x2="28.69" y2="45.85" width="1.27" layer="1"/>
 <wire x1="28.69" y1="33.15" x2="31.72" y2="33.15" width="1.27" layer="1"/>
 <wire x1="31.72" y1="33.15" x2="31.75" y2="33.18" width="1.27" layer="1"/>
 <via x="31.75" y="33.18" extent="1-16" drill="0.35"/>
@@ -1912,6 +1923,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="30.54" y1="7.75" x2="30.98" y2="8.19" width="0.6096" layer="1"/>
 <contactref element="J5" pad="P$1"/>
 <contactref element="J6" pad="P$1"/>
+<wire x1="31.38" y1="7.72" x2="28.27" y2="7.72" width="1.27" layer="1"/>
+<wire x1="30.91" y1="20.45" x2="28.64" y2="20.45" width="1.27" layer="1"/>
+<wire x1="31.36" y1="45.83" x2="28.46" y2="45.83" width="1.27" layer="1"/>
+<wire x1="28.46" y1="45.83" x2="28.44" y2="45.85" width="1.27" layer="1"/>
 </signal>
 <signal name="ADC_VREF">
 <contactref element="U1" pad="35"/>
@@ -1934,16 +1949,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <contactref element="D1" pad="1"/>
 <contactref element="U1" pad="39"/>
 <wire x1="29.0764" y1="48.42" x2="29.0464" y2="48.39" width="0.508" layer="1"/>
-<wire x1="32.84" y1="48.39" x2="32.87" y2="48.42" width="0.508" layer="1"/>
-<wire x1="28.69" y1="48.39" x2="32.84" y2="48.39" width="1.016" layer="1"/>
+<wire x1="33.04" y1="46.65" x2="33.00588125" y2="48.39" width="1.016" layer="1"/>
+<wire x1="28.69" y1="48.39" x2="33.00588125" y2="48.39" width="1.016" layer="1"/>
 <wire x1="28.69" y1="48.39" x2="29.0464" y2="48.39" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VBAT">
 <contactref element="D1" pad="2"/>
 <contactref element="J4" pad="P$3"/>
-<wire x1="35.87" y1="48.42" x2="43.43" y2="48.42" width="1.016" layer="1"/>
-<wire x1="43.43" y1="48.42" x2="43.96" y2="48.95" width="1.016" layer="1"/>
-<wire x1="43.96" y1="48.95" x2="43.96" y2="51.07" width="1.016" layer="1"/>
+<wire x1="47.14" y1="46.65" x2="43.96" y2="46.65" width="1.016" layer="1"/>
+<wire x1="43.96" y1="46.65" x2="43.96" y2="51.07" width="1.016" layer="1"/>
 <wire x1="43.96" y1="51.07" x2="43.92" y2="51.11" width="0.508" layer="1"/>
 </signal>
 <signal name="0">
@@ -2185,15 +2199,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="11.53" y1="10.53" x2="11.8" y2="10.8" width="0.1524" layer="1"/>
 <wire x1="26.4572" y1="10.48938125" x2="26.4572" y2="6.6" width="0.1524" layer="1"/>
 <wire x1="26.4572" y1="6.6" x2="26.5572" y2="6.5" width="0.1524" layer="1"/>
-<wire x1="30.67" y1="6.5" x2="26.5572" y2="6.5" width="0.1524" layer="1"/>
+<wire x1="31.51" y1="6.5" x2="26.5572" y2="6.5" width="0.1524" layer="1"/>
 <wire x1="11.8" y1="10.8" x2="26.14658125" y2="10.8" width="0.1524" layer="1"/>
 <wire x1="26.14658125" y1="10.8" x2="26.4572" y2="10.48938125" width="0.1524" layer="1"/>
 <wire x1="11.3" y1="2.7" x2="11.53" y2="2.93" width="0.1524" layer="1"/>
 <wire x1="9.31" y1="2.67" x2="9.34" y2="2.7" width="0.1524" layer="1"/>
 <wire x1="9.34" y1="2.7" x2="11.3" y2="2.7" width="0.1524" layer="1"/>
 <contactref element="J1" pad="23"/>
-<wire x1="30.67" y1="6.5" x2="37.39" y2="13.22" width="0.1524" layer="1"/>
-<wire x1="37.39" y1="13.22" x2="41.24" y2="13.22" width="0.1524" layer="1"/>
+<wire x1="31.51" y1="6.5" x2="38.23" y2="13.22" width="0.1524" layer="1"/>
+<wire x1="38.23" y1="13.22" x2="41.24" y2="13.22" width="0.1524" layer="1"/>
 </signal>
 <signal name="17">
 <contactref element="U1" pad="22"/>

@@ -1296,73 +1296,74 @@ In this library the device names are the same as the pin names of the symbols, t
 <description>&lt;b&gt;https://componentsearchengine.com&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
 <packages>
-<package name="SODFL3616X98N">
-<description>&lt;b&gt;SOD-123FL CASE498&lt;/b&gt;&lt;br&gt;
+<package name="DIOAD1410W86L470D235">
+<description>&lt;b&gt;DO-204AL (DO-41)&lt;/b&gt;&lt;br&gt;
 </description>
-<smd name="1" x="-1.5" y="0" dx="1.24" dy="1.12" layer="1"/>
-<smd name="2" x="1.5" y="0" dx="1.24" dy="1.12" layer="1"/>
-<text x="0" y="-2.54" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="3.81" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-2.27" y1="1.05" x2="2.27" y2="1.05" width="0.05" layer="51"/>
-<wire x1="2.27" y1="1.05" x2="2.27" y2="-1.05" width="0.05" layer="51"/>
-<wire x1="2.27" y1="-1.05" x2="-2.27" y2="-1.05" width="0.05" layer="51"/>
-<wire x1="-2.27" y1="-1.05" x2="-2.27" y2="1.05" width="0.05" layer="51"/>
-<wire x1="-1.35" y1="0.825" x2="1.35" y2="0.825" width="0.1" layer="51"/>
-<wire x1="1.35" y1="0.825" x2="1.35" y2="-0.825" width="0.1" layer="51"/>
-<wire x1="1.35" y1="-0.825" x2="-1.35" y2="-0.825" width="0.1" layer="51"/>
-<wire x1="-1.35" y1="-0.825" x2="-1.35" y2="0.825" width="0.1" layer="51"/>
-<wire x1="-1.35" y1="0.205" x2="-0.73" y2="0.825" width="0.1" layer="51"/>
-<wire x1="-2.12" y1="0.825" x2="1.35" y2="0.825" width="0.2" layer="21"/>
-<wire x1="-1.35" y1="-0.825" x2="1.35" y2="-0.825" width="0.2" layer="21"/>
-<wire x1="1.3716" y1="1.778" x2="0.3302" y2="1.778" width="0.127" layer="21"/>
-<wire x1="0.3302" y1="1.778" x2="0.3302" y2="1.7526" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="2.2352" x2="0.3048" y2="2.2098" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="2.2098" x2="0.3048" y2="1.3208" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="1.3208" x2="0.3556" y2="1.27" width="0.127" layer="21"/>
-<wire x1="0.3048" y1="1.3208" x2="-0.127" y2="1.7526" width="0.127" layer="21"/>
-<wire x1="-0.127" y1="1.7526" x2="-0.1524" y2="1.7526" width="0.127" layer="21"/>
-<wire x1="-0.1524" y1="1.7526" x2="0.3048" y2="2.2098" width="0.127" layer="21"/>
-<wire x1="-0.2286" y1="1.2954" x2="-0.2286" y2="2.2352" width="0.127" layer="21"/>
-<wire x1="-0.2794" y1="1.778" x2="-1.27" y2="1.778" width="0.127" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.05" diameter="1.575" shape="square"/>
+<pad name="2" x="14.1" y="0" drill="1.05" diameter="1.575"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.038" y1="1.525" x2="15.137" y2="1.525" width="0.05" layer="51"/>
+<wire x1="15.137" y1="1.525" x2="15.137" y2="-1.525" width="0.05" layer="51"/>
+<wire x1="15.137" y1="-1.525" x2="-1.038" y2="-1.525" width="0.05" layer="51"/>
+<wire x1="-1.038" y1="-1.525" x2="-1.038" y2="1.525" width="0.05" layer="51"/>
+<wire x1="4.7" y1="1.175" x2="9.4" y2="1.175" width="0.1" layer="51"/>
+<wire x1="9.4" y1="1.175" x2="9.4" y2="-1.175" width="0.1" layer="51"/>
+<wire x1="9.4" y1="-1.175" x2="4.7" y2="-1.175" width="0.1" layer="51"/>
+<wire x1="4.7" y1="-1.175" x2="4.7" y2="1.175" width="0.1" layer="51"/>
+<wire x1="4.7" y1="0" x2="5.875" y2="1.175" width="0.1" layer="51"/>
+<wire x1="0" y1="0" x2="4.7" y2="0" width="0.1" layer="51"/>
+<wire x1="9.4" y1="0" x2="14.1" y2="0" width="0.1" layer="51"/>
+<wire x1="4.7" y1="1.175" x2="9.4" y2="1.175" width="0.2" layer="21"/>
+<wire x1="9.4" y1="1.175" x2="9.4" y2="-1.175" width="0.2" layer="21"/>
+<wire x1="9.4" y1="-1.175" x2="4.7" y2="-1.175" width="0.2" layer="21"/>
+<wire x1="4.7" y1="-1.175" x2="4.7" y2="1.175" width="0.2" layer="21"/>
+<wire x1="4.7" y1="0" x2="5.875" y2="1.175" width="0.2" layer="21"/>
+<wire x1="1.138" y1="0" x2="4.7" y2="0" width="0.2" layer="21"/>
+<wire x1="9.4" y1="0" x2="12.962" y2="0" width="0.2" layer="21"/>
 </package>
 </packages>
 <symbols>
-<symbol name="MBR120VLSFT1G">
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="0" x2="5.08" y2="0" width="0.254" layer="94"/>
-<wire x1="10.16" y1="0" x2="12.7" y2="0" width="0.254" layer="94"/>
-<text x="11.43" y="5.08" size="1.778" layer="95" align="center-left">&gt;NAME</text>
-<text x="11.43" y="2.54" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
-<pin name="K" x="0" y="0" visible="pad" length="short"/>
-<pin name="A" x="15.24" y="0" visible="pad" length="short" rot="R180"/>
+<symbol name="1N5817">
+<wire x1="7.62" y1="2.54" x2="7.62" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="7.62" y1="2.54" x2="8.636" y2="2.54" width="0.254" layer="94"/>
+<wire x1="8.636" y1="1.524" x2="8.636" y2="2.54" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-2.54" x2="6.604" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="6.604" y1="-1.524" x2="6.604" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="0" x2="7.62" y2="0" width="0.254" layer="94"/>
+<wire x1="12.7" y1="0" x2="15.24" y2="0" width="0.254" layer="94"/>
+<text x="12.7" y="8.89" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="12.7" y="6.35" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="K" x="2.54" y="0" visible="pad" length="short"/>
+<pin name="A" x="17.78" y="0" visible="pad" length="short" rot="R180"/>
 <polygon width="0.254" layer="94">
-<vertex x="5.08" y="0"/>
-<vertex x="10.16" y="2.54"/>
-<vertex x="10.16" y="-2.54"/>
+<vertex x="7.62" y="0"/>
+<vertex x="12.7" y="2.54"/>
+<vertex x="12.7" y="-2.54"/>
 </polygon>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MBR120VLSFT1G" prefix="D">
-<description>&lt;b&gt;Diode Schottky 20V 1A SOD123FL ON Semi MBR120VLSFT1G, SMT Schottky Diode, 20V 1A, 2-Pin SOD-123FL&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="http://www.onsemi.com/pub/Collateral/MBR120VLSFT1-D.PDF"&gt; Datasheet &lt;/a&gt;</description>
+<deviceset name="1N5817" prefix="D">
+<description>&lt;b&gt;Schottky Diodes &amp; Rectifiers 1A, 20V, Schottky Rectifier&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://services.taiwansemi.com/storage/resources/datasheet/1N5817 SERIES_H2104.pdf"&gt; Datasheet &lt;/a&gt;</description>
 <gates>
-<gate name="G$1" symbol="MBR120VLSFT1G" x="0" y="0"/>
+<gate name="G$1" symbol="1N5817" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SODFL3616X98N">
+<device name="" package="DIOAD1410W86L470D235">
 <connects>
 <connect gate="G$1" pin="A" pad="2"/>
 <connect gate="G$1" pin="K" pad="1"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DESCRIPTION" value="Diode Schottky 20V 1A SOD123FL ON Semi MBR120VLSFT1G, SMT Schottky Diode, 20V 1A, 2-Pin SOD-123FL" constant="no"/>
-<attribute name="HEIGHT" value="0.98mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="onsemi" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="MBR120VLSFT1G" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="863-MBR120VLSFT1G" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/onsemi/MBR120VLSFT1G?qs=3JMERSakebpX%252BkItPpFCkg%3D%3D" constant="no"/>
+<attribute name="DESCRIPTION" value="Schottky Diodes &amp; Rectifiers 1A, 20V, Schottky Rectifier" constant="no"/>
+<attribute name="HEIGHT" value="mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="Taiwan Semiconductor" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="1N5817" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="821-1N5817" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Taiwan-Semiconductor/1N5817?qs=G5AQjGfRJcITga2hz4Rc2w%3D%3D" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -1791,7 +1792,7 @@ CONN_13x2
 <parts>
 <part name="U1" library="SC0918" deviceset="SC0918" device=""/>
 <part name="SUPPLY1" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
-<part name="D1" library="SamacSys_Parts" deviceset="MBR120VLSFT1G" device=""/>
+<part name="D1" library="SamacSys_Parts" deviceset="1N5817" device=""/>
 <part name="SUPPLY5" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="J4" library="JST-PH-3PIN" deviceset="JST-PH-3PIN" device="" value="JST-PH-3PIN"/>
 <part name="J5" library="JST-PH-2PIN" deviceset="JST-PH-2PIN" device="" value="JST-PH-2PIN"/>
@@ -1855,8 +1856,8 @@ Breakout Board</text>
 <attribute name="VALUE" x="3.175" y="-5.715" size="1.778" layer="96"/>
 </instance>
 <instance part="D1" gate="G$1" x="10.16" y="71.12" smashed="yes" rot="R90">
-<attribute name="NAME" x="12.7" y="82.55" size="1.778" layer="95" rot="R90" align="center-left"/>
-<attribute name="VALUE" x="15.24" y="72.39" size="1.778" layer="96" rot="R90" align="center-left"/>
+<attribute name="NAME" x="12.7" y="85.09" size="1.778" layer="95" rot="R90" align="center-left"/>
+<attribute name="VALUE" x="15.24" y="77.47" size="1.778" layer="96" rot="R90" align="center-left"/>
 </instance>
 <instance part="SUPPLY5" gate="GND" x="5.08" y="91.44" smashed="yes">
 <attribute name="VALUE" x="3.175" y="88.265" size="1.778" layer="96"/>
@@ -1978,7 +1979,7 @@ Breakout Board</text>
 </net>
 <net name="VSYS" class="0">
 <segment>
-<wire x1="10.16" y1="58.42" x2="10.16" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="58.42" x2="10.16" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="K"/>
 <pinref part="U1" gate="G$1" pin="VSYS"/>
 <wire x1="2.54" y1="58.42" x2="10.16" y2="58.42" width="0.1524" layer="91"/>
@@ -1987,7 +1988,7 @@ Breakout Board</text>
 </net>
 <net name="VBAT" class="0">
 <segment>
-<wire x1="10.16" y1="86.36" x2="10.16" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="88.9" x2="10.16" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="A"/>
 <pinref part="J4" gate="G$1" pin="P3"/>
 </segment>
