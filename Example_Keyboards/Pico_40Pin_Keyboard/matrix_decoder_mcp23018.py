@@ -88,12 +88,12 @@ def read_mcp_registers():
     try:
         # Buffer to store 1 byte for GPIOA
         buf_a = bytearray(1)
-        # Writes the register address, then immediately reads into buf_a without dropping the I2C bus
-        i2c.write_then_readinto(MCP23018_ADDR, bytes([GPIOA]), buf_a)
+        # writeto_then_readfrom is the native busio.I2C method for a repeated start condition
+        i2c.writeto_then_readfrom(MCP23018_ADDR, bytes([GPIOA]), buf_a)
 
         # Buffer to store 1 byte for GPIOB
         buf_b = bytearray(1)
-        i2c.write_then_readinto(MCP23018_ADDR, bytes([GPIOB]), buf_b)
+        i2c.writeto_then_readfrom(MCP23018_ADDR, bytes([GPIOB]), buf_b)
 
         # Combine into a single 16-bit integer (Pins 0-15)
         return buf_a[0] | (buf_b[0] << 8)
