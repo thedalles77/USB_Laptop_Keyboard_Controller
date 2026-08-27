@@ -82,20 +82,19 @@ def write_mcp_register(reg, value):
         i2c.unlock()
 
 def read_mcp_registers():
-    """Helper function to read the 16-bit state of GPIOA and GPIOB."""
+    """Helper function to read the 16-bit state of GPIOA and GPIOB using native CircuitPython."""
     while not i2c.try_lock():
         pass
     try:
-        # Read GPIOA
-        i2c.writeto(MCP23018_ADDR, bytes([GPIOA]), stop=False)
+        # Buffer to store 1 byte for GPIOA
         buf_a = bytearray(1)
-        i2c.readfrom_into(MCP23018_ADDR, buf_a)
-        
-        # Read GPIOB
-        i2c.writeto(MCP23018_ADDR, bytes([GPIOB]), stop=False)
+        # Writes the register address, then immediately reads into buf_a without dropping the I2C bus
+        i2c.write_then_readinto(MCP23018_ADDR, bytes([GPIOA]), buf_a)
+
+        # Buffer to store 1 byte for GPIOB
         buf_b = bytearray(1)
-        i2c.readfrom_into(MCP23018_ADDR, buf_b)
-        
+        i2c.write_then_readinto(MCP23018_ADDR, bytes([GPIOB]), buf_b)
+
         # Combine into a single 16-bit integer (Pins 0-15)
         return buf_a[0] | (buf_b[0] << 8)
     finally:
@@ -185,6 +184,10 @@ while True:
             
             # Debounce delay loop to avoid flooding text fields while holding a test key down
             time.sleep(0.5)
+            break 
+            
+    time.sleep(0.01)
+
             break 
             
     time.sleep(0.01)
