@@ -156,6 +156,35 @@ def check_all_inputs(drive_pin):
 
 print("Starting 40-Pin Matrix Scanner...")
 
+# --- BEGIN BOOT CALIBRATION BLOCK ---
+# A set to store initially shorted pin pairs that we want to ignore
+ignored_shorts = set()
+
+print("\n--- INITIALIZING BOOT CALIBRATION ---")
+print("DO NOT PRESS ANY KEYS! Detecting static grounds and LED paths...")
+
+# Scan the matrix a few times during boot to catch all static shorts
+for calibration_run in range(3):
+    for i in range(24):
+        for j in range(i + 1, 40):
+            if (i, j) in ignored_shorts:
+                continue # Skip this pair and move to the next combination
+            # Read the current states of the two pins
+            val1 = read_pin_state(i)
+            val2 = read_pin_state(j)
+            
+            # If they are shorted at power-up, save the pair (lower index first to avoid duplicates)
+            if val1 == 0 and val2 == 0:
+                ignored_shorts.add((i, j))
+    time.sleep(0.2)
+
+print(f"Calibration complete. Found {len(ignored_shorts)} static paths to ignore.")
+if len(ignored_shorts) > 0:
+    for pair in ignored_shorts:
+        print(f"  -> Ignoring permanent short between Pin {pair[0]} and Pin {pair[1]}")
+print("--- SCANNING STARTED (You can now press keys) ---\n")
+# --- END BOOT CALIBRATION BLOCK ---
+
 while True:
     # Cycle sequentially through all 40 physical connections
     for drive_pin in range(40):
@@ -192,4 +221,3 @@ while True:
             break
             
     time.sleep(0.01)
-
