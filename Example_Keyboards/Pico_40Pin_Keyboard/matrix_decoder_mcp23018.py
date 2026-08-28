@@ -88,14 +88,13 @@ def read_mcp_registers():
     try:
         # Buffer to store 1 byte for GPIOA
         buf_a = bytearray(1)
-        # writeto_then_readfrom is the native busio.I2C method for a repeated start condition
         i2c.writeto_then_readfrom(MCP23018_ADDR, bytes([GPIOA]), buf_a)
 
         # Buffer to store 1 byte for GPIOB
         buf_b = bytearray(1)
         i2c.writeto_then_readfrom(MCP23018_ADDR, bytes([GPIOB]), buf_b)
 
-        # Combine into a single 16-bit integer (Pins 0-15)
+        # Pull the raw numeric values out of the buffers using [0] before combining
         return buf_a[0] | (buf_b[0] << 8)
     finally:
         i2c.unlock()
@@ -173,13 +172,29 @@ while True:
             
             output_string = f"{label1} + {label2}"
             
-            # Send string characters across USB HID
-            for char in output_string:
-                # Keyboards expect layout conversions; basic characters can be passed via simple write
-                if char.isalnum() or char in " _+":
-                    kbd.send(Keycode.SHIFT if char in "+" else 0, getattr(Keycode, char.upper() if char.isalnum() else "SPACE" if char==" " else "MINUS" if char=="_" else "EQUALS"))
-            
-            # Send the down arrow command to prep the text editor for the next keypress
+        # Key sending block 
+        if key_name:
+            # Check if the key name is alphanumeric without using .isalnum()
+            # This handles single letters, numbers, and common uppercase names
+            is_alphanumeric = False
+            if len(key_name) == 1:
+                c = key_name.lower()
+                if ("a" <= c <= "z") or ("0" <= c <= "9"):
+                    is_alphanumeric = True
+            elif key_name.upper() in ["ENTER", "SPACE", "TAB", "BACKSPACE", "DELETE", "ESCAPE"]:
+                is_alphanumeric = True
+
+            if is_alphanumeric:
+                try:
+                    keycode = getattr(Keycode, key_name.upper())
+                    keyboard.press(keycode)
+                    keyboard.release(keycode)
+                except AttributeError:
+                    print(f"Keycode for {key_name} not found.")
+            else:
+                print(f"Custom key action triggered: {key_name}")            
+
+# Send the down arrow command to prep the text editor for the next keypress
             kbd.send(Keycode.DOWN_ARROW)
             
             # Debounce delay loop to avoid flooding text fields while holding a test key down
@@ -188,6 +203,3 @@ while True:
             
     time.sleep(0.01)
 
-            break 
-            
-    time.sleep(0.01)
