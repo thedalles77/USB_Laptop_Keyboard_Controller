@@ -22,7 +22,7 @@ import digitalio
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
-
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS 
 # Initialize USB HID Keyboard emulation
 kbd = Keyboard(usb_hid.devices)
 
@@ -172,34 +172,24 @@ while True:
             
             output_string = f"{label1} + {label2}"
             
-        # Key sending block 
-        if key_name:
-            # Check if the key name is alphanumeric without using .isalnum()
-            # This handles single letters, numbers, and common uppercase names
-            is_alphanumeric = False
-            if len(key_name) == 1:
-                c = key_name.lower()
-                if ("a" <= c <= "z") or ("0" <= c <= "9"):
-                    is_alphanumeric = True
-            elif key_name.upper() in ["ENTER", "SPACE", "TAB", "BACKSPACE", "DELETE", "ESCAPE"]:
-                is_alphanumeric = True
+            # Print to the Thonny Serial console for immediate logging
+            print(f"Detected matrix short: {output_string}")
 
-            if is_alphanumeric:
-                try:
-                    keycode = getattr(Keycode, key_name.upper())
-                    keyboard.press(keycode)
-                    keyboard.release(keycode)
-                except AttributeError:
-                    print(f"Keycode for {key_name} not found.")
-            else:
-                print(f"Custom key action triggered: {key_name}")            
+            try:
+                # Initialize the layout interpreter to type out whole words safely
+                layout = KeyboardLayoutUS(kbd)
+                
+                # Automatically type the pin connection into your open text document
+                layout.write(output_string)
+                
+                # Tap the down arrow to prepare the text editor for the next row
+                kbd.send(Keycode.DOWN_ARROW)
+            except Exception as e:
+                print(f"USB HID string transmission failed: {e}")
 
-# Send the down arrow command to prep the text editor for the next keypress
-            kbd.send(Keycode.DOWN_ARROW)
-            
             # Debounce delay loop to avoid flooding text fields while holding a test key down
             time.sleep(0.5)
-            break 
+            break
             
     time.sleep(0.01)
 
