@@ -157,31 +157,22 @@ def check_all_inputs(drive_pin):
 print("Starting 40-Pin Matrix Scanner...")
 
 # --- BEGIN BOOT CALIBRATION BLOCK ---
-# A set to store initially shorted pin pairs that we want to ignore
 ignored_shorts = set()
-
 print("\n--- INITIALIZING BOOT CALIBRATION ---")
 print("DO NOT PRESS ANY KEYS! Detecting static grounds and LED paths...")
 
-# Scan the matrix a few times during boot to catch all static shorts
 for calibration_run in range(3):
-    for i in range(24):
-        for j in range(i + 1, 40):
-            if (i, j) in ignored_shorts:
-                continue # Skip this pair and move to the next combination
-            # Read the current states of the two pins
-            val1 = read_pin_state(i)
-            val2 = read_pin_state(j)
-            
-            # If they are shorted at power-up, save the pair (lower index first to avoid duplicates)
-            if val1 == 0 and val2 == 0:
-                ignored_shorts.add((i, j))
-    time.sleep(0.2)
+    for drive_pin in range(40):
+        set_pin_active_low(drive_pin)
+        time.sleep(0.002)
+        detected_pin = check_all_inputs(drive_pin)
+        reset_pin_to_input(drive_pin)
+        if detected_pin is not None:
+            pair = (min(drive_pin, detected_pin), max(drive_pin, detected_pin))
+            ignored_shorts.add(pair)
+    time.sleep(0.1)
 
 print(f"Calibration complete. Found {len(ignored_shorts)} static paths to ignore.")
-if len(ignored_shorts) > 0:
-    for pair in ignored_shorts:
-        print(f"  -> Ignoring permanent short between Pin {pair[0]} and Pin {pair[1]}")
 print("--- SCANNING STARTED (You can now press keys) ---\n")
 # --- END BOOT CALIBRATION BLOCK ---
 
@@ -195,6 +186,9 @@ while True:
         reset_pin_to_input(drive_pin)
         
         if detected_pin is not None:
+            pair = (min(drive_pin, detected_pin), max(drive_pin, detected_pin))
+            if pair in ignored_shorts:
+                continue
             # Determine text labels for mapping feedback
             label1 = f"Pico_GP{pico_pins[drive_pin]}" if drive_pin < 24 else f"MCP_Pin{drive_pin-24}"
             label2 = f"Pico_GP{pico_pins[detected_pin]}" if detected_pin < 24 else f"MCP_Pin{detected_pin-24}"
