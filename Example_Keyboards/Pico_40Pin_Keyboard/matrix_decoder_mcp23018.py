@@ -190,9 +190,28 @@ while True:
             if pair in ignored_shorts:
                 continue
             # Determine text labels for mapping feedback
-            label1 = f"Pico_GP{pico_pins[drive_pin]}" if drive_pin < 24 else f"MCP_Pin{drive_pin-24}"
-            label2 = f"Pico_GP{pico_pins[detected_pin]}" if detected_pin < 24 else f"MCP_Pin{detected_pin-24}"
-            
+            if drive_pin < 24:
+                # Convert to string (e.g., "board.GP26_A0"), split by period, pick the second half, then split by underscore
+                pin_name = str(pico_pins[drive_pin]).split('.')[-1].split('_')[0]
+                label1 = f"Pico_{pin_name}"
+            else:
+                mcp_offset = drive_pin - 24
+                if mcp_offset < 8:
+                    label1 = f"MCP_GPA{mcp_offset}"
+                else:
+                    label1 = f"MCP_GPB{mcp_offset - 8}"
+
+            if detected_pin < 24:
+                # Do the same for the detected pin
+                pin_name = str(pico_pins[detected_pin]).split('.')[-1].split('_')[0]
+                label2 = f"Pico_{pin_name}"
+            else:
+                mcp_offset = detected_pin - 24
+                if mcp_offset < 8:
+                    label2 = f"MCP_GPA{mcp_offset}"
+                else:
+                    label2 = f"MCP_GPB{mcp_offset - 8}"
+
             output_string = f"{label1} + {label2}"
             
             # Print to the Thonny Serial console for immediate logging
