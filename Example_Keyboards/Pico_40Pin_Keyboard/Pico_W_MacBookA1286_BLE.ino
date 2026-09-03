@@ -60,6 +60,8 @@ const uint8_t keymap[NUM_ROWS][NUM_COLS] = {
 bool lastKeyState[NUM_ROWS][NUM_COLS] = {false}; // this creates a 2D array filled with zero's. It will be used to 
 // keep track of when a key has been pressed so it only sends the key once and not constantly until released. 
 
+bool fn_pressed = false; // Tracks if the Fn key is currently held down
+
 // --- I2C BIT-BANG OPEN-DRAIN DRIVER FUNCTIONS ---
 void i2c_delay() { 
   delayMicroseconds(4); // sets the delay value
@@ -244,8 +246,23 @@ void loop() {
       }     
 
       if (currentPressed != lastKeyState[r][c]) { // check if current key state is not the same as the last loop
+        // --- INTERCEPT FN KEY (Row 7, Col 5) ---
+        if (r == 7 && c == 5) {
+          fn_pressed = currentPressed; // Set to true if pressed, false if released
+          lastKeyState[r][c] = currentPressed;
+          continue; // Skip standard keyboard processing for this key slot
+        }
+        // --- INTERCEPT F10 KEY (Row 8, Col 4) WHEN FN IS HELD ---
+        if (r == 8 && c == 4 && fn_pressed) {
+          if (currentPressed) { // Only trigger on the downward press
+            KeyboardBLE.press(KEY_MUTE);
+            KeyboardBLE.release(KEY_MUTE); // Immediately release consumer key pulse
+          }
+          lastKeyState[r][c] = currentPressed;
+          continue; // Skip sending standard KEY_F10
+        }
+        // --- STANDARD MATRIX KEY PROCESSING ---
         uint8_t standardKey = keymap[r][c]; // save the name of the newly pressed (or released) key from the matrix
-
         if (standardKey != 0) { // non zero key code in the array is selected
           if (currentPressed) { // high indicates the key was just pressed
             KeyboardBLE.press(standardKey); // send the key press
