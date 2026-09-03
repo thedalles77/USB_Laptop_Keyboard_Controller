@@ -32,7 +32,7 @@ const uint8_t keymap[NUM_ROWS][NUM_COLS] = {
   { 0,          0,          0,          0,            KEY_RETURN,     0,              0,                KEY_RIGHT_SHIFT,  0 },              //10
   { 0,          0,          0,          KEY_LEFT_GUI  '0',            0,              KEY_RIGHT_GUI,    0,                0 },              //GPA3=103
   { 't',        '5',        'g',        'b',          '-',            0,              '[',              KEY_F5,           0 },              //19
-  { 0,          0,          0,          0,            KEY_F10,        KEY_RIGHT_ALT   0,                0,                0 },              //GPB3=111
+  { 0,          0,          0,          0,            KEY_F10,        KEY_RIGHT_ALT,  0,                0,                0 },              //GPB3=111
   { 0,          0,          0,          0,            'p',            KEY_CAPS_LOCK,  0,                0,                0 },              //11
   { 'u',        '7',        'j',        'm',          ';',            '\'',           0,                KEY_F7,           0 },              //GPB2=110
   { 'i',        '8',        'k',        ',',          0,              KEY_LEFT_ARROW, KEY_RIGHT_ARROW,  KEY_F8,           0 },              //18
@@ -41,6 +41,9 @@ const uint8_t keymap[NUM_ROWS][NUM_COLS] = {
   { 0,          0,          0,          0,            0,              0,              0,                0,                KEY_LEFT_ALT },   //GPA7=107
   { 0,          0,          0,          0,            0,              0,              0,                0,                KEY_LEFT_CTRL }   //15
 };
+//
+bool lastKeyState[NUM_ROWS][NUM_COLS] = {false}; // this creates a 2D array filled with zero's. It will be used to 
+// keep track of when a key has been pressed so it only sends the key once and not constantly until released. 
 
 // --- BIT-BANG OPEN-DRAIN DRIVER FUNCTIONS ---
 void i2c_delay() { 
@@ -186,6 +189,58 @@ void setup() {
   for (int i = 0; i < NUM_COLS; i++) {
     if (col_pins[i] < 30) pinMode(col_pins[i], INPUT_PULLUP);
   }
-// make all 16 port expander pins be inputs with pullups 
+// Set all 16 pins (GPIOA & GPIOB) of the port expander as inputs by writing 0xFFFF to the IODIR register (0x00)
+  bb_write_mcp_16bit(0x00, 0xFFFF)
+// Enable internal pull-up resistors on all 16 pins by writing 0xFFFF to the GPPU register (0x0C)
+  bb_write_mcp_16bit(0x0C, 0xFFFF);
+// Power Up the CYW43439 Radio Chip. Configures the BLE HID Keyboard Profile. Set the Device and Model Names
+  KeyboardBLE.begin("MacBook Pro HID", "Apple Wireless Mod");
+}
 
-//  ************************AI ADD CODE HERE THAT CALLS THE ABOVE I2C FUNCTIONS FOR THE MCP23018 AND MAKES ALL 16 PINS BE INPUTS WITH PULLUPS TURNED ON**********
+void loop() {
+  yield(); //keep background core processes like BLE running so they don't timeout
+
+  // Single Pass Matrix Scan drives each row low, one at a time and reads all the columns with pull ups 
+  for (int r = 0; r < NUM_ROWS; r++) {
+    if (row_pins[r] <=30) { // check if current row pin is the Pico or the Port Expander
+      pinMode(rowPins[r], OUTPUT); // make the selected Pico row pin an output (it was an input)
+      digitalWrite(rowPins[r], LOW); // drive the Pico row pin low
+    } 
+    else {
+//**************AI - Add the code to make only the current row_pins[r] an outout and drive it low********************
+    }
+    delayMicroseconds(20); // 10us sometimes causes multiple keys b/c slow rise time from 50K ohm pullups in RP2040
+
+//**************AI - Add code to read all 16 bits of the port expander and save it for the loop below****************
+    for (int c = 0; c < NUM_COLS; c++) { // read each column, looking for a low that indicates the key is pushed
+      if (col_pins[c] <=30) {  // check if column pin is a Pico GPIO
+        bool currentPressed = (digitalRead(colPins[c]) == LOW); // read Pico GPIO pin
+      }
+      else {
+//**************AI - Add code to pull out the one bit from the 16 that you just read from the port expander and check if it's low, make currentPressed True just like above******        
+      }     
+
+      if (currentPressed != lastKeyState[r][c]) { // check if current key state is not the same as the last loop
+        uint8_t standardKey = keyMap[r][c]; // save the name of the newly pressed (or released) key from the matrix
+
+        if (standardKey != 0) { // non zero key code in the array is selected
+          if (currentPressed) { // high indicates the key was just pressed
+            KeyboardBLE.press(standardKey); // send the key press
+          } else { // key was just released
+            KeyboardBLE.release(standardKey); // send the key release
+          }
+        }
+        
+        lastKeyState[r][c] = currentPressed; // save state of the key to the last key state array for next loop
+      }
+    }
+    if (row_pins[r] <=30) { 
+      pinMode(rowPins[r], INPUT_PULLUP); // return Pico row that was driven low to an input with pullup
+    }
+    else {
+      bb_write_mcp_16bit(0x00, 0xFFFF); // Set all 16 pins (GPIOA & GPIOB) of the port expander as inputs
+      bb_write_mcp_16bit(0x0C, 0xFFFF); // Enable internal pull-up resistors on all 16 pins by writing 0xFFFF to the GPPU register (0x0C)     
+    } 
+  }
+  delay(8); // overall 8 msec keyboard scan rate is slow enough to eliminate any chance of key bounce
+}
