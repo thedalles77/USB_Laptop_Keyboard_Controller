@@ -252,11 +252,32 @@ void loop() {
           lastKeyState[r][c] = currentPressed;
           continue; // Skip standard keyboard processing for this key slot
         }
-        // --- INTERCEPT F10 KEY (Row 8, Col 4) WHEN FN IS HELD ---
+        // --- INTERCEPT F10 KEY (Row 8, Col 4) WHEN FN IS HELD --------MUTE
         if (r == 8 && c == 4 && fn_pressed) {
           if (currentPressed) { // Only trigger on the downward press
-            KeyboardBLE.press(KEY_MUTE);
-            KeyboardBLE.release(KEY_MUTE); // Immediately release consumer key pulse
+            KeyboardBLE.consumerPress(KEY_MUTE);
+            delay(20); // Give the BLE radio stack time to safely transmit the state change
+            KeyboardBLE.consumerRelease(); // Releases all active consumer/media key presses
+          }
+          lastKeyState[r][c] = currentPressed;
+          continue; // Skip sending standard KEY_F10
+        }
+        // --- INTERCEPT F11 KEY (Row 0, Col 4) WHEN FN IS HELD --------VOLUME DECREASE
+        if (r == 0 && c == 4 && fn_pressed) {
+          if (currentPressed) { // Only trigger on the downward press
+            KeyboardBLE.consumerPress(KEY_VOLUME_DECREMENT);
+            delay(20); // Give the BLE radio stack time to safely transmit the state change
+            KeyboardBLE.consumerRelease(); // Releases all active consumer/media key presses
+          }
+          lastKeyState[r][c] = currentPressed;
+          continue; // Skip sending standard KEY_F10
+        }
+        // --- INTERCEPT F12 KEY (Row 0, Col 6) WHEN FN IS HELD --------VOLUME INCREASE
+        if (r == 0 && c == 6 && fn_pressed) {
+          if (currentPressed) { // Only trigger on the downward press
+            KeyboardBLE.consumerPress(KEY_VOLUME_INCREMENT);
+            delay(20); // Give the BLE radio stack time to safely transmit the state change
+            KeyboardBLE.consumerRelease(); // Releases all active consumer/media key presses
           }
           lastKeyState[r][c] = currentPressed;
           continue; // Skip sending standard KEY_F10
