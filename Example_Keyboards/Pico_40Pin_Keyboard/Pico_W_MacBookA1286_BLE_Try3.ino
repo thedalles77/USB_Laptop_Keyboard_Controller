@@ -30,7 +30,7 @@ const uint8_t keymap[NUM_ROWS][NUM_COLS] = {
   { 'y',        '6',        'h',        'n',          '/',            ' ',            '=',              KEY_F6,           0 },              //9
   { 'r',        '4',        'f',        'v',          0,              0,              ']',              KEY_F4,           0 },              //GPA2=102
   { 0,          0,          0,          0,            KEY_RETURN,     0,              0,                KEY_RIGHT_SHIFT,  0 },              //10
-  { 0,          0,          0,          KEY_LEFT_GUI  '0',            0,              KEY_RIGHT_GUI,    0,                0 },              //GPA3=103
+  { 0,          0,          0,          KEY_LEFT_GUI, '0',            0,              KEY_RIGHT_GUI,    0,                0 },              //GPA3=103
   { 't',        '5',        'g',        'b',          '-',            0,              '[',              KEY_F5,           0 },              //19
   { 0,          0,          0,          0,            KEY_F10,        KEY_RIGHT_ALT,  0,                0,                0 },              //GPB3=111
   { 0,          0,          0,          0,            'p',            KEY_CAPS_LOCK,  0,                0,                0 },              //11
@@ -229,7 +229,7 @@ void loop() {
       }     
 
       if (currentPressed != lastKeyState[r][c]) { // check if current key state is not the same as the last loop
-        uint8_t standardKey = keyMap[r][c]; // save the name of the newly pressed (or released) key from the matrix
+        uint8_t standardKey = keymap[r][c]; // save the name of the newly pressed (or released) key from the matrix
 
         if (standardKey != 0) { // non zero key code in the array is selected
           if (currentPressed) { // high indicates the key was just pressed
