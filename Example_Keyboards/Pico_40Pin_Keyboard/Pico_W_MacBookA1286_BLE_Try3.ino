@@ -15,7 +15,7 @@
 
 // Row pins stored in an array
 const uint8_t row_pins[NUM_ROWS] = {
-  101, 20, 112, 9, 102, 10, 103, 19, 111, 11, 110, 18, 105, 106, 107, 15
+  101, 20, 112, 9, 102, 10, 103, 19, 111, 11, 110, 18, 105, 14, 107, 15
 };
 // Column pins stored in an array
 const uint8_t col_pins[NUM_COLS] = {
@@ -37,7 +37,7 @@ const uint8_t keymap[NUM_ROWS][NUM_COLS] = {
   { 'u',        '7',        'j',        'm',          ';',            '\'',           0,                KEY_F7,           0 },              //GPB2=110
   { 'i',        '8',        'k',        ',',          0,              KEY_LEFT_ARROW, KEY_RIGHT_ARROW,  KEY_F8,           0 },              //18
   { 'o',        '9',        'l',        '.',          '\\',           KEY_DOWN_ARROW, KEY_UP_ARROW,     KEY_F9,           0 },              //GPA5=105
-  { 0,          0,          0,          0,            0,              0,              0,                0,                KEY_LEFT_SHIFT }, //GPA6=106
+  { 0,          0,          0,          0,            0,              0,              0,                0,                KEY_LEFT_SHIFT }, //14
   { 0,          0,          0,          0,            0,              0,              0,                0,                KEY_LEFT_ALT },   //GPA7=107
   { 0,          0,          0,          0,            0,              0,              0,                0,                KEY_LEFT_CTRL }   //15
 };
