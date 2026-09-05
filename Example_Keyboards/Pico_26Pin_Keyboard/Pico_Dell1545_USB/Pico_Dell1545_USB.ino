@@ -33,23 +33,23 @@ const int rowPins[NUM_ROWS] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
 
 // Base Keyboard Map. A zero indicates no key at that position.
 const uint8_t keyMap[NUM_ROWS][NUM_COLS] = {
-  { 0,                  0,                      HID_KEY_PAGE_DOWN,  HID_KEY_GUI_LEFT, 0,                  0,                0,                    HID_KEY_PAGE_UP },
-  { 0,                  HID_KEY_CONTROL_RIGHT,  0,                  0,                0,                  0,                HID_KEY_CONTROL_LEFT, 0 },
-  { HID_KEY_ALT_RIGHT,  0,                      0,                  KEY_PRINT_SCREEN, 0,                  HID_KEY_ALT_LEFT, 0,                    0 },
-  { 0,                  'z',                    'a',                '1',              HID_KEY_TAB,        HID_KEY_ESCAPE,   '`',                  'q' },
-  { 0,                  'c',                    'd',                '3',              HID_KEY_F3,         HID_KEY_F4,       HID_KEY_F2,           'e' },
-  { ' ',                HID_KEY_ENTER,          '\\',               HID_KEY_F10,      HID_KEY_BACKSPACE,  HID_KEY_F5,       HID_KEY_F9,           0 },
-  { 0,                  ',',                    'k',                '8',              ']',                HID_KEY_F6,       '=',                  'i' },
-  { 0,                  '.',                    'l',                '9',              HID_KEY_F7,         0,                HID_KEY_F8,           'o' },
-  { HID_KEY_ARROW_LEFT, 0,                      0,                  HID_KEY_END,      0,                  HID_KEY_ARROW_UP, HID_KEY_HOME,         0 },
-  { HID_KEY_ARROW_RIGHT,0,                      0,                  HID_KEY_F12,      0,                  0,                HID_KEY_INSERT,       0 },
-  { HID_KEY_ARROW_DOWN, 0,                      0,                  HID_KEY_F11,      0,                  0,                HID_KEY_DELETE,       0 }, 
-  { '/',                0,                      ';',                '0',              '[',                '\'',             '-',                  'p' },
-  { 'n',                'm',                    'j',                '7',              'y',                'h',              '6',                  'u' },
-  { 'b',                'v',                    'f',                '4',              't',                'g',              '5',                  'r' },
-  { 0,                  'x',                    's',                '2',              HID_KEY_CAPS_LOCK,  0,                HID_KEY_F1,           'w' },
-  { 0,                  HID_KEY_SHIFT_RIGHT,    0,                  0,                HID_KEY_SHIFT_LEFT, 0,                0,                    0 },
-  { 0,                  0,                      0,                  0,                0,                  0,                0,                    0 }
+  { 0,                  0,                      HID_KEY_PAGE_DOWN,  HID_KEY_GUI_LEFT,     0,                  0,                0,                    HID_KEY_PAGE_UP },
+  { 0,                  HID_KEY_CONTROL_RIGHT,  0,                  0,                    0,                  0,                HID_KEY_CONTROL_LEFT, 0 },
+  { HID_KEY_ALT_RIGHT,  0,                      0,                  HID_KEY_PRINT_SCREEN, 0,                  HID_KEY_ALT_LEFT, 0,                    0 },
+  { 0,                  HID_KEY_Z,              HID_KEY_A,          HID_KEY_1,            HID_KEY_TAB,        HID_KEY_ESCAPE,   HID_KEY_GRAVE_ACCENT, HID_KEY_Q },
+  { 0,                  HID_KEY_C,              HID_KEY_D,          HID_KEY_3,            HID_KEY_F3,         HID_KEY_F4,       HID_KEY_F2,           HID_KEY_E },
+  { HID_KEY_SPACE,      HID_KEY_ENTER,          HID_KEY_BACKSLASH,  HID_KEY_F10,          HID_KEY_BACKSPACE,  HID_KEY_F5,       HID_KEY_F9,           0 },
+  { 0,                  HID_KEY_COMMA,          HID_KEY_K,          HID_KEY_8,            HID_KEY_RIGHT_BRACE, HID_KEY_F6,      HID_KEY_EQUAL,        HID_KEY_I },
+  { 0,                  HID_KEY_PERIOD,         HID_KEY_L,          HID_KEY_9,            HID_KEY_F7,         0,                HID_KEY_F8,           HID_KEY_O },
+  { HID_KEY_ARROW_LEFT, 0,                      0,                  HID_KEY_END,          0,                  HID_KEY_ARROW_UP, HID_KEY_HOME,         0 },
+  { HID_KEY_ARROW_RIGHT,0,                      0,                  HID_KEY_F12,          0,                  0,                HID_KEY_INSERT,       0 },
+  { HID_KEY_ARROW_DOWN, 0,                      0,                  HID_KEY_F11,          0,                  0,                HID_KEY_DELETE,       0 }, 
+  { HID_KEY_SLASH,      0,                      HID_KEY_SEMICOLON,  HID_KEY_0,            HID_KEY_LEFT_BRACE, HID_KEY_QUOTE,    HID_KEY_DASH,         HID_KEY_P },
+  { HID_KEY_N,          HID_KEY_M,              HID_KEY_J,          HID_KEY_7,            HID_KEY_Y,          HID_KEY_H,        HID_KEY_6,            HID_KEY_U },
+  { HID_KEY_B,          HID_KEY_V,              HID_KEY_F,          HID_KEY_4,            HID_KEY_T,          HID_KEY_G,        HID_KEY_5,            HID_KEY_R },
+  { 0,                  HID_KEY_X,              HID_KEY_S,          HID_KEY_2,            HID_KEY_CAPS_LOCK,  0,                HID_KEY_F1,           HID_KEY_W },
+  { 0,                  HID_KEY_SHIFT_RIGHT,    0,                  0,                    HID_KEY_SHIFT_LEFT, 0,                0,                    0 },
+  { 0,                  0,                      0,                  0,                    0,                  0,                0,                    0 }
 };
 //
 bool lastKeyState[NUM_ROWS][NUM_COLS] = {false}; // this creates a 2D array filled with zero's. It will be used to 
@@ -91,7 +91,7 @@ void loop() {
         if (standardKey != 0) { // non zero key code in the array is selected
           if (currentPressed) { 
           // Send a key press event by filling the first slot of the HID buffer
-            uint8_t keycode = { standardKey, 0, 0, 0, 0, 0 };
+            uint8_t keycode[] = { standardKey, 0, 0, 0, 0, 0 };
             if (usb_hid.ready()) {
               usb_hid.keyboardReport(0, 0, keycode);
             }
