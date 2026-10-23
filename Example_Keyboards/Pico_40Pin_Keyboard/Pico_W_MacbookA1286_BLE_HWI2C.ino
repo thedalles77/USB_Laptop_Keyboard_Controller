@@ -147,6 +147,15 @@ void setup() {
 }
 
 void loop() {
+  // TEMPORARY PAIRING WINDOW:
+  // For the first 30 seconds after powering up, freeze the matrix scan
+  // so the background Bluetooth stack has 100% of the CPU to pair cleanly.
+  if (millis() < 30000) {
+    yield();
+    delay(10);
+    return; // Exit loop early, skipping I2C reads completely
+  }
+
   // 1. Prioritize background Bluetooth pairing requests at the start of every sweep
   yield(); 
 
