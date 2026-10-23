@@ -17,6 +17,7 @@
 #include <Arduino.h>
 #include <KeyboardBT.h>
 #include <Wire.h>  // Included for native hardware I2C support
+extern "C" void gap_set_local_name(const char *name);
 
 // Hardware I2C Configuration
 #define I2C_SDA 2
@@ -105,7 +106,8 @@ uint16_t hw_read_mcp_pins() {
 void setup() {
   // PHASE 1: Boot the Bluetooth Radio and lock system multiplexers first
   // This allows the background CYW43439 firmware loop to safely stabilize.
-  KeyboardBT.begin("MacBook Pro HID");
+  gap_set_local_name("MacBook Pro HID"); // Set the local name via global GAP call
+  KeyboardBT.begin();
   
   // Give the radio firmware stack a solid window to completely spin up
   delay(500);
