@@ -15,7 +15,7 @@
 */
 
 #include <Arduino.h>
-#include <KeyboardBLE.h>
+#include <KeyboardBT.h>
 #include <Wire.h>  // Included for native hardware I2C support
 
 // Hardware I2C Configuration
@@ -105,7 +105,7 @@ uint16_t hw_read_mcp_pins() {
 void setup() {
   // PHASE 1: Boot the Bluetooth Radio and lock system multiplexers first
   // This allows the background CYW43439 firmware loop to safely stabilize.
-  KeyboardBLE.begin("MacBook Pro HID", "Apple Wireless Mod");
+  KeyboardBT.begin();
   
   // Give the radio firmware stack a solid window to completely spin up
   delay(500);
@@ -199,9 +199,9 @@ void loop() {
         // Handles Fn-combined media shortcuts for volume control.
         if (fn_pressed && currentPressed && ((r == 8 && c == 4) || (r == 0 && c == 4) || (r == 0 && c == 6))) {
           uint16_t mKey = (r == 8 && c == 4) ? KEY_MUTE : (r == 0 && c == 4) ? KEY_VOLUME_DECREMENT : KEY_VOLUME_INCREMENT;
-          KeyboardBLE.consumerPress(mKey);
+          KeyboardBT.consumerPress(mKey);
           delay(20);
-          KeyboardBLE.consumerRelease();
+          KeyboardBT.consumerRelease();
         }
         if ((r == 8 && c == 4) || (r == 0 && c == 4) || (r == 0 && c == 6)) {
           lastKeyState[r][c] = currentPressed;
@@ -210,9 +210,9 @@ void loop() {
         uint8_t standardKey = keymap[r][c]; 
         if (standardKey != 0) { 
           if (currentPressed) { 
-            KeyboardBLE.press(standardKey); 
+            KeyboardBT.press(standardKey); 
           } else { 
-            KeyboardBLE.release(standardKey); 
+            KeyboardBT.release(standardKey); 
           }
         }
         lastKeyState[r][c] = currentPressed; 
