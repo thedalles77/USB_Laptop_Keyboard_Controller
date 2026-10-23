@@ -103,19 +103,27 @@ uint16_t hw_read_mcp_pins() {
 }
 
 void setup() {
-  // 1. Configure Hardware I2C pins for Earle Philhower Core
+  // 1. Give the MCP23017 chip 100ms to fully boot up after power is applied
+  delay(100);
+
+  // 2. Clear a stuck I2C bus manually before initializing the hardware module
+  pinMode(I2C_SDA, INPUT_PULLUP);
+  pinMode(I2C_SCL, OUTPUT);
+  for (int i = 0; i < 9; i++) {
+    digitalWrite(I2C_SCL, LOW);
+    delayMicroseconds(5);
+    digitalWrite(I2C_SCL, HIGH);
+    delayMicroseconds(5);
+  }
+
+  // 3. Configure and start the native RP2040 hardware I2C engine
   Wire.setSDA(I2C_SDA);
   Wire.setSCL(I2C_SCL);
-  
-  // 2. Start I2C bus and set the clock speed to 400kHz
   Wire.begin();
   Wire.setClock(I2C_FREQ);
-  
-  // EXTRA SAFETY: Force a 50ms hardware timeout on the I2C bus.
-  // If the MCP23017 hangs or drops, Wire will abort instead of freezing the Pico W.
-  Wire.setTimeout(50);
+  Wire.setTimeout(50); // Abort transaction instead of freezing if a spike happens
 
-  // 3. Configure native Pico row and column pins as inputs with pullups
+  // 4. Configure native Pico row and column pins as inputs with pullups
   for (int i = 0; i < NUM_ROWS; i++) {
     if (row_pins[i] < 30) pinMode(row_pins[i], INPUT_PULLUP);
   }
@@ -123,15 +131,17 @@ void setup() {
     if (col_pins[i] < 30) pinMode(col_pins[i], INPUT_PULLUP);
   }
 
-  // 4. Set MCP23017 pins as inputs (0x00 = IODIR register)
-  hw_write_mcp_16bit(0x00, 0xFFFF);
-
-  // 5. Enable internal pull-up resistors on MCP23017 pins (0x0C = GPPU register)
-  hw_write_mcp_16bit(0x0C, 0xFFFF);
+  // 5. Safely configure MCP23017 pins with brief stabilization delays
+  delay(10);
+  hw_write_mcp_16bit(0x00, 0xFFFF); // Set pins as inputs (IODIR register)
+  delay(10);
+  hw_write_mcp_16bit(0x0C, 0xFFFF); // Enable internal pull-ups (GPPU register)
+  delay(10);
 
   // 6. Initialize the BLE HID Keyboard profile
   KeyboardBLE.begin("MacBook Pro HID", "Apple Wireless Mod");
 }
+
 
 void loop() {
   // CRITICAL: Feeds background Bluetooth/Wi-Fi core watchdogs to prevent internal radio crashes
