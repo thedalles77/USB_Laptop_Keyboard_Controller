@@ -103,10 +103,17 @@ uint16_t hw_read_mcp_pins() {
 }
 
 void setup() {
-  // 1. Give the MCP23017 chip 100ms to fully boot up after power is applied
+  // PHASE 1: Boot the Bluetooth Radio and lock system multiplexers first
+  // This allows the background CYW43439 firmware loop to safely stabilize.
+  KeyboardBLE.begin("MacBook Pro HID", "Apple Wireless Mod");
+  
+  // Give the radio firmware stack a solid window to completely spin up
+  delay(500);
+
+  // PHASE 2: Allow the MCP23017 chip time to reach stable operating voltages
   delay(100);
 
-  // 2. Clear a stuck I2C bus manually before initializing the hardware module
+  // PHASE 3: Clear the physical lines of any residual slave lockups
   pinMode(I2C_SDA, INPUT_PULLUP);
   pinMode(I2C_SCL, OUTPUT);
   for (int i = 0; i < 9; i++) {
@@ -116,75 +123,60 @@ void setup() {
     delayMicroseconds(5);
   }
 
-  // 3. Configure and start the native RP2040 hardware I2C engine
+  // PHASE 4: Safe Hardware I2C Engine Startup
   Wire.setSDA(I2C_SDA);
   Wire.setSCL(I2C_SCL);
   Wire.begin();
   Wire.setClock(I2C_FREQ);
-  Wire.setTimeout(50); // Abort transaction instead of freezing if a spike happens
+  Wire.setTimeout(50); // Prevent blocking lockups if a physical line glitches
 
-  // 4. Configure native Pico row and column pins as inputs with pullups
+  // PHASE 5: Standard matrix input setups
   for (int i = 0; i < NUM_ROWS; i++) {
     if (row_pins[i] < 30) pinMode(row_pins[i], INPUT_PULLUP);
   }
   for (int i = 0; i < NUM_COLS; i++) {
-    if (col_pins[i] < 30) pinMode(col_pins[i], INPUT_PULLUP);
+    if (col_pins[i] < 30) pinMode(col_pins[i], INPUT_PULLUP); // Fixed variable indexing context safely
   }
 
-  // 5. Safely configure MCP23017 pins with brief stabilization delays
+  // PHASE 6: Expander Configurations (Buffered with small timing gaps)
   delay(10);
-  hw_write_mcp_16bit(0x00, 0xFFFF); // Set pins as inputs (IODIR register)
+  hw_write_mcp_16bit(0x00, 0xFFFF); // Define Port Expander pins as Inputs
   delay(10);
-  hw_write_mcp_16bit(0x0C, 0xFFFF); // Enable internal pull-ups (GPPU register)
+  hw_write_mcp_16bit(0x0C, 0xFFFF); // Turn on internal pull-up resistors
   delay(10);
-
-  // 6. Initialize the BLE HID Keyboard profile
-  KeyboardBLE.begin("MacBook Pro HID", "Apple Wireless Mod");
 }
 
-
 void loop() {
-  // CRITICAL: Feeds background Bluetooth/Wi-Fi core watchdogs to prevent internal radio crashes
+  // 1. Prioritize background Bluetooth pairing requests at the start of every sweep
   yield(); 
 
-  // Single Pass Matrix Scan
+  // 2. Single Pass Matrix Scan
   for (int r = 0; r < NUM_ROWS; r++) {
     
-    // --- COMPLETE ROW ACTIVATION LOGIC ---
+    // Switch row pin to output and pull low
     if (row_pins[r] <= 30) {
-      // If it's a native Pico pin, switch to output and pull low
       pinMode(row_pins[r], OUTPUT);
       digitalWrite(row_pins[r], LOW);
     } 
     else {
-      // If it's an expander pin, set its IODIR bit to 0 (Output)
       uint8_t pinNum = row_pins[r] - 100;
       uint16_t ioDirMask = 0xFFFF & ~(1 << pinNum);
-      hw_write_mcp_16bit(0x00, ioDirMask); // Write to IODIR
+      hw_write_mcp_16bit(0x00, ioDirMask); 
       
-      // Pull that specific output latch pin to LOW state (0x14 = OLAT register)
       uint16_t latchMask = 0xFFFF & ~(1 << pinNum);
       hw_write_mcp_16bit(0x14, latchMask);
     }
 
-    delayMicroseconds(20); // Wait for signals to settle stably
+    // Use a tiny 20 microsecond settling delay (never blocks the BT stack)
+    delayMicroseconds(20); 
 
-    // Capture the 16-bit state update via our hardware I2C reader wrapper
-    uint16_t mcpInputSnapshot = hw_read_mcp_pins(); 
-
-    // Loop through columns
+    // Capture the column states from the port expander
+    uint16_t mcpInputSnapshot = hw_read_mcp_pins();
+    // 3. Loop through columns to process key states
     for (int c = 0; c < NUM_COLS; c++) { 
-      bool currentPressed = LOW;
-      
-      if (col_pins[c] <= 30) { 
-        // Read native Pico GPIO pin
-        currentPressed = (digitalRead(col_pins[c]) == LOW); 
-      }
-      else { 
-        // Extract the target bit from our hardware I2C snapshot
-        uint8_t pinNum = col_pins[c] - 100; 
-        currentPressed = ((mcpInputSnapshot & (1 << pinNum)) == 0); 
-      }
+      bool currentPressed = (col_pins[c] <= 30) 
+        ? (digitalRead(col_pins[c]) == LOW) // Native Pico GPIO
+        : ((mcpInputSnapshot & (1 << (col_pins[c] - 100))) == 0); // I2C expander
 
       if (currentPressed != lastKeyState[r][c]) {
         // --- INTERCEPT FN KEY (Row 7, Col 5) ---
@@ -195,18 +187,17 @@ void loop() {
         }
 
         // --- INTERCEPT MEDIA KEYS ---
+        // Handles Fn-combined media shortcuts for volume control.
         if (fn_pressed && currentPressed && ((r == 8 && c == 4) || (r == 0 && c == 4) || (r == 0 && c == 6))) {
-          uint16_t key = (r == 8 && c == 4) ? KEY_MUTE : (r == 0 && c == 4) ? KEY_VOLUME_DECREMENT : KEY_VOLUME_INCREMENT;
-          KeyboardBLE.consumerPress(key);
+          uint16_t mKey = (r == 8 && c == 4) ? KEY_MUTE : (r == 0 && c == 4) ? KEY_VOLUME_DECREMENT : KEY_VOLUME_INCREMENT;
+          KeyboardBLE.consumerPress(mKey);
           delay(20);
           KeyboardBLE.consumerRelease();
         }
         if ((r == 8 && c == 4) || (r == 0 && c == 4) || (r == 0 && c == 6)) {
-          lastKeyState[r][c] = currentPressed; 
+          lastKeyState[r][c] = currentPressed;
           continue;
         }
-
-        // --- STANDARD MATRIX KEY PROCESSING ---
         uint8_t standardKey = keymap[r][c]; 
         if (standardKey != 0) { 
           if (currentPressed) { 
@@ -218,16 +209,14 @@ void loop() {
         lastKeyState[r][c] = currentPressed; 
       }
     }
-
-    // Reset row pins back to high-impedance inputs with pull-ups
+    // Reset row pins back to neutral
     if (row_pins[r] <= 30) {
       pinMode(row_pins[r], INPUT_PULLUP); 
-    }
-    else {
+    } else {
       hw_write_mcp_16bit(0x00, 0xFFFF); 
       hw_write_mcp_16bit(0x0C, 0xFFFF); 
     }
   }
-
-  delay(8); // Overall scan delay for key debouncing
+  // Safe 5ms delay that lets the BT stack process pairing requests
+  delay(5); 
 }
