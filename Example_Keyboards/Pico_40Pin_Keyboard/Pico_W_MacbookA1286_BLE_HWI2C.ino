@@ -105,6 +105,7 @@ uint16_t hw_read_mcp_pins() {
 void setup() {
   // PHASE 1: Boot the Bluetooth Radio and lock system multiplexers first
   // This allows the background CYW43439 firmware loop to safely stabilize.
+  gap_set_local_name("MacBook Pro HID"); // Explicitly registers the name to the stack
   KeyboardBT.begin();
   
   // Give the radio firmware stack a solid window to completely spin up
