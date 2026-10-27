@@ -1,5 +1,7 @@
-# MCU and Custom Matrix Flags
+# MCU development target configuration
 MCU = RP2040
 BOOTLOADER = rp2040
-CUSTOM_MATRIX = yes
-SRC += matrix.c
+
+# Feature implementation
+CUSTOM_MATRIX = lite    # Activates custom matrix compilation via matrix.c
+I2C_DRIVER = hardware   # Mounts QMK's native ChibiOS I2C driver structure
