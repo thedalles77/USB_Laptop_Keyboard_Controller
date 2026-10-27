@@ -1,0 +1,28 @@
+{
+    "keyboard_name": "Macbook Pro A1286 Custom",
+    "url": "",
+    "maintainer": "thedalles77",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": false,
+        "mousekey": false,
+        "nkro": false,
+        "i2c_driver": true
+    },
+    "matrix_pins": {
+        "custom": true,
+        "cols": [],
+        "rows": []
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [ 
+
+        ]
+        }
+    }
+}
