@@ -63,7 +63,7 @@ bool matrix_scan_custom(void) {
 
         // --- Step A: Drive Target Row Low ---
         pin_t r_pin = row_pins[r];
-        if (r_pin < 100) {
+        if (!IS_EXP_PIN(r_pin)) {
             setPinOutput(r_pin);
             writePinLow(r_pin);
         } else {
@@ -83,10 +83,10 @@ bool matrix_scan_custom(void) {
             pin_t c_pin = col_pins[c];
             bool is_pressed = false;
 
-            if (c_pin < 100) {
-                is_pressed = (readPin(c_pin) == 0);
-            } else {
-                uint8_t pin_shift = c_pin - 100;
+            if (!IS_EXP_PIN(c_pin)) {
+				is_pressed = (readPin(c_pin) == 0);
+			} else {
+				uint8_t pin_shift = GET_EXP_PIN_NUM(c_pin);
                 is_pressed = ((mcp_snapshot & (1U << pin_shift)) == 0);
             }
 
@@ -96,7 +96,7 @@ bool matrix_scan_custom(void) {
         }
 
         // --- Step D: Release Row Back to High-Impedance Pullup State ---
-        if (r_pin < 100) {
+        if (!IS_EXP_PIN(r_pin)) {
             setPinInputHigh(r_pin);
         } else {
             mcp23018_write_register16(0x00, 0xFFFF); // Reset all registers back into input mode
