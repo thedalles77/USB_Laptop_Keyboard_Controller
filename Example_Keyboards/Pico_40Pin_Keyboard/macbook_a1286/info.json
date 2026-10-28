@@ -1,6 +1,6 @@
 {
     "keyboard_name": "Pico MacBook A1286",
-    "url": "https://github.com",
+    "url": "https://github.com/thedalles77/USB_Laptop_Keyboard_Controller",
     "maintainer": "thedalles77",
     "width": 15,
     "height": 5,
@@ -14,5 +14,12 @@
     "matrix_pins": {
         "cols": [],
         "rows": []
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"label": "ESC", "x": 0, "y": 0}
+            ]
+        }
     }
 }
