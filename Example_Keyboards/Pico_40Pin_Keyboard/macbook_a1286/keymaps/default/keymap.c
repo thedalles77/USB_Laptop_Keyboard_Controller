@@ -1,5 +1,9 @@
 // The matrix layout macro mapping layout positions directly to QMK keycodes
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+#include QMK_KEYBOARD_H
+
+const uint16_t PROGMEM keymaps[][ MATRIX_ROWS][ MATRIX_COLS] = {
+    [0] = {
+        {
 
 //		GPA0		GP7			GPB5		GP8			GP17		GPB1		GP16		GPA6		GPB0
 
@@ -20,4 +24,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_LALT,	//GPA7
 		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_LCTRL	//GP15
 
+        }
+    }
 };
