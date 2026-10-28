@@ -5,17 +5,27 @@
 
 #define MCP23018_ADDR (0x20 << 1) // QMK I2C driver requires a pre-shifted 8-bit address
 
-// Pin array definitions extracted directly from the working sketch
-static const pin_t row_pins[16] = {101, GP20, 112, GP9, 102, GP10, 103, GP19, 111, GP11, 110, GP18, 105, GP14, 107, GP15};
-static const pin_t col_pins[9]  = {100, GP7, 113, GP8, GP17, 109, GP16, 106, 108};
+// Define unique hardware flag signatures that won't conflict with direct RP2040 pin mappings
+#define EXP_PIN(p) ((pin_t)(0x80 | (p)))
+#define IS_EXP_PIN(p) (((p) & 0x80) != 0)
+#define GET_EXP_PIN_NUM(p) ((p) & 0x7F)
+
+static const pin_t row_pins[16] = { 
+    EXP_PIN(1), GP20, EXP_PIN(12), GP9, EXP_PIN(2), GP10, EXP_PIN(3), GP19, 
+    EXP_PIN(11), GP11, EXP_PIN(10), GP18, EXP_PIN(5), GP14, EXP_PIN(7), GP15
+};
+
+static const pin_t col_pins[9] = { 
+    EXP_PIN(0), GP7, EXP_PIN(13), GP8, GP17, EXP_PIN(9), GP16, EXP_PIN(6), EXP_PIN(8)
+};
 
 // Local storage macros
 #define I2C_TIMEOUT 100
 
 // Helper to write a 16-bit register config package down to the MCP23018 Expander
 static bool mcp23018_write_register16(uint8_t reg, uint16_t data) {
-    uint8_t buffer[3] = { reg, data & 0xFF, (data >> 8) & 0xFF };
-    return (i2c_write_reg(MCP23018_ADDR, buffer[0], &buffer[1], 2, I2C_TIMEOUT) == STATUS_SUCCESS);
+    uint8_t data_buffer[2] = { data & 0xFF, (data >> 8) & 0xFF };
+    return (i2c_write_reg(MCP23018_ADDR, reg, data_buffer, 2, I2C_TIMEOUT) == STATUS_SUCCESS);
 }
 
 // Helper to grab an optimized 16-bit physical logic map from the expander input pins
@@ -34,10 +44,10 @@ void matrix_init_custom(void) {
 
     // 2) Configure native RP2040 GPIO pins into clean input floating lines with pullups
     for (uint8_t i = 0; i < 16; i++) {
-        if (row_pins[i] < 100) { setPinInputHigh(row_pins[i]); }
+        if (!IS_EXP_PIN(row_pins[i])) { setPinInputHigh(row_pins[i]); }     
     }
     for (uint8_t i = 0; i < 9; i++) {
-        if (col_pins[i] < 100) { setPinInputHigh(col_pins[i]); }
+        if (!IS_EXP_PIN(col_pins[i])) { setPinInputHigh(col_pins[i]); }
     }
 
     // 3) Push I2C payloads initializing MCP23018 configuration baselines
@@ -57,7 +67,7 @@ bool matrix_scan_custom(void) {
             setPinOutput(r_pin);
             writePinLow(r_pin);
         } else {
-            uint8_t pin_shift = r_pin - 100;
+            uint8_t pin_shift = GET_EXP_PIN_NUM(r_pin);
             uint16_t mask = ~(1U << pin_shift);
             mcp23018_write_register16(0x00, mask); // IODIR: Drive target output pin
             mcp23018_write_register16(0x14, mask); // OLAT: Bring pin logic down to absolute low
