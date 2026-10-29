@@ -3,7 +3,7 @@
 
 // Custom matrix scan for the Pi Pico + MCP23018 laptop keyboard controller.
 //
-// Pin numbering matches the Arduino sketches:
+// Pin numbering:
 //   0 - 29    : Raspberry Pi Pico GPIO number (GP0 - GP29)
 //   100 - 107 : MCP23018 GPA0 - GPA7
 //   108 - 115 : MCP23018 GPB0 - GPB7
@@ -18,7 +18,7 @@
 #include "gpio.h"
 #include "wait.h"
 
-// ---- Keyboard specific pin lists (same as the TinyUSB sketch) ----
+// ---- Keyboard specific pin lists ----
 static const uint8_t row_pins[MATRIX_ROWS] = {101, 20, 112, 9, 102, 10, 103, 19, 111, 11, 110, 18, 105, 14, 107, 15};
 static const uint8_t col_pins[MATRIX_COLS] = {100, 7, 113, 8, 17, 109, 16, 106, 108};
 
@@ -34,7 +34,7 @@ static const uint8_t col_pins[MATRIX_COLS] = {100, 7, 113, 8, 17, 109, 16, 106, 
 #define IS_EXP(p) ((p) >= EXP_BASE)
 #define EXP_BIT(p) ((uint16_t)1 << ((p) - EXP_BASE))
 
-#define SETTLE_US 20 // same settle delay as the Arduino code
+#define SETTLE_US 20 // give signals time to settle out
 
 static bool mcp_ok = false;
 
