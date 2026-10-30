@@ -67,7 +67,7 @@ def pin_number(prefix, bit):
     """Convert a pin name to the 0 - 115 numbering. Returns None if invalid."""
     prefix = prefix.upper()
     if prefix == "PICO_GP":
-        if 0 <= bit <= 28 and bit not in (2, 3, 23, 24, 25):
+        if 0 <= bit <= 28 and bit not in (23, 24, 25):   # 23-25 are internal
             return bit
         return None
     if 0 <= bit <= 7:
@@ -278,7 +278,7 @@ def main():
         report(line)
     report("    ),")
 
-    out_path = os.path.splitext(path)[0] + "_QMK_Result.txt"
+    out_path = os.path.splitext(path)[0] + "_QMK.txt"
     try:
         with open(out_path, "w", encoding="utf-8") as f:
             f.write("\n".join(output) + "\n")
