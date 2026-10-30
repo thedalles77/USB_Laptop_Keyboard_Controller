@@ -1,4 +1,5 @@
 KC_LCTRL					MCP_GPB0 + Pico_GP15
+KC_RCTRL          
 KC_LSHIFT					MCP_GPB0 + Pico_GP14
 KC_RSHIFT					MCP_GPA6 + Pico_GP10
 KC_LALT						MCP_GPA7 + MCP_GPB0
@@ -59,6 +60,8 @@ KC_F9						MCP_GPA5 + MCP_GPA6
 KC_F10						MCP_GPB3 + Pico_GP17
 KC_F11						Pico_GP17 + MCP_GPA1
 KC_F12						MCP_GPA1 + Pico_GP16
+KC_DEL            
+KC_INS            
 KC_RIGHT					Pico_GP16 + Pico_GP18
 KC_LEFT						Pico_GP18 + MCP_GPB1
 KC_UP						MCP_GPA5 + Pico_GP16
