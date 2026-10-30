@@ -1,0 +1,102 @@
+HID_KEY_SHIFT_LEFT					Pico_GP5 + Pico_GP22
+HID_KEY_SHIFT_RIGHT					Pico_GP22 + Pico_GP2
+HID_KEY_CONTROL_LEFT				Pico_GP8 + Pico_GP27
+HID_KEY_CONTROL_RIGHT				Pico_GP8 + Pico_GP2
+HID_KEY_ALT_LEFT					Pico_GP6 + Pico_GP9
+HID_KEY_ALT_RIGHT					Pico_GP9 + Pico_GP1
+HID_KEY_GUI_LEFT					Pico_GP4 + Pico_GP7
+HID_KEY_GUI_RIGHT					
+FN									Pico_GP26 + Pico_GP3
+HID_KEY_A							Pico_GP3 + Pico_GP10
+HID_KEY_B							Pico_GP20 + Pico_GP1
+HID_KEY_C							Pico_GP11 + Pico_GP2
+HID_KEY_D							Pico_GP3 + Pico_GP11
+HID_KEY_E							Pico_GP28 + Pico_GP11
+HID_KEY_F							Pico_GP20 + Pico_GP3
+HID_KEY_G							Pico_GP6 + Pico_GP20
+HID_KEY_H							Pico_GP19 + Pico_GP6
+HID_KEY_I							Pico_GP13 + Pico_GP28
+HID_KEY_J							Pico_GP19 + Pico_GP3
+HID_KEY_K							Pico_GP13 + Pico_GP3
+HID_KEY_L							Pico_GP14 + Pico_GP3
+HID_KEY_M							Pico_GP2 + Pico_GP19
+HID_KEY_N							Pico_GP19 + Pico_GP1
+HID_KEY_O							Pico_GP14 + Pico_GP28
+HID_KEY_P							Pico_GP28 + Pico_GP18
+HID_KEY_Q							Pico_GP10 + Pico_GP28
+HID_KEY_R							Pico_GP28 + Pico_GP20
+HID_KEY_S							Pico_GP21 + Pico_GP3
+HID_KEY_T							Pico_GP20 + Pico_GP5
+HID_KEY_U							Pico_GP19 + Pico_GP28
+HID_KEY_V							Pico_GP2 + Pico_GP20
+HID_KEY_W							Pico_GP21 + Pico_GP28
+HID_KEY_X							Pico_GP21 + Pico_GP2
+HID_KEY_Y							Pico_GP5 + Pico_GP19
+HID_KEY_Z							Pico_GP2 + Pico_GP10
+HID_KEY_GRAVE						Pico_GP27 + Pico_GP10
+HID_KEY_1							Pico_GP4 + Pico_GP10
+HID_KEY_2							Pico_GP21 + Pico_GP4
+HID_KEY_3							Pico_GP4 + Pico_GP11
+HID_KEY_4							Pico_GP20 + Pico_GP4
+HID_KEY_5							Pico_GP20 + Pico_GP27
+HID_KEY_6							Pico_GP19 + Pico_GP27
+HID_KEY_7							Pico_GP19 + Pico_GP4
+HID_KEY_8							Pico_GP13 + Pico_GP4
+HID_KEY_9							Pico_GP4 + Pico_GP14
+HID_KEY_0							Pico_GP4 + Pico_GP18
+HID_KEY_EQUAL						Pico_GP27 + Pico_GP18
+HID_KEY_MINUS						Pico_GP13 + Pico_GP27
+HID_KEY_BACKSPACE					Pico_GP5 + Pico_GP12
+HID_KEY_BRACKET_LEFT				Pico_GP18 + Pico_GP5
+HID_KEY_BRACKET_RIGHT				Pico_GP5 + Pico_GP13
+HID_KEY_BACKSLASH					Pico_GP12 + Pico_GP3
+HID_KEY_SEMICOLON					Pico_GP3 + Pico_GP18
+HID_KEY_APOSTROPHE					Pico_GP6 + Pico_GP18
+HID_KEY_ENTER						Pico_GP12 + Pico_GP2
+HID_KEY_COMMA						Pico_GP13 + Pico_GP2
+HID_KEY_PERIOD						Pico_GP2 + Pico_GP14
+HID_KEY_SLASH						Pico_GP1 + Pico_GP18
+HID_KEY_ARROW_LEFT					Pico_GP15 + Pico_GP1
+HID_KEY_ARROW_RIGHT					Pico_GP16 + Pico_GP1
+HID_KEY_ARROW_UP					Pico_GP15 + Pico_GP6
+HID_KEY_ARROW_DOWN					Pico_GP17 + Pico_GP1
+HID_KEY_SPACE						Pico_GP12 + Pico_GP1
+HID_KEY_TAB							Pico_GP5 + Pico_GP10
+HID_KEY_CAPS_LOCK					Pico_GP5 + Pico_GP21
+HID_KEY_ESCAPE						Pico_GP6 + Pico_GP10
+HID_KEY_F1							Pico_GP21 + Pico_GP27
+HID_KEY_F2							Pico_GP11 + Pico_GP27
+HID_KEY_F3							Pico_GP5 + Pico_GP11
+HID_KEY_F4							Pico_GP6 + Pico_GP11
+HID_KEY_F5							Pico_GP6 + Pico_GP12
+HID_KEY_F6							Pico_GP6 + Pico_GP13
+HID_KEY_F7							Pico_GP5 + Pico_GP14
+HID_KEY_F8							Pico_GP14 + Pico_GP27
+HID_KEY_F9							Pico_GP12 + Pico_GP27
+HID_KEY_F10							Pico_GP12 + Pico_GP4
+HID_KEY_F11							Pico_GP4 + Pico_GP17
+HID_KEY_F12							Pico_GP4 + Pico_GP16
+HID_KEY_PRINT_SCREEN				Pico_GP4 + Pico_GP9
+HID_KEY_PAGE_DOWN					Pico_GP3 + Pico_GP7
+HID_KEY_PAGE_UP						Pico_GP28 + Pico_GP7
+HID_KEY_HOME						Pico_GP15 + Pico_GP27
+HID_KEY_END							Pico_GP15 + Pico_GP4
+HID_KEY_INSERT						Pico_GP27 + Pico_GP16
+HID_KEY_DELETE						Pico_GP17 + Pico_GP27
+HID_KEY_NUM_LOCK					
+HID_KEY_KEYPAD_DIVIDE 				
+HID_KEY_KEYPAD_MULTIPLY 			
+HID_KEY_KEYPAD_SUBTRACT 			
+HID_KEY_KEYPAD_ADD 					
+HID_KEY_KEYPAD_ENTER				
+HID_KEY_KEYPAD_DECIMAL				
+HID_KEY_KEYPAD_0						
+HID_KEY_KEYPAD_1					
+HID_KEY_KEYPAD_2					
+HID_KEY_KEYPAD_3					
+HID_KEY_KEYPAD_4					
+HID_KEY_KEYPAD_5					
+HID_KEY_KEYPAD_6					
+HID_KEY_KEYPAD_7					
+HID_KEY_KEYPAD_8					
+HID_KEY_KEYPAD_9					
