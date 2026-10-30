@@ -1,12 +1,12 @@
-KC_LCTRL					27	8
-KC_RCTRL					8	2
-KC_LSHIFT					22	5
-KC_RSHIFT					22	2
+KC_LCTL					27	8
+KC_RCTL					8	2
+KC_LSFT					22	5
+KC_RSFT					22	2
 KC_LALT						9	6
 KC_RALT						9	1
 KC_LGUI						7	4
 KC_RGUI						
-FN							26	3
+M0(1)							26	3
 KC_A						10	3
 KC_B						20	1
 KC_C						11	2
@@ -46,7 +46,7 @@ KC_9						14	4
 KC_0						18	4
 KC_MINUS					27	18
 KC_EQUAL					27	13
-KC_BSPACE					12	5
+KC_BSPC					12	5
 KC_ESC						10	6
 KC_F1						27	21
 KC_F2						27	11
@@ -69,12 +69,12 @@ KC_DOWN						17	1
 KC_SLASH					18	1
 KC_DOT 						14	2
 KC_COMMA					13	2
-KC_SCOLON					18	3
+KC_SCLN					18	3
 KC_QUOTE					18	6
 KC_ENTER					12	2
 KC_LBRC						18	5
 KC_RBRC						13	5
-KC_BSLASH					12	3
+KC_BSLS					12	3
 KC_CAPS						21	5
 KC_TAB						10	5
 KC_SPACE					12	1
