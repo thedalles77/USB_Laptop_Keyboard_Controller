@@ -6,7 +6,7 @@ KC_LALT						MCP_GPA7 + MCP_GPB0
 KC_RALT						MCP_GPB1 + MCP_GPB3
 KC_LGUI						MCP_GPA3 + Pico_GP8
 KC_RGUI						Pico_GP16 + MCP_GPA3
-m0(1)						Pico_GP19 + MCP_GPB1
+M0(1)						Pico_GP19 + MCP_GPB1
 KC_A						MCP_GPB5 + MCP_GPA1
 KC_B						Pico_GP8 + Pico_GP19
 KC_C						MCP_GPB4 + Pico_GP8
