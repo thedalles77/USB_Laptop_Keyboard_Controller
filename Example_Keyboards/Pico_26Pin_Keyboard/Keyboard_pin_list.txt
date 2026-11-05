@@ -102,15 +102,3 @@ KC.P6
 KC.P7						          
 KC.P8						          
 KC.P9						          
-KC.AUDIO_MUTE	Func		    
-KC.AUDIO_VOL_UP	Func		  
-KC.AUDIO_VOL_DOWN	Func	  
-KC.BRIGHTNESS_UP	Func	  
-KC.BRIGHTNESS_DOWN	Func	
-KC.MEDIA_NEXT_TRACK	Func	
-KC.MEDIA_PREV_TRACK	Func	
-KC.MEDIA_STOP	Func		    
-KC.MEDIA_PLAY_PAUSE	Func	
-KC.MEDIA_EJECT	Func		  
-KC.MEDIA_FAST_FORWARD Func
-KC.MEDIA_REWIND	Func		  
