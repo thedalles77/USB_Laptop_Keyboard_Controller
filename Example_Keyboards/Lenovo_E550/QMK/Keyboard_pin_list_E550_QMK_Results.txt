@@ -1,0 +1,44 @@
+Pin list file: C:/Users/mfada/Documents/Lenovo_E550_Keyboard/Keyboard_pin_list_E550_QMK.txt
+
+Keys with pin connections: 101
+
+Number of row pins:    19
+Number of column pins: 9
+
+Row pins:    10, 11, 12, 15, 17, 18, 19, 20, 21, 102, 103, 104, 105, 107, 108, 110, 111, 112, 113
+Column pins: 6, 7, 8, 9, 14, 100, 101, 114, 115
+
+(Pico GP0-28 = 0-28, MCP23018 GPA0-7 = 100-107, GPB0-7 = 108-115)
+Rows:    GP10, GP11, GP12, GP15, GP17, GP18, GP19, GP20, GP21, GPA2, GPA3, GPA4, GPA5, GPA7, GPB0, GPB2, GPB3, GPB4, GPB5
+Columns: GP6, GP7, GP8, GP9, GP14, GPA0, GPA1, GPB6, GPB7
+
+---- matrix.c ----
+static const uint8_t row_pins[MATRIX_ROWS] = {10, 11, 12, 15, 17, 18, 19, 20, 21, 102, 103, 104, 105, 107, 108, 110, 111, 112, 113};
+static const uint8_t col_pins[MATRIX_COLS] = {6, 7, 8, 9, 14, 100, 101, 114, 115};
+
+---- keyboard.json ----
+    "matrix_size": {"rows": 19, "cols": 9},
+
+---- keymap.c base layer ----
+    [0] = LAYOUT(
+    //  GP6          GP7          GP8          GP9          GP14         GPA0         GPA1         GPB6         GPB7
+        KC_B,        KC_4,        KC_R,        KC_G,        KC_NO,       KC_F,        KC_5,        KC_V,        KC_T,        // GP10
+        KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_LCTL,     KC_RCTL,     KC_NO,       // GP11
+        KC_RIGHT,    KC_F12,      KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_LGUI,     // GP12
+        KC_P0,       KC_P3,       KC_P6,       KC_P4,       KC_NO,       KC_P2,       KC_P1,       KC_PENT,     KC_P5,       // GP15
+        KC_PGDN,     KC_INSERT,   KC_NO,       KC_NO,       KC_NO,       KC_PSCR,     KC_DELETE,   KC_PGUP,     KC_NO,       // GP17
+        KC_DOWN,     KC_F11,      KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_HOME,     KC_NO,       KC_NO,       // GP18
+        KC_SLASH,    KC_0,        KC_P,        KC_QUOTE,    KC_NO,       KC_SCLN,     KC_MINUS,    KC_NO,       KC_LBRC,     // GP19
+        KC_N,        KC_7,        KC_U,        KC_H,        KC_NO,       KC_J,        KC_6,        KC_M,        KC_Y,        // GP20
+        KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_RSFT,     KC_LSFT,     // GP21
+        KC_NO,       KC_2,        KC_W,        KC_NO,       KC_NO,       KC_S,        KC_F1,       KC_X,        KC_CAPS,     // GPA2
+        KC_NO,       KC_9,        KC_O,        KC_NO,       KC_NO,       KC_L,        KC_F8,       KC_DOT,      KC_F7,       // GPA3
+        KC_RALT,     KC_NO,       KC_NO,       KC_LALT,     KC_NO,       KC_NO,       KC_NO,       KC_NO,       KC_NO,       // GPA4
+        KC_SPACE,    KC_F10,      KC_NO,       KC_F5,       KC_NO,       KC_BSLS,     KC_F9,       KC_ENTER,    KC_BSPC,     // GPA5
+        KC_PPLS,     KC_P8,       KC_PAST,     KC_NUM_LOCK, KC_NO,       KC_P7,       KC_PMNS,     KC_P9,       KC_PSLS,     // GPA7
+        KC_NO,       KC_NO,       KC_NO,       KC_NO,       MO(1),       KC_NO,       KC_NO,       KC_NO,       KC_NO,       // GPB0
+        KC_LEFT,     KC_END,      KC_NO,       KC_UP,       KC_NO,       KC_NO,       KC_NO,       KC_PDOT,     KC_NO,       // GPB2
+        KC_NO,       KC_8,        KC_I,        KC_F6,       KC_NO,       KC_K,        KC_EQUAL,    KC_COMMA,    KC_RBRC,     // GPB3
+        KC_NO,       KC_3,        KC_E,        KC_F4,       KC_NO,       KC_D,        KC_F2,       KC_C,        KC_F3,       // GPB4
+        KC_NO,       KC_1,        KC_Q,        KC_ESC,      KC_NO,       KC_A,        KC_GRAVE,    KC_Z,        KC_TAB       // GPB5
+    ),
