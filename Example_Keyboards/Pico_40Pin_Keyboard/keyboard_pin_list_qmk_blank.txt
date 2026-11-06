@@ -81,8 +81,8 @@ KC_SPACE
 KC_HOME						
 KC_END						
 KC_PGUP						
-KC_PGDOWN					
-KC_PSCREEN					
+KC_PGDN					
+KC_PSCR					
 KC_SCROLLLOCK				
 KC_NUM_LOCK					
 KC_PAUSE					
