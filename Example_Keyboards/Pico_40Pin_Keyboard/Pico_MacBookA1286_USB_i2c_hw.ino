@@ -13,6 +13,7 @@ limitations under the License.
 This code makes a MacBook Pro A1286 laptop keyboard work as a standalone USB keyboard.
 It uses a Raspberry Pi Pico with an MCP23018 port expander to interface with the 
 keyboards FPC cable. The i2c bus is implemented using the Pico's built in hardware.
+Holding the Fn key turns F10, F11, F12 into Mute, Volume Down, Volume Up.
 The circuit board description is in step 2 of the Instructable titled 
 "How to Make a USB & BLE Laptop Keyboard Controller" at this url:
 https://www.instructables.com/How-to-Make-a-USB-Laptop-Keyboard-Controller
@@ -22,9 +23,16 @@ https://github.com/thedalles77/USB_Laptop_Keyboard_Controller/tree/master/Exampl
 
 #include <Adafruit_TinyUSB.h>
 # include <Wire.h>
-// Define the HID report descriptor for a standard Boot Keyboard
+// HID report IDs: one report for normal keys, one for media (consumer control) keys
+enum {
+  RID_KEYBOARD = 1,
+  RID_CONSUMER_CONTROL
+};
+
+// HID report descriptor: keyboard + consumer control (mute, volume)
 uint8_t const desc_hid_report[] = {
-  TUD_HID_REPORT_DESC_KEYBOARD()
+  TUD_HID_REPORT_DESC_KEYBOARD(HID_REPORT_ID(RID_KEYBOARD)),
+  TUD_HID_REPORT_DESC_CONSUMER(HID_REPORT_ID(RID_CONSUMER_CONTROL))
 };
 
 // Create the TinyUSB HID object instance
@@ -65,12 +73,30 @@ const uint8_t keyMap[NUM_ROWS][NUM_COLS] = {
   { 0,         0,         0,         0,                0,                  0,                 0,                    0,                   HID_KEY_CONTROL_LEFT}
 };
 
-// Track key states across scans so we can detect edges
-bool lastKeyState[NUM_ROWS][NUM_COLS] = {false};
+// Fn key location in the matrix (row GP19, column GPB1). It has no keycode in keyMap.
+const int FN_ROW = 7;    // GP19
+const int FN_COL = 5;    // GPB1
 
-// Remember the last report we transmitted so we can suppress duplicates
+// Media keys sent when Fn is held: matrix position of the F key and the consumer code to send
+struct FnMediaKey {
+  int row;
+  int col;
+  uint16_t consumerCode;
+};
+const FnMediaKey fnMediaKeys[] = {
+  {8, 4, HID_USAGE_CONSUMER_MUTE},              // Fn + F10 (row GPB3, column GP17)
+  {0, 4, HID_USAGE_CONSUMER_VOLUME_DECREMENT},  // Fn + F11 (row GPA1, column GP17)
+  {0, 6, HID_USAGE_CONSUMER_VOLUME_INCREMENT}   // Fn + F12 (row GPA1, column GP16)
+};
+const int NUM_FN_MEDIA_KEYS = sizeof(fnMediaKeys) / sizeof(fnMediaKeys[0]);
+
+// Current state of every key from the latest scan (true = pressed)
+bool keyState[NUM_ROWS][NUM_COLS] = {false};
+
+// Remember the last reports we transmitted so we can suppress duplicates
 uint8_t lastModifier = 0;
 uint8_t lastReport[6] = {0, 0, 0, 0, 0, 0};
+uint16_t lastConsumer = 0;
 
 // i2c write function
 bool bb_write_mcp_16bit(uint8_t reg, uint16_t value) {
@@ -134,7 +160,34 @@ static inline bool readCol(int c, uint16_t mcpSnapshot) {
   }
 }
 
+// Wait (up to 20 msec) for USB to be ready for the next report
+static bool waitUsbReady() {
+  unsigned long start = millis();
+  while (!usb_hid.ready()) {
+    if (millis() - start > 20) return false;
+    delay(1);
+  }
+  return true;
+}
+
 void setup() {
+  // Start the USB HID device first. The Pico core starts USB before setup()
+  // runs, so the HID interface must be added as early as possible.
+  if (!TinyUSBDevice.isInitialized()) {
+    TinyUSBDevice.begin(0);
+  }
+  usb_hid.setPollInterval(2);
+  usb_hid.setReportDescriptor(desc_hid_report, sizeof(desc_hid_report));
+  usb_hid.setStringDescriptor("MacBook A1286 Keyboard");
+  usb_hid.begin();
+
+  // If the PC already enumerated the Pico without the keyboard, reconnect so it sees it
+  if (TinyUSBDevice.mounted()) {
+    TinyUSBDevice.detach();
+    delay(10);
+    TinyUSBDevice.attach();
+  }
+
   // Initialize hardware I2C1 on pins 2 and 3
   Wire1.setSDA(I2C_SDA);
   Wire1.setSCL(I2C_SCL);
@@ -149,28 +202,24 @@ void setup() {
   bb_write_mcp_16bit(0x00, 0xFFFF); // IODIR : all expander pins = input
   bb_write_mcp_16bit(0x0C, 0xFFFF); // GPPU  : all expander pull-ups on
 
-  usb_hid.setPollInterval(2);
-  usb_hid.setReportDescriptor(desc_hid_report, sizeof(desc_hid_report));
-  usb_hid.begin();
-
   while (!TinyUSBDevice.mounted()) delay(1);
   delay(2000);
 }
 
 // ---------------------------------------------------------------------
-// Optimized loop:
-//   - Scans the full 16x9 matrix once per iteration.
-//   - Tracks per-key edges to know if anything changed.
-//   - Accumulates modifier bits and up to 6 normal keycodes.
-//   - Sends exactly ONE HID report AFTER the complete scan, and only
-//     if the aggregated report differs from the previously sent one.
+// Loop:
+//   1) Scans the full 16x9 matrix into keyState[][].
+//   2) Checks the Fn key. With Fn held, F10/F11/F12 send mute / volume down /
+//      volume up as a consumer (media) report instead of F10/F11/F12.
+//   3) Builds the keyboard report: modifier bits and up to 6 normal keycodes.
+//   4) Sends each report only when it differs from the one last sent.
 // ---------------------------------------------------------------------
 void loop() {
-  uint8_t modifierByte      = 0;
-  uint8_t keycodeReport[6]  = {0, 0, 0, 0, 0, 0};
-  int     keyCount          = 0;
-  bool    stateChanged      = false;
-  bool    rolloverExceeded  = false;
+  uint8_t  modifierByte      = 0;
+  uint8_t  keycodeReport[6]  = {0, 0, 0, 0, 0, 0};
+  int      keyCount          = 0;
+  bool     rolloverExceeded  = false;
+  uint16_t consumerCode      = 0;
 
   // 1) Full-matrix scan --------------------------------------------------
   for (int r = 0; r < NUM_ROWS; r++) {
@@ -181,34 +230,43 @@ void loop() {
     uint16_t mcpSnapshot = bb_read_mcp_pins();
 
     for (int c = 0; c < NUM_COLS; c++) {
-      bool pressed = readCol(c, mcpSnapshot);
-
-      // Edge detection: mark if this key transitioned
-      if (pressed != lastKeyState[r][c]) {
-        stateChanged        = true;
-        lastKeyState[r][c]  = pressed;
-      }
-
-      // Accumulate currently-held keys into a single report
-      if (pressed) {
-        uint8_t key = keyMap[r][c];
-        if (key != 0) {
-          if (key >= HID_KEY_CONTROL_LEFT && key <= HID_KEY_GUI_RIGHT) {
-            // Modifier: fold into the modifier byte
-            modifierByte |= (uint8_t)(1u << (key - HID_KEY_CONTROL_LEFT));
-          } else {
-            // Normal key: append if we still have room (6KRO)
-            if (keyCount < 6) {
-              keycodeReport[keyCount++] = key;
-            } else {
-              rolloverExceeded = true;
-            }
-          }
-        }
-      }
+      keyState[r][c] = readCol(c, mcpSnapshot);
     }
 
     releaseRow(r);
+  }
+
+  // 2) Fn layer ------------------------------------------------------------
+  bool fnHeld = keyState[FN_ROW][FN_COL];
+  bool usedByFn[NUM_ROWS][NUM_COLS] = {{false}};
+  if (fnHeld) {
+    for (int i = 0; i < NUM_FN_MEDIA_KEYS; i++) {
+      const FnMediaKey &m = fnMediaKeys[i];
+      if (keyState[m.row][m.col]) {
+        usedByFn[m.row][m.col] = true;                // don't also send F10/F11/F12
+        if (consumerCode == 0) consumerCode = m.consumerCode;
+      }
+    }
+  }
+
+  // 3) Build the keyboard report from all held keys ------------------------
+  for (int r = 0; r < NUM_ROWS; r++) {
+    for (int c = 0; c < NUM_COLS; c++) {
+      if (!keyState[r][c] || usedByFn[r][c]) continue;
+      uint8_t key = keyMap[r][c];
+      if (key == 0) continue;                         // empty position (includes Fn)
+      if (key >= HID_KEY_CONTROL_LEFT && key <= HID_KEY_GUI_RIGHT) {
+        // Modifier: fold into the modifier byte
+        modifierByte |= (uint8_t)(1u << (key - HID_KEY_CONTROL_LEFT));
+      } else {
+        // Normal key: append if we still have room (6KRO)
+        if (keyCount < 6) {
+          keycodeReport[keyCount++] = key;
+        } else {
+          rolloverExceeded = true;
+        }
+      }
+    }
   }
 
   // Phantom / rollover handling: HID spec says fill all 6 slots with
@@ -217,20 +275,23 @@ void loop() {
     for (int i = 0; i < 6; i++) keycodeReport[i] = 0x01;
   }
 
-  // 2) One transmission per full scan -----------------------------------
-  // Only send if something actually changed AND the aggregated report
-  // differs from the last one we transmitted (prevents duplicate spam).
-  if (stateChanged && usb_hid.ready()) {
-    bool reportDiffers = (modifierByte != lastModifier);
-    if (!reportDiffers) {
-      for (int i = 0; i < 6; i++) {
-        if (keycodeReport[i] != lastReport[i]) { reportDiffers = true; break; }
-      }
-    }
-    if (reportDiffers) {
-      usb_hid.keyboardReport(0, modifierByte, keycodeReport);
+  // 4) Send reports that changed ---------------------------------------------
+  // A report is only marked as sent if USB accepted it, so a change is never lost.
+  bool reportDiffers = (modifierByte != lastModifier);
+  for (int i = 0; i < 6 && !reportDiffers; i++) {
+    if (keycodeReport[i] != lastReport[i]) reportDiffers = true;
+  }
+  if (reportDiffers && waitUsbReady()) {
+    if (usb_hid.keyboardReport(RID_KEYBOARD, modifierByte, keycodeReport)) {
       lastModifier = modifierByte;
       for (int i = 0; i < 6; i++) lastReport[i] = keycodeReport[i];
+    }
+  }
+
+  // Media key press (code) or release (0)
+  if (consumerCode != lastConsumer && waitUsbReady()) {
+    if (usb_hid.sendReport16(RID_CONSUMER_CONTROL, consumerCode)) {
+      lastConsumer = consumerCode;
     }
   }
 
