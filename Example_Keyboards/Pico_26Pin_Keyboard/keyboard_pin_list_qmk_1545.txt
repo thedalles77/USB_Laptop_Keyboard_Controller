@@ -6,7 +6,7 @@ KC_LALT						9	6
 KC_RALT						9	1
 KC_LGUI						7	4
 KC_RGUI						
-M0(1)							26	3
+MO(1)							26	3
 KC_A						10	3
 KC_B						20	1
 KC_C						11	2
