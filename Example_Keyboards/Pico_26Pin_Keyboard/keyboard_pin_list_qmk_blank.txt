@@ -6,7 +6,7 @@ KC_LALT
 KC_RALT						
 KC_LGUI						
 KC_RGUI						
-M0(1)							
+MO(1)							
 KC_A						
 KC_B						
 KC_C						
