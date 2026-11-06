@@ -102,15 +102,3 @@ KC_P6
 KC_P7						
 KC_P8						
 KC_P9						
-KC_MUTE	Func				
-KC_VOLU	Func				
-KC_VOLD	Func				
-KC_BRIU	Func				
-KC_BRID	Func				
-KC_MNXT	Func				
-KC_MPRV	Func				
-KC_MSTP	Func				
-KC_MPLY	Func				
-KC_EJCT	Func				
-KC_MFFD Func				
-KC_MRWD	Func				
