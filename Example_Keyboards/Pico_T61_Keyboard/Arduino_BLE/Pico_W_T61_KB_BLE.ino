@@ -12,6 +12,9 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+This code makes a Lenovo T61 laptop keyboard work as a Bluetooth (BLE) keyboard using a
+Raspberry Pi Pico W and the Earle Philhower Arduino Pico core.
 */
 #include <KeyboardBLE.h>
 
@@ -55,7 +58,7 @@ void setup() {
     pinMode(colPins[c], INPUT_PULLUP); // Make the col gpio's inputs with pullups
   }
   for (int r = 0; r < NUM_ROWS; r++) {
-    pinMode(rowPins[r], INPUT); // Make the row gpio's float by making them inputs w/o pullups to start.
+    pinMode(rowPins[r], INPUT_PULLUP); // Make the row gpio's inputs with pullups (same as the other BLE keyboards)
   }
 
   KeyboardBLE.begin("T61 BLE Keyboard", "Lenovo Mod"); // "T61 BLE Keyboard" defines the Device Name that
@@ -66,9 +69,11 @@ void setup() {
 }
 
 void loop() {
+  yield(); // keep background core processes like BLE running so they don't timeout
+
   // Single Pass Matrix Scan drives each row low, one at a time and reads all the columns
   for (int r = 0; r < NUM_ROWS; r++) {
-    pinMode(rowPins[r], OUTPUT); // make the selected row pin an output instead of floating as an input
+    pinMode(rowPins[r], OUTPUT); // make the selected row pin an output
     digitalWrite(rowPins[r], LOW); // drive the row pin low 
     delayMicroseconds(20); // give it some time before sampling due to weak 50K pullups in RP2040. 10usec is marginal
 
@@ -89,7 +94,7 @@ void loop() {
           } 
           else if (standardKey == TOKEN_VOL_UP) {
             if (currentPressed) { // volume up was just pressed
-              KeyboardBLE.consumerPress(KEY_VOLUME); // Triggers Volume Increase
+              KeyboardBLE.consumerPress(KEY_VOLUME_INCREMENT); // Triggers Volume Increase (increment)
             } else { // volume up was just released
               KeyboardBLE.consumerRelease(); // send the release (for all consumer keys)
             }
@@ -114,7 +119,7 @@ void loop() {
         lastKeyState[r][c] = currentPressed; // save state of the key to the last key state array for next loop
       }
     }
-    pinMode(rowPins[r], INPUT); // return row that was driven low to an input so it floats 
+    pinMode(rowPins[r], INPUT_PULLUP); // return row that was driven low to an input with pullup
   }
   delay(8); // overall 8 msec keyboard scan rate is slow enough to eliminate any chance of key bounce
 }
