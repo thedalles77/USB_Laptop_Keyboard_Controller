@@ -15,7 +15,8 @@
 
 This code makes a Lenovo T61 laptop keyboard and trackpoint work as a Bluetooth (BLE)
 keyboard and mouse using a Raspberry Pi Pico W and the Earle Philhower Arduino Pico core.
-The keyboard matrix is scanned directly by Pico GPIOs. The trackpoint is a PS/2 device
+The keyboard matrix is scanned directly by Pico GPIOs. Holding Fn turns the arrow keys
+into Stop (Up), Play/Pause (Down), Previous (Left) and Next (Right). The trackpoint is a PS/2 device
 on GP0 (data) and GP1 (clock), read with a clock interrupt.
 */
 
@@ -32,27 +33,53 @@ const int rowPins[NUM_ROWS] = {27, 26, 17, 14, 12, 19, 18, 15, 13, 6, 16, 5, 28,
 #define TOKEN_MUTE_KEY 0xFE
 #define TOKEN_VOL_UP   0xFD
 #define TOKEN_VOL_DOWN 0xFC
+#define TOKEN_FN       0xFB   // Fn key: sends nothing itself, turns the arrows into media keys
 
 const uint8_t keyMap[NUM_ROWS][NUM_COLS] = {
-  { '`',          '1',          'q',          KEY_TAB,      'a',          KEY_ESC,       'z',          0 },
-  { KEY_F1,       '2',          'w',          KEY_CAPS_LOCK,'s',          0,             'x',          0 },
-  { KEY_F2,       '3',          'e',          KEY_F3,       'd',          KEY_F4,        'c',          0 },
-  { '5',          '4',          'r',          't',          'f',          'g',           'v',          'b' },
-  { '6',          '7',          'u',          'y',          'j',          'h',           'm',          'n' },
-  { '=',          '8',          'i',          ']',          'k',          KEY_F6,        ',',          0 },
-  { KEY_F8,       '9',          'o',          KEY_F7,       'l',          0,             '.',          0 },
-  { '-',          '0',          'p',          '[',          ';',          '\'',          0,            '/' },
-  { KEY_F9,       KEY_F10,      0,            KEY_BACKSPACE,'\\',         KEY_F5,        KEY_RETURN,   ' ' },
-  { KEY_INSERT,   KEY_F12,      0,            0,            0,            0,             0,            KEY_RIGHT_ARROW },
-  { KEY_DELETE,   KEY_F11,      TOKEN_VOL_UP, TOKEN_VOL_DOWN, TOKEN_MUTE_KEY, 0,         0,            KEY_DOWN_ARROW }, 
-  { KEY_PAGE_UP,  KEY_PAGE_DOWN,KEY_LEFT_GUI,  0,            0,            0,             0,            0 },
-  { KEY_HOME,     KEY_END,      0,            0,            0,            KEY_UP_ARROW,  0,            KEY_LEFT_ARROW },
-  { 0,            KEY_PRINT_SCREEN,0,         0,            0,            KEY_LEFT_ALT,  0,            KEY_RIGHT_ALT },
-  { 0,            0,            0,            KEY_LEFT_SHIFT,0,           0,             KEY_RIGHT_SHIFT,0 },
-  { KEY_LEFT_CTRL,0,            0,            0,            0,            0,             KEY_RIGHT_CTRL,0 }
+  { '`',           '1',              'q',          KEY_TAB,        'a',            KEY_ESC,      'z',             0                },
+  { KEY_F1,        '2',              'w',          KEY_CAPS_LOCK,  's',            0,            'x',             0                },
+  { KEY_F2,        '3',              'e',          KEY_F3,         'd',            KEY_F4,       'c',             0                },
+  { '5',           '4',              'r',          't',            'f',            'g',          'v',             'b'              },
+  { '6',           '7',              'u',          'y',            'j',            'h',          'm',             'n'              },
+  { '=',           '8',              'i',          ']',            'k',            KEY_F6,       ',',             0                },
+  { KEY_F8,        '9',              'o',          KEY_F7,         'l',            0,            '.',             0                },
+  { '-',           '0',              'p',          '[',            ';',            '\'',         0,               '/'              },
+  { KEY_F9,        KEY_F10,          0,            KEY_BACKSPACE,  '\\',           KEY_F5,       KEY_RETURN,      ' '              },
+  { KEY_INSERT,    KEY_F12,          0,            0,              TOKEN_FN,       0,            0,               KEY_RIGHT_ARROW  },
+  { KEY_DELETE,    KEY_F11,          TOKEN_VOL_UP, TOKEN_VOL_DOWN, TOKEN_MUTE_KEY, 0,            0,               KEY_DOWN_ARROW   },
+  { KEY_PAGE_UP,   KEY_PAGE_DOWN,    KEY_LEFT_GUI, 0,              KEY_MENU,       0,            0,               0                },
+  { KEY_HOME,      KEY_END,          0,            0,              0,              KEY_UP_ARROW, 0,               KEY_LEFT_ARROW   },
+  { 0,             KEY_PRINT_SCREEN, KEY_NUM_LOCK, 0,              0,              KEY_LEFT_ALT, 0,               KEY_RIGHT_ALT    },
+  { 0,             0,                0,            KEY_LEFT_SHIFT, 0,              0,            KEY_RIGHT_SHIFT, 0                },
+  { KEY_LEFT_CTRL, 0,                0,            0,              0,              0,            KEY_RIGHT_CTRL,  0                }
 };
 
 bool lastKeyState[NUM_ROWS][NUM_COLS] = {false}; // key states from the last scan, so each change is sent once
+
+// --- Fn layer: with Fn held, the arrow keys send media (consumer) keys ---
+bool fnHeld = false;                        // true while the Fn key is down
+bool sentAsMedia[NUM_ROWS][NUM_COLS] = {false}; // arrow was pressed with Fn, so release it as a media key
+
+struct FnMediaKey {
+  int row;
+  int col;
+  uint16_t consumerCode;
+};
+const FnMediaKey fnMediaKeys[] = {
+  {12, 5, KEY_STOP},           // Fn + Up    (row GP28, column GP20)
+  {10, 7, KEY_PLAY_PAUSE},     // Fn + Down  (row GP16, column GP7)
+  {12, 7, KEY_SCAN_PREVIOUS},  // Fn + Left  (row GP28, column GP7)
+  { 9, 7, KEY_SCAN_NEXT}       // Fn + Right (row GP6,  column GP7)
+};
+const int NUM_FN_MEDIA_KEYS = sizeof(fnMediaKeys) / sizeof(fnMediaKeys[0]);
+
+// Returns the media code for the key at row r, column c when Fn is held (0 = not an Fn media key)
+uint16_t fnMediaCode(int r, int c) {
+  for (int i = 0; i < NUM_FN_MEDIA_KEYS; i++) {
+    if (fnMediaKeys[i].row == r && fnMediaKeys[i].col == c) return fnMediaKeys[i].consumerCode;
+  }
+  return 0;
+}
 
 // --- Trackpoint Configurations ---
 const int PS2_DATA_PIN  = 0;
@@ -294,8 +321,27 @@ void loop() {
           else if (standardKey == TOKEN_VOL_DOWN) {
             if (currentPressed) KeyboardBLE.consumerPress(KEY_VOLUME_DECREMENT); else KeyboardBLE.consumerRelease();
           }
+          else if (standardKey == TOKEN_FN) {
+            fnHeld = currentPressed; // Fn itself sends nothing
+          }
           else {
-            if (currentPressed) KeyboardBLE.press(standardKey); else KeyboardBLE.release(standardKey);
+            uint16_t media = fnHeld ? fnMediaCode(r, c) : 0; // Fn + arrow = media key
+            if (currentPressed) {
+              if (media != 0) {
+                KeyboardBLE.consumerPress(media);
+                sentAsMedia[r][c] = true;
+              } else {
+                KeyboardBLE.press(standardKey);
+              }
+            } else {
+              // Release the key the same way it was pressed, even if Fn was let go first
+              if (sentAsMedia[r][c]) {
+                KeyboardBLE.consumerRelease();
+                sentAsMedia[r][c] = false;
+              } else {
+                KeyboardBLE.release(standardKey);
+              }
+            }
           }
         }
         lastKeyState[r][c] = currentPressed;
