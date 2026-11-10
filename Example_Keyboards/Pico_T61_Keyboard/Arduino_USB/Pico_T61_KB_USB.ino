@@ -15,7 +15,9 @@
 
 This code makes a Lenovo T61 laptop keyboard work as a USB keyboard using a
 Raspberry Pi Pico (or Pico W, Pico 2, Pico 2 W) and the Adafruit TinyUSB library.
-The mute, volume up and volume down keys are sent as USB media (consumer control) keys.
+Holding Fn turns the arrow keys into Stop (Up), Play/Pause (Down), Previous (Left)
+and Next (Right). The mute, volume up and volume down keys are sent as USB media
+(consumer control) keys.
 Arduino IDE settings: Tools > USB Stack = Adafruit TinyUSB
 */
 
@@ -50,24 +52,42 @@ const int rowPins[NUM_ROWS] = {27, 26, 17, 14, 12, 19, 18, 15, 13, 6, 16, 5, 28,
 
 // Base Keyboard Map. A zero indicates no key at that position.
 const uint8_t keyMap[NUM_ROWS][NUM_COLS] = {
-  //  GP11                  GP22                  GP10              GP21                   GP9                GP20                GP8                    GP7
-  { HID_KEY_GRAVE,        HID_KEY_1,            HID_KEY_Q,        HID_KEY_TAB,           HID_KEY_A,         HID_KEY_ESCAPE,     HID_KEY_Z,             0                    },  // GP27
-  { HID_KEY_F1,           HID_KEY_2,            HID_KEY_W,        HID_KEY_CAPS_LOCK,     HID_KEY_S,         0,                  HID_KEY_X,             0                    },  // GP26
-  { HID_KEY_F2,           HID_KEY_3,            HID_KEY_E,        HID_KEY_F3,            HID_KEY_D,         HID_KEY_F4,         HID_KEY_C,             0                    },  // GP17
-  { HID_KEY_5,            HID_KEY_4,            HID_KEY_R,        HID_KEY_T,             HID_KEY_F,         HID_KEY_G,          HID_KEY_V,             HID_KEY_B            },  // GP14
-  { HID_KEY_6,            HID_KEY_7,            HID_KEY_U,        HID_KEY_Y,             HID_KEY_J,         HID_KEY_H,          HID_KEY_M,             HID_KEY_N            },  // GP12
-  { HID_KEY_EQUAL,        HID_KEY_8,            HID_KEY_I,        HID_KEY_BRACKET_RIGHT, HID_KEY_K,         HID_KEY_F6,         HID_KEY_COMMA,         0                    },  // GP19
-  { HID_KEY_F8,           HID_KEY_9,            HID_KEY_O,        HID_KEY_F7,            HID_KEY_L,         0,                  HID_KEY_PERIOD,        0                    },  // GP18
-  { HID_KEY_MINUS,        HID_KEY_0,            HID_KEY_P,        HID_KEY_BRACKET_LEFT,  HID_KEY_SEMICOLON, HID_KEY_APOSTROPHE, 0,                     HID_KEY_SLASH        },  // GP15
-  { HID_KEY_F9,           HID_KEY_F10,          0,                HID_KEY_BACKSPACE,     HID_KEY_BACKSLASH, HID_KEY_F5,         HID_KEY_ENTER,         HID_KEY_SPACE        },  // GP13
-  { HID_KEY_INSERT,       HID_KEY_F12,          0,                0,                     0,                 0,                  0,                     HID_KEY_ARROW_RIGHT  },  // GP6
-  { HID_KEY_DELETE,       HID_KEY_F11,          TOKEN_VOL_UP,     TOKEN_VOL_DOWN,        TOKEN_MUTE_KEY,    0,                  0,                     HID_KEY_ARROW_DOWN   },  // GP16
-  { HID_KEY_PAGE_UP,      HID_KEY_PAGE_DOWN,    HID_KEY_GUI_LEFT, 0,                     0,                 0,                  0,                     0                    },  // GP5
-  { HID_KEY_HOME,         HID_KEY_END,          0,                0,                     0,                 HID_KEY_ARROW_UP,   0,                     HID_KEY_ARROW_LEFT   },  // GP28
-  { 0,                    HID_KEY_PRINT_SCREEN, 0,                0,                     0,                 HID_KEY_ALT_LEFT,   0,                     HID_KEY_ALT_RIGHT    },  // GP2
-  { 0,                    0,                    0,                HID_KEY_SHIFT_LEFT,    0,                 0,                  HID_KEY_SHIFT_RIGHT,   0                    },  // GP4
-  { HID_KEY_CONTROL_LEFT, 0,                    0,                0,                     0,                 0,                  HID_KEY_CONTROL_RIGHT, 0                    }   // GP3
+  //  GP11                  GP22                  GP10              GP21                   GP9                  GP20                GP8                    GP7
+  { HID_KEY_GRAVE,        HID_KEY_1,            HID_KEY_Q,        HID_KEY_TAB,           HID_KEY_A,           HID_KEY_ESCAPE,     HID_KEY_Z,             0                    },  // GP27
+  { HID_KEY_F1,           HID_KEY_2,            HID_KEY_W,        HID_KEY_CAPS_LOCK,     HID_KEY_S,           0,                  HID_KEY_X,             0                    },  // GP26
+  { HID_KEY_F2,           HID_KEY_3,            HID_KEY_E,        HID_KEY_F3,            HID_KEY_D,           HID_KEY_F4,         HID_KEY_C,             0                    },  // GP17
+  { HID_KEY_5,            HID_KEY_4,            HID_KEY_R,        HID_KEY_T,             HID_KEY_F,           HID_KEY_G,          HID_KEY_V,             HID_KEY_B            },  // GP14
+  { HID_KEY_6,            HID_KEY_7,            HID_KEY_U,        HID_KEY_Y,             HID_KEY_J,           HID_KEY_H,          HID_KEY_M,             HID_KEY_N            },  // GP12
+  { HID_KEY_EQUAL,        HID_KEY_8,            HID_KEY_I,        HID_KEY_BRACKET_RIGHT, HID_KEY_K,           HID_KEY_F6,         HID_KEY_COMMA,         0                    },  // GP19
+  { HID_KEY_F8,           HID_KEY_9,            HID_KEY_O,        HID_KEY_F7,            HID_KEY_L,           0,                  HID_KEY_PERIOD,        0                    },  // GP18
+  { HID_KEY_MINUS,        HID_KEY_0,            HID_KEY_P,        HID_KEY_BRACKET_LEFT,  HID_KEY_SEMICOLON,   HID_KEY_APOSTROPHE, 0,                     HID_KEY_SLASH        },  // GP15
+  { HID_KEY_F9,           HID_KEY_F10,          0,                HID_KEY_BACKSPACE,     HID_KEY_BACKSLASH,   HID_KEY_F5,         HID_KEY_ENTER,         HID_KEY_SPACE        },  // GP13
+  { HID_KEY_INSERT,       HID_KEY_F12,          0,                0,                     0,                   0,                  0,                     HID_KEY_ARROW_RIGHT  },  // GP6
+  { HID_KEY_DELETE,       HID_KEY_F11,          TOKEN_VOL_UP,     TOKEN_VOL_DOWN,        TOKEN_MUTE_KEY,      0,                  0,                     HID_KEY_ARROW_DOWN   },  // GP16
+  { HID_KEY_PAGE_UP,      HID_KEY_PAGE_DOWN,    HID_KEY_GUI_LEFT, 0,                     HID_KEY_APPLICATION, 0,                  0,                     0                    },  // GP5
+  { HID_KEY_HOME,         HID_KEY_END,          0,                0,                     0,                   HID_KEY_ARROW_UP,   0,                     HID_KEY_ARROW_LEFT   },  // GP28
+  { 0,                    HID_KEY_PRINT_SCREEN, HID_KEY_NUM_LOCK, 0,                     0,                   HID_KEY_ALT_LEFT,   0,                     HID_KEY_ALT_RIGHT    },  // GP2
+  { 0,                    0,                    0,                HID_KEY_SHIFT_LEFT,    0,                   0,                  HID_KEY_SHIFT_RIGHT,   0                    },  // GP4
+  { HID_KEY_CONTROL_LEFT, 0,                    0,                0,                     0,                   0,                  HID_KEY_CONTROL_RIGHT, 0                    }   // GP3
 };
+
+// Fn key location in the matrix (row GP6, column GP9). It has no keycode in keyMap.
+const int FN_ROW = 9;    // GP6
+const int FN_COL = 4;    // GP9
+
+// Media keys sent when Fn is held: matrix position of the arrow key and the consumer code to send
+struct FnMediaKey {
+  int row;
+  int col;
+  uint16_t consumerCode;
+};
+const FnMediaKey fnMediaKeys[] = {
+  {12, 5, HID_USAGE_CONSUMER_STOP},                  // Fn + Up    (row GP28, column GP20)
+  {10, 7, HID_USAGE_CONSUMER_PLAY_PAUSE},            // Fn + Down  (row GP16, column GP7)
+  {12, 7, HID_USAGE_CONSUMER_SCAN_PREVIOUS_TRACK},   // Fn + Left  (row GP28, column GP7)
+  { 9, 7, HID_USAGE_CONSUMER_SCAN_NEXT_TRACK}        // Fn + Right (row GP6,  column GP7)
+};
+const int NUM_FN_MEDIA_KEYS = sizeof(fnMediaKeys) / sizeof(fnMediaKeys[0]);
 
 // Current state of every key from the latest scan (true = pressed)
 bool keyState[NUM_ROWS][NUM_COLS] = {false};
@@ -119,9 +139,10 @@ void setup() {
 // ---------------------------------------------------------------------
 // Loop:
 //   1) Scans the full 16x8 matrix into keyState[][].
-//   2) Builds the keyboard report: modifier bits and up to 6 normal keycodes.
+//   2) With Fn held, the arrow keys become media keys (stop, play/pause, previous, next).
+//   3) Builds the keyboard report: modifier bits and up to 6 normal keycodes.
 //      Mute / volume keys become a consumer (media) code instead.
-//   3) Sends each report only when it differs from the one last sent.
+//   4) Sends each report only when it differs from the one last sent.
 // ---------------------------------------------------------------------
 void loop() {
   uint8_t  modifierByte      = 0;
@@ -143,10 +164,23 @@ void loop() {
     pinMode(rowPins[r], INPUT_PULLUP);                // release the row
   }
 
-  // 2) Build the reports from all held keys --------------------------------
+  // 2) Fn layer: with Fn held, the arrow keys send media keys instead -------
+  bool fnHeld = keyState[FN_ROW][FN_COL];
+  bool usedByFn[NUM_ROWS][NUM_COLS] = {{false}};
+  if (fnHeld) {
+    for (int i = 0; i < NUM_FN_MEDIA_KEYS; i++) {
+      const FnMediaKey &m = fnMediaKeys[i];
+      if (keyState[m.row][m.col]) {
+        usedByFn[m.row][m.col] = true;                // don't also send the arrow
+        if (consumerCode == 0) consumerCode = m.consumerCode;
+      }
+    }
+  }
+
+  // 3) Build the reports from all held keys --------------------------------
   for (int r = 0; r < NUM_ROWS; r++) {
     for (int c = 0; c < NUM_COLS; c++) {
-      if (!keyState[r][c]) continue;
+      if (!keyState[r][c] || usedByFn[r][c]) continue;
       uint8_t key = keyMap[r][c];
       if (key == 0) continue;                         // empty position
 
@@ -172,7 +206,7 @@ void loop() {
     for (int i = 0; i < 6; i++) keycodeReport[i] = 0x01;
   }
 
-  // 3) Send reports that changed ---------------------------------------------
+  // 4) Send reports that changed ---------------------------------------------
   // A report is only marked as sent if USB accepted it, so a change is never lost.
   bool reportDiffers = (modifierByte != lastModifier);
   for (int i = 0; i < 6 && !reportDiffers; i++) {
