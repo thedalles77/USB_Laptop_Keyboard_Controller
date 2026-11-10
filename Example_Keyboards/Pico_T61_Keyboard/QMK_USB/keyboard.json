@@ -16,7 +16,7 @@
 		            "GP13", "GP6", "GP16", "GP5", "GP28", "GP2", "GP4", "GP3"]
     },
     "processor": "RP2040",
-    "url": "",
+    "url": "https://github.com/thedalles77/USB_Laptop_Keyboard_Controller",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x0000",
